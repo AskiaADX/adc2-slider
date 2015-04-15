@@ -1,0 +1,2 @@
+﻿#adc_{%= CurrentQuestion.Id%} .slider { position:relative; }
+#adc_{%= CurrentQuestion.Id%} .left { position:absolute !important; margin-left:0px; left:0; }

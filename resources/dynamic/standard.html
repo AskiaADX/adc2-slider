@@ -1,0 +1,17 @@
+﻿<div class="controlContainer" style="visibility:hidden">
+    <div id="adc_{%= CurrentADC.InstanceId %}" class="adc-slider">
+        {% IF CurrentADC.PropValue("isInLoop") = "1" Then %}
+            {% If CurrentQuestion.Type = "single"  Then %}
+                {%:= CurrentADC.GetContent("dynamic/standard_single_loop.html").ToText()%}
+            {% ElseIf CurrentQuestion.Type = "numeric" Then %}
+                {%:= CurrentADC.GetContent("dynamic/standard_numeric_loop.html").ToText()%}
+            {% EndIF %}
+        {% Else %}
+            {% If CurrentQuestion.Type = "single"  Then %}
+                {%:= CurrentADC.GetContent("dynamic/standard_single.html").ToText()%}
+            {% ElseIf CurrentQuestion.Type = "numeric" Then %}
+                {%:= CurrentADC.GetContent("dynamic/standard_numeric.html").ToText()%}
+            {% EndIF %}
+        {% EndIF %}
+    </div>
+</div>

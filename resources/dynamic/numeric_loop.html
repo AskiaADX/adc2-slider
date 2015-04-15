@@ -1,0 +1,63 @@
+﻿{% 
+Dim useList    =  (CurrentADC.PropValue("useList") = "true") ' Convert to boolean
+
+Dim inputName  = CurrentQuestion.InputName()
+Dim inputValue = CurrentQuestion.InputValue()
+Dim imageAlign = CurrentADC.PropValue("imageAlign")
+Dim minValue  = CurrentQuestion.MinValue
+Dim maxValue  = CurrentQuestion.MaxValue
+Dim rangeLength = 0
+Dim j
+Dim ar = CurrentQuestion.ParentLoop.AvailableResponses
+Dim caption
+Dim image
+
+Dim attrMin = On(minValue <> DK, "min=\"" + minValue + "\"", "")
+Dim attrMax = On(maxValue <> DK, "max=\"" + maxValue + "\"", "")
+
+Dim attrRequired = On(CurrentQuestion.IsAllowDK, "required=\"required\"", "")
+
+Dim unitStep = 1
+Dim attrStep = On(unitStep > 1, "step=\"" + unitStep + "\"", "")
+
+If useList And minValue <> DK And maxValue <> DK Then
+    rangeLength = (maxValue - minValue) / unitStep
+EndIf
+%}
+<!-- Numeric loop -->
+<table cellpadding="0" cellspacing="0" border="0">
+{%
+For j = 1 To ar.Count
+    inputName = CurrentQuestion.Iteration(ar[j].Index).InputName() 
+    caption   = ar[j].Caption
+    image	  = ar.ResourceURL[j]
+    %}
+    <tr valign="middle"><td>
+	{% IF image <> "" And imageAlign = "left" Then %}
+        <img src="{%= image %}" />
+    {% EndIF %}
+    <label class="caption">{%= caption %}</label>
+    {% IF image <> "" And imageAlign = "right" Then %}
+        <img src="{%= image %}" />
+    {% EndIF %}
+	</td><td>
+{% If rangeLength > 0 And rangeLength <= 20 Then
+    Dim i
+    Dim x = minValue
+ %}   
+
+    <select name="{%= inputName %}">
+        <option value=""></option>    
+    {% For i = 0 To rangeLength %}
+        <option value="{%= x %}">{%= x %}</option>
+        {% x = x + unitStep %}
+    {% Next %}
+    </select>
+    </td></tr>
+{% Else %}
+    <input type="number" name="{%= inputName %}" value="{%= CurrentQuestion.Iteration(ar[j].Index).inputValue() %}" {%:= attrMin %}/>
+    </td></tr>
+{% EndIf %}
+
+{% Next %}
+</table>

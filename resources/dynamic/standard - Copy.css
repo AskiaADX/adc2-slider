@@ -1,0 +1,380 @@
+﻿/* standard.css */
+{%
+Dim labelColourPrimary =CurrentADC.PropValue("labelColourPrimary")
+Dim labelColourSecondary =CurrentADC.PropValue("labelColourSecondary")
+Dim fontColour =CurrentADC.PropValue("fontColour")
+Dim labelShadow =CurrentADC.PropValue("labelShadow")
+Dim textAlign =CurrentADC.PropValue("textAlign")
+Dim imageAlign =CurrentADC.PropValue("imageAlign")
+Dim displayLabelText =CurrentADC.PropValue("displayLabelText")
+
+Dim borderColour =CurrentADC.PropValue("borderColour")
+Dim borderThickness =CurrentADC.PropValue("borderThickness")
+Dim borderStyle =CurrentADC.PropValue("borderStyle")
+
+Dim labelTextPadding =CurrentADC.PropValue("labelTextPadding")
+Dim labelTextLineHeight =CurrentADC.PropValue("labelTextLineHeight")
+
+Dim fontSize =CurrentADC.PropValue("fontSize")
+
+Dim labelWidth =CurrentADC.PropValue("labelWidth")
+Dim sliderHeight =CurrentADC.PropValue("sliderHeight")
+Dim sliderOrientation =CurrentADC.PropValue("sliderOrientation")
+Dim controlAlign =CurrentADC.PropValue("controlAlign")
+Dim sliderBasePrimaryColour =CurrentADC.PropValue("sliderBasePrimaryColour")
+Dim sliderBaseSecondaryColour =CurrentADC.PropValue("sliderBaseSecondaryColour")
+Dim sliderBaseBorderColour =CurrentADC.PropValue("sliderBaseBorderColour")
+Dim sliderBaseBorderThickness =CurrentADC.PropValue("sliderBaseBorderThickness")
+Dim sliderBaseBorderStyle =CurrentADC.PropValue("sliderBaseBorderStyle")
+Dim sliderBaseBorderRadius =CurrentADC.PropValue("sliderBaseBorderRadius")
+Dim sliderHandlePrimaryColour =CurrentADC.PropValue("sliderHandlePrimaryColour")
+Dim sliderHandleSecondaryColour =CurrentADC.PropValue("sliderHandleSecondaryColour")
+Dim sliderHandleBorderColour =CurrentADC.PropValue("sliderHandleBorderColour")
+Dim sliderHandleBorderThickness =CurrentADC.PropValue("sliderHandleBorderThickness")
+Dim sliderHandleBorderStyle =CurrentADC.PropValue("sliderHandleBorderStyle")
+Dim sliderHandleBorderRadius =CurrentADC.PropValue("sliderHandleBorderRadius")
+Dim sliderSelectedPrimaryColour =CurrentADC.PropValue("sliderSelectedPrimaryColour")
+Dim sliderSelectedSecondaryColour =CurrentADC.PropValue("sliderSelectedSecondaryColour")
+Dim labelBorderRadius =CurrentADC.PropValue("labelBorderRadius")
+
+Dim showValue =CurrentADC.PropValue("showValue")
+
+Dim sliderFocusPrimaryColour =CurrentADC.PropValue("sliderFocusPrimaryColour")
+Dim sliderFocusSecondaryColour =CurrentADC.PropValue("sliderFocusSecondaryColour")
+Dim sliderFocusBorderColour =CurrentADC.PropValue("sliderFocusBorderColour")
+Dim sliderFocusBorderThickness =CurrentADC.PropValue("sliderFocusBorderThickness")
+Dim handleFontColour =CurrentADC.PropValue("handleFontColour")
+
+Dim captionAlign =CurrentADC.PropValue("captionAlign")
+Dim captionPadding =CurrentADC.PropValue("captionPadding")
+
+Dim sliderBaseHeight =CurrentADC.PropValue("sliderBaseHeight")
+Dim sliderHandleHeight =CurrentADC.PropValue("sliderHandleHeight")
+Dim sliderHandleWidth =CurrentADC.PropValue("sliderHandleWidth")
+Dim halfHandleHeight = (sliderBaseHeight.ToNumber() - sliderHandleHeight.ToNumber())/2
+Dim halfHandleWidth = sliderHandleWidth.ToNumber()/2
+
+Dim imagePadding =CurrentADC.PropValue("imagePadding")
+
+Dim sliderBaseGradientDirection =CurrentADC.PropValue("sliderBaseGradientDirection")
+
+%}
+
+#adc_{%= CurrentADC.InstanceId%} .sliderContainer { 
+	text-align:{%= controlAlign%};
+	{% IF controlAlign = "center" Then %}
+		margin-left:auto;
+		margin-right:auto;
+	{% Else %}
+		margin:0px;
+		width:auto;
+	{% EndIF %}
+	
+	margin-bottom:20px;
+}
+
+#adc_{%= CurrentADC.InstanceId%} .slider { 
+	/*width:100%;*/
+	/*margin:0px auto;*/
+}
+
+#adc_{%= CurrentADC.InstanceId%} .label { 
+	
+	/* Decoration */
+	{% IF CurrentADC.PropValue("borderThickness") = "none" Then %}
+		border: none;
+	{% Else %}
+		border: {%= borderThickness%} {%= borderStyle%} rgb({%= borderColour%});
+	{% EndIF %}	
+
+	background: rgb({%= labelColourPrimary%}); 
+	background: -moz-linear-gradient(top,  rgb({%= labelColourPrimary%}) 0%, rgb({%= labelColourSecondary%}) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= labelColourPrimary%})), color-stop(100%,rgb({%= labelColourSecondary%}))); 
+	background: -webkit-linear-gradient(top,  rgb({%= labelColourPrimary%}) 0%,rgb({%= labelColourSecondary%}) 100%); 
+	background: -o-linear-gradient(top,  rgb({%= labelColourPrimary%}) 0%,rgb({%= labelColourSecondary%}) 100%);
+	background: -ms-linear-gradient(top,  rgb({%= labelColourPrimary%}) 0%,rgb({%= labelColourSecondary%}) 100%);
+	background: linear-gradient(to bottom,  rgb({%= labelColourPrimary%}) 0%,rgb({%= labelColourSecondary%}) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr={%= labelColourPrimary.ToHexa()%}, endColorstr={%= labelColourSecondary.ToHexa()%},GradientType=0 );
+	
+	/* Effects */
+	-webkit-border-radius:	{%= labelBorderRadius%}; 
+	-moz-border-radius:		{%= labelBorderRadius%}; 
+	-khtml-border-radius:	{%= labelBorderRadius%}; 
+	border-radius:			{%= labelBorderRadius%};
+	
+	-webkit-box-shadow: {%= labelShadow%};
+	-moz-box-shadow: {%= labelShadow%};
+	box-shadow: {%= labelShadow%};
+	
+	display:{%= displayLabelText%};
+	font-size:{%= fontSize%};
+	{% IF CurrentADC.PropValue("textAlign") <> "lr" And CurrentADC.PropValue("textAlign") <> "rl" Then %}
+		text-align:{%= textAlign%};
+	{% End IF %}
+	color:rgb({%= fontColour%});
+	padding:{%= labelTextPadding%};
+	line-height:{%= labelTextLineHeight%};
+	
+	position:relative;
+}
+
+#adc_{%= CurrentADC.InstanceId%} .left, #adc_{%= CurrentADC.InstanceId%} .right, .rightLabel, .leftLabel {
+	width: {%= labelWidth%};  
+}
+
+#adc_{%= CurrentADC.InstanceId%} { width:100%; }
+#adc_{%= CurrentADC.InstanceId%} .leftLabel { 
+	margin: 0px; 
+	{% IF CurrentADC.PropValue("textAlign") = "lr" Then %}
+		text-align:left;
+	{% ElseIF CurrentADC.PropValue("textAlign") = "rl" Then %}
+		text-align:right;
+	{% EndIF %}
+	{% IF CurrentADC.PropValue("sliderOrientation") = "horizontal" Then %}
+		margin-right:10px;
+	{% EndIF %}
+	
+	/* disable highlight text */
+	-moz-user-select: none; 
+	-webkit-user-select: none; 
+	-ms-user-select:none; 
+	user-select:none;
+}
+#adc_{%= CurrentADC.InstanceId%} .rightLabel { 
+	margin: 0px;
+	{% IF CurrentADC.PropValue("textAlign") = "lr" Then %}
+		text-align:right;
+	{% ElseIF CurrentADC.PropValue("textAlign") = "rl" Then %}
+		text-align:left;
+	{% EndIF %}
+	{% IF CurrentADC.PropValue("sliderOrientation") = "horizontal" Then %}
+		margin-left:10px;
+	{% EndIF %}
+	
+	/* disable highlight text */
+	-moz-user-select: none; 
+	-webkit-user-select: none; 
+	-ms-user-select:none; 
+	user-select:none;
+}
+#adc_{%= CurrentADC.InstanceId%} .leftLabel .label {
+	{% IF CurrentADC.PropValue("sliderOrientation") = "horizontal" Then %}
+		/*margin-right:10px;*/
+	{% Else %}
+		margin-bottom:10px;
+	{% EndIF %}
+	{% IF CurrentADC.PropValue("textAlign") = "lr" Then %}
+		text-align:left;
+	{% ElseIF CurrentADC.PropValue("textAlign") = "rl" Then %}
+		text-align:right;
+	{% EndIF %}
+	
+	/* disable highlight text */
+	-moz-user-select: none; 
+	-webkit-user-select: none; 
+	-ms-user-select:none; 
+	user-select:none;
+}
+#adc_{%= CurrentADC.InstanceId%} .rightLabel .label {
+	{% IF CurrentADC.PropValue("sliderOrientation") = "horizontal" Then %}
+		/*margin-left:10px;*/
+	{% Else %}
+		margin-top:10px;
+	{% EndIF %}
+	{% IF CurrentADC.PropValue("textAlign") = "lr" Then %}
+		text-align:right;
+	{% ElseIF CurrentADC.PropValue("textAlign") = "rl" Then %}
+		text-align:left;
+	{% EndIF %}
+	
+	/* disable highlight text */
+	-moz-user-select: none; 
+	-webkit-user-select: none; 
+	-ms-user-select:none; 
+	user-select:none;
+}
+
+#adc_{%= CurrentADC.InstanceId%} .noUiSlider {
+	{% IF CurrentADC.PropValue("sliderOrientation") = "vertical" Then %}
+		display:block;
+		height: {%= sliderHeight%};
+	{% EndIF %}
+}
+
+#adc_{%= CurrentADC.InstanceId%} .noUiSlider,
+#adc_{%= CurrentADC.InstanceId%} .leftLabel, 
+#adc_{%= CurrentADC.InstanceId%} .rightLabel {
+
+}
+
+#adc_{%= CurrentADC.InstanceId%} .noUi-target {
+	/* border */
+	{% IF CurrentADC.PropValue("sliderBaseBorderThickness") = "none" Then %}
+		border: none;
+	{% Else %}
+		border: {%= sliderBaseBorderThickness%} {%= sliderBaseBorderStyle%} rgb({%= sliderBaseBorderColour%});
+	{% EndIF %}	
+	/* border-radius */	
+	-webkit-border-radius:	{%= sliderBaseBorderRadius%}; 
+	-moz-border-radius:		{%= sliderBaseBorderRadius%}; 
+	-khtml-border-radius:	{%= sliderBaseBorderRadius%}; 
+	border-radius:			{%= sliderBaseBorderRadius%};
+}
+
+#adc_{%= CurrentADC.InstanceId%} .noUi-background {
+	cursor:pointer;
+	
+	/*z-index:1;*/
+	
+	/* background */
+	{% IF CurrentADC.PropValue("sliderBaseGradientDirection") = "ltr" Then %}
+		background: rgb({%= sliderBasePrimaryColour%});
+		background: -moz-linear-gradient(left,  rgb({%= sliderBasePrimaryColour%}) 0%, rgb({%= sliderBaseSecondaryColour%}) 100%); 
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb({%= sliderBasePrimaryColour%})), color-stop(100%,rgb({%= sliderBaseSecondaryColour%})));
+		background: -webkit-linear-gradient(left,  rgb({%= sliderBasePrimaryColour%}) 0%,rgb({%= sliderBaseSecondaryColour%}) 100%);
+		background: -o-linear-gradient(left,  rgb({%= sliderBasePrimaryColour%}) 0%,rgb({%= sliderBaseSecondaryColour%}) 100%);
+		background: -ms-linear-gradient(left,  rgb({%= sliderBasePrimaryColour%}) 0%,rgb({%= sliderBaseSecondaryColour%}) 100%);
+		background: linear-gradient(to right,  rgb({%= sliderBasePrimaryColour%}) 0%,rgb({%= sliderBaseSecondaryColour%}) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderBasePrimaryColour.ToHexa()%}', endColorstr='{%= sliderBaseSecondaryColour.ToHexa()%}',GradientType=1 );
+
+	{% Else %}
+		background: rgb({%= sliderBaseSecondaryColour%}); 
+		background: -moz-linear-gradient(top,  rgb({%= sliderBaseSecondaryColour%}) 0%, rgb({%= sliderBasePrimaryColour%}) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderBaseSecondaryColour%})), color-stop(100%,rgb({%= sliderBasePrimaryColour%})));
+		background: -webkit-linear-gradient(top,  rgb({%= sliderBaseSecondaryColour%}) 0%,rgb({%= sliderBasePrimaryColour%}) 100%); 
+		background: -o-linear-gradient(top,  rgb({%= sliderBaseSecondaryColour%}) 0%,rgb({%= sliderBasePrimaryColour%}) 100%);
+		background: -ms-linear-gradient(top,  rgb({%= sliderBaseSecondaryColour%}) 0%,rgb({%= sliderBasePrimaryColour%}) 100%); 
+		background: linear-gradient(to bottom,  rgb({%= sliderBaseSecondaryColour%}) 0%,rgb({%= sliderBasePrimaryColour%}) 100%); 
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr={%= sliderBaseSecondaryColour.ToHexa()%}, endColorstr={%= sliderBasePrimaryColour.ToHexa()%},GradientType=0 );
+	{% EndIF %}
+	
+	/*position:relative;*/
+}
+
+#adc_{%= CurrentADC.InstanceId%} .noUi-handle {
+	cursor:pointer;
+	/*z-index:2;*/
+	
+	/* border */
+	{% IF CurrentADC.PropValue("sliderHandleBorderThickness") = "none" Then %}
+		border: none;
+	{% Else %}
+		border: {%= sliderHandleBorderThickness%} {%= sliderHandleBorderStyle%} rgb({%= sliderHandleBorderColour%});
+	{% EndIF %}	
+	
+	
+	/* border-radius */	
+	
+	/* background */
+	background: rgb({%= sliderHandlePrimaryColour%}); 
+	background: -moz-linear-gradient(top,  rgb({%= sliderHandlePrimaryColour%}) 0%, rgb({%= sliderHandleSecondaryColour%}) 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderHandlePrimaryColour%})), color-stop(100%,rgb({%= sliderHandleSecondaryColour%})));
+	background: -webkit-linear-gradient(top,  rgb({%= sliderHandlePrimaryColour%}) 0%,rgb({%= sliderHandleSecondaryColour%}) 100%);
+	background: -o-linear-gradient(top,  rgb({%= sliderHandlePrimaryColour%}) 0%,rgb({%= sliderHandleSecondaryColour%}) 100%);
+	background: -ms-linear-gradient(top,  rgb({%= sliderHandlePrimaryColour%}) 0%,rgb({%= sliderHandleSecondaryColour%}) 100%);
+	background: linear-gradient(to bottom,  rgb({%= sliderHandlePrimaryColour%}) 0%,rgb({%= sliderHandleSecondaryColour%}) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr={%= sliderHandlePrimaryColour.ToHexa()%}, endColorstr={%= sliderHandleSecondaryColour.ToHexa()%},GradientType=0 );
+	
+	-webkit-border-radius:	{%= sliderHandleBorderRadius%}; 
+	-moz-border-radius:		{%= sliderHandleBorderRadius%}; 
+	-khtml-border-radius:	{%= sliderHandleBorderRadius%}; 
+	border-radius:			{%= sliderHandleBorderRadius%};
+	
+	/* disable highlight text */
+	/*-moz-user-select: none; 
+	-webkit-user-select: none; 
+	-ms-user-select:none; 
+	user-select:none;*/
+}
+
+#adc_{%= CurrentADC.InstanceId%} .selected .noUi-background {
+	
+	
+	/* background */
+	{% IF CurrentADC.PropValue("sliderBaseGradientDirection") = "ltr" Then %}
+		background: rgb({%= sliderSelectedPrimaryColour%}) !important; 
+		background: -moz-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%, rgb({%= sliderSelectedSecondaryColour%}) 100%) !important;
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb({%= sliderSelectedPrimaryColour%})), color-stop(100%,rgb({%= sliderSelectedSecondaryColour%}))) !important;
+		background: -webkit-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; /
+		background: -o-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
+		background: -ms-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
+		background: linear-gradient(to right,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}',GradientType=1 ) !important;
+	{% Else %}
+		background: rgb({%= sliderSelectedSecondaryColour%}) !important;
+		background: -moz-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%, rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderSelectedSecondaryColour%})), color-stop(100%,rgb({%= sliderSelectedPrimaryColour%}))) !important; 
+		background: -webkit-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important; 
+		background: -o-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
+		background: -ms-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
+		background: linear-gradient(to bottom,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important; 
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}',GradientType=0 ) !important; 
+	{% EndIF %}
+	
+	
+	box-shadow: none !important;
+}
+
+.noUi-handle:after, .noUi-handle:before {
+	
+	{% IF showValue = "1" Then %}
+		background:none !important;
+	{% EndIF %}
+		
+}
+
+#adc_{%= CurrentADC.InstanceId%} .handleValue {
+	width:100%; 
+	text-align:center;
+	font-size:{%= fontSize%};
+	color:rgb({%= handleFontColour%});
+	line-height:100%;
+	pointer-events: none;
+	
+	/* disable highlight text */
+	-moz-user-select: none; 
+	-webkit-user-select: none; 
+	-ms-user-select:none; 
+	user-select:none;
+}
+
+#adc_{%= CurrentADC.InstanceId%} .focused .noUi-handle { 
+	/* background */
+	background: rgb({%= sliderFocusPrimaryColour%}) !important;
+	background: -moz-linear-gradient(top,  rgb({%= sliderFocusPrimaryColour%}) 0%, rgb({%= sliderFocusSecondaryColour%}) 100%) !important; 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderFocusPrimaryColour%})), color-stop(100%,rgb({%= sliderFocusSecondaryColour%}))) !important;
+	background: -webkit-linear-gradient(top,  rgb({%= sliderFocusPrimaryColour%}) 0%,rgb({%= sliderFocusSecondaryColour%}) 100%) !important; 
+	background: -o-linear-gradient(top,  rgb({%= sliderFocusPrimaryColour%}) 0%,rgb({%= sliderFocusSecondaryColour%}) 100%) !important;
+	background: -ms-linear-gradient(top,  rgb({%= sliderFocusPrimaryColour%}) 0%,rgb({%= sliderFocusSecondaryColour%}) 100%) !important;
+	background: linear-gradient(to bottom,  rgb({%= sliderFocusPrimaryColour%}) 0%,rgb({%= sliderFocusSecondaryColour%}) 100%) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderFocusPrimaryColour.ToHexa()%}', endColorstr='{%= sliderFocusSecondaryColour.ToHexa()%}',GradientType=0 ) !important; 
+	
+	/* border */
+	
+	{% IF CurrentADC.PropValue("sliderFocusBorderThickness") = "none" Then %}
+		border: none;
+	{% Else %}
+		border: {%= sliderFocusBorderThickness%} {%= sliderHandleBorderStyle%} rgb({%= sliderFocusBorderColour%}) !important;
+	{% EndIF %}	
+}
+
+#adc_{%= CurrentADC.InstanceId%} .caption {
+	text-align:{%= captionAlign%};
+	padding:{%= captionPadding%};
+}
+
+#adc_{%= CurrentADC.InstanceId%} .noUi-horizontal {
+	height: {%= sliderBaseHeight%}px;
+}
+#adc_{%= CurrentADC.InstanceId%} .noUi-horizontal .noUi-handle {
+	width: {%= sliderHandleWidth%}px;
+	height: {%= sliderHandleHeight%}px;
+	left: -{%= halfHandleWidth%}px;
+	top: -{%= halfHandleHeight%}px;
+}
+
+#adc_{%= CurrentADC.InstanceId%} img {
+	padding:{%= imagePadding%};
+	vertical-align: middle;
+		
+}

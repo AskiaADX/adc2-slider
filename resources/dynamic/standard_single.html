@@ -1,0 +1,153 @@
+﻿{%
+Dim inputName = CurrentQuestion.InputName()
+Dim inputValue = CurrentQuestion.InputValue()
+Dim labelCount = 0
+Dim dkSingle = CurrentADC.PropValue("dkSingle")
+Dim ar = CurrentQuestion.AvailableResponses
+IF CurrentADC.PropValue("rightLabelText") <> "" Then
+	labelCount = labelCount + 1
+EndIF
+IF CurrentADC.PropValue("leftLabelText") <> "" Then
+	labelCount = labelCount + 1
+EndIF
+
+%}
+
+<input type="hidden" id="{%= inputName %}" name="{%= inputName %}" value="{%= CurrentQuestion.inputValue() %}" />
+
+{% IF CurrentADC.PropValue("sliderOrientation") = "horizontal" Then %}
+
+    <div class="sliderContainer">
+        <table class="slider" border="0" cellpadding="0" cellspacing="0" width="100%">
+            
+        {% IF CurrentADC.PropValue("labelPlacement") = "top" Then %}
+        
+        	{% IF labelCount > 0 and CurrentADC.PropValue("displayLabelText") <> "none" Then %} 
+                <tr valign="middle" class="sliderTop">
+                    {% IF CurrentADC.PropValue("leftLabelText") <> "" Then %}
+                    <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-bottom:10px;" align="left">
+                        <div class="leftLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("leftLabelText") %}</div></div>
+                    </td>
+                   {% EndIF %}
+                   <td width="100%"></td>
+                   {% IF CurrentADC.PropValue("rightLabelText") <> "" Then %}
+                    <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-bottom:10px;" align="right">
+                        <div class="rightLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("rightLabelText") %}</div></div>
+                    </td>
+                    {% EndIF %}
+                </tr>
+                
+            {% EndIF %}
+            
+            <tr valign="middle" class="sliderMiddle">
+                <td colspan="{%= labelCount + 1 %}" align="left"><div class="noUiSlider noUi-extended"></div></td>
+            </tr>
+            
+            {% IF dkSingle = "1" Then %}
+                <tr valign="middle" class=" class="sliderDK"">
+                    <td colspan="{%= labelCount + 1 %}" style="padding-top:10px;" align="{%= CurrentADC.PropValue("dkPosition") %}" class="sliderDK"><div class="dk" data-value="{%= ar[CurrentQuestion.AvailableResponses.Count].inputValue() %}">{%:= CurrentADC.PropValue("dkText")%}</div></td>
+                </tr>
+            {% EndIF %}
+        
+        {% Else %}
+        
+            {% IF CurrentADC.PropValue("labelPlacement") = "side" Then %} 
+            
+            	{% IF labelCount > 0 and CurrentADC.PropValue("displayLabelText") <> "none" Then %}
+                 
+                    <tr valign="middle" class="sliderTop">
+                        {% IF CurrentADC.PropValue("leftLabelText") <> "" Then %}
+                        <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-bottom:10px;" align="left">
+                            <div class="leftLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("leftLabelText") %}</div></div>
+                        </td>
+                       {% EndIF %}
+                       <td width="100%"></td>
+                       {% IF CurrentADC.PropValue("rightLabelText") <> "" Then %}
+                        <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-bottom:10px;" align="right">
+                            <div class="rightLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("rightLabelText") %}</div></div>
+                        </td>
+                        {% EndIF %}
+                    </tr>
+                
+            	{% EndIF %}
+            
+            	<tr valign="middle" class="sliderMiddle">
+                	{% IF CurrentADC.PropValue("leftLabelText") <> "" and CurrentADC.PropValue("displayLabelText") <> "none" Then %}
+                        <td width="{%= CurrentADC.PropValue("labelWidth") %}" align="left" style="text-align:left;">
+                        <div class="leftLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("leftLabelText") %}</div></div>
+                    </td>
+                    {% EndIF %}
+                    <td align="left"><div class="noUiSlider noUi-extended"></div></td>
+                    {% IF CurrentADC.PropValue("rightLabelText") <> "" and CurrentADC.PropValue("displayLabelText") <> "none" Then %}
+                    <td width="{%= CurrentADC.PropValue("labelWidth") %}" align="right" style="text-align:right;">
+                        <div class="rightLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("rightLabelText") %}</div></div>
+                    </td>
+                    {% EndIF %}
+                </tr>
+            
+            {% Else %}
+            
+            	<tr valign="middle" class="sliderMiddle">
+                    <td colspan="{%= labelCount + 1 %}" align="left"><div class="noUiSlider noUi-extended"></div></td>
+                </tr>
+            
+            {% EndIF %}
+            
+            {% IF labelCount > 0 and CurrentADC.PropValue("labelPlacement") = "bottom" and CurrentADC.PropValue("displayLabelText") <> "none" Then %} 
+                <tr valign="middle" class="sliderBottom">
+                    {% IF CurrentADC.PropValue("leftLabelText") <> "" Then %}
+                    <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-top:10px;" align="left">
+                        <div class="leftLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("leftLabelText") %}</div></div>
+                    </td>
+                   {% EndIF %}
+                   <td width="100%"></td>
+                   {% IF CurrentADC.PropValue("rightLabelText") <> "" Then %}
+                    <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-top:10px;" align="right">
+                        <div class="rightLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("rightLabelText") %}</div></div>
+                    </td>
+                    {% EndIF %}
+                </tr>
+            {% EndIF %}
+            {% IF dkSingle = "1" Then %}
+                <tr valign="middle" class="sliderDK">
+                    <td colspan="{%= labelCount + 1 %}" style="padding-top:10px;" align="{%= CurrentADC.PropValue("dkPosition") %}" class="sliderDK"><div class="dk" data-value="{%= ar[CurrentQuestion.AvailableResponses.Count].inputValue() %}">{%:= CurrentADC.PropValue("dkText")%}</div></td>
+                </tr>
+            {% EndIF %}
+        
+        {% EndIF %}
+                
+        </table>
+    </div>
+
+{% Else %}
+    
+    <div class="sliderContainer">
+        <table class="slider" border="0" cellpadding="0" cellspacing="0" width="100%">
+        	{% IF CurrentADC.PropValue("rightLabelText") <> "" Then %}
+        	<tr valign="middle">
+                <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-bottom:10px;" align="center">
+                    <div class="rightLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("rightLabelText") %}</div></div>
+                </td>
+            </tr>
+            {% EndIF %}
+            <tr valign="middle">
+                <td align="left"><div class="noUiSlider noUi-extended" style="height:{%= CurrentADC.PropValue("sliderHeight") %};"></div></td>
+            </tr>
+            {% IF CurrentADC.PropValue("leftLabelText") <> "" Then %}
+            <tr valign="middle">
+            	<td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-top:10px;">
+                    <div class="leftLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("leftLabelText") %}</div></div>
+                </td>
+            </tr>
+            {% EndIF %}
+            {% IF dkSingle = "1" Then %}
+                <tr valign="middle" class="sliderDK">
+                    <td style="padding-top:10px;">
+                        <div class="dk" data-value="{%= ar[CurrentQuestion.AvailableResponses.Count].inputValue() %}">{%:= CurrentADC.PropValue("dkText")%}</div>
+                    </td>
+                </tr>
+            {% EndIF %}
+        </table>
+    </div>
+    
+{% EndIF %}
