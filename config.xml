@@ -7,7 +7,7 @@
   <info>
     <name>adc2-slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>1.0.16</version>
+    <version>1.1.1</version>
     <date>2014-05-21</date>
     <description>
       <![CDATA[
@@ -41,6 +41,7 @@
 		v1.0.15 - Loop Closed question slider behavior, #18 on github
 		v1.0.16 - Not using Value on looped closed, sometimes caused errors
 		v1.1.0 - Added the interconnected sliders option
+    v1.1.1 - Fixing some bugs on the interconnected sliders
       ]]>
     </description>
     <author>
@@ -120,27 +121,9 @@
         ]]>
         </description>
         <value>1</value>
-      </property>  
-	  	<property xsi:type="standardProperty" id="interconnection" name="Interconnection between sliders" type="boolean" mode="static">
-		<description>
-		<![CDATA[
-          Connect each slider to the others within the same loop, so that the sum of their value to not go beyond a certain maximum.
-		  A checkbox is added to each slider, freezing them at their current position.
-		  Must be used on numeric question sliders, within a loop.
-        ]]>
-		</description>
-		<value>false</value>
-	</property>
-	<property xsi:type="standardProperty" id="maxForInterconnection" name="Maximum for interconnection" type="number" mode="static">
-		<description>
-		<![CDATA[
-          Maximum authorised for the sum of the sliders, in the case of an interconnection.
-        ]]>
-		</description>
-		<value>100</value>
-	</property>
+      </property>
     </category>
-	
+
 	<category id="sliderSettings" name="Slider Settings">
 	  <property xsi:type="standardProperty" id="sliderOrientation" name="Slider Orientation" type="string" mode="static">
         <description>
@@ -180,7 +163,7 @@
         </description>
         <value>false</value>
       </property>
-	</category>  
+	</category>
 	<category id="sliderBaseStyling" name="Slider Base Styling">
 	  <property xsi:type="standardProperty" id="sliderBaseHeight" name="Slider Base Height" type="string" mode="static">
         <description>
@@ -399,7 +382,7 @@
         </description>
         <value>68,68,68</value>
       </property>
-	  
+
 	  <property xsi:type="standardProperty" id="useHandleImage" name="Use Handle Image" type="boolean" mode="static">
         <description>
           <![CDATA[
@@ -435,7 +418,7 @@
         <value>false</value>
       </property>
 	</category>
-	
+
 	<category id="looped" name="Looped Questions">
 		<property xsi:type="standardProperty" id="isInLoop" name="Is in loop" type="boolean" mode="static">
         <description>
@@ -490,6 +473,22 @@
           <option value="right" text="Right"/>
         </options>
       </property>
+      <property xsi:type="standardProperty" id="interconnection" name="Interconnection between sliders" type="boolean" mode="static">
+    <description>
+    <![CDATA[
+          Connect each slider to the others within the same loop, so that the sum of their value to not go beyond a certain maximum.
+      A checkbox is added to each slider, freezing them at their current position.
+      Must be used on numeric question sliders, within a loop.
+        ]]>
+    </description>
+    <value>false</value>
+  </property>
+  <property xsi:type="standardProperty" id="freezeBoxLabel" name="Label for the freeze checkbox" type="string" mode="static">
+    <description>
+      <![CDATA[The label for the checkbox freezing the current slider]]>
+    </description>
+    <value>Freeze this slider</value>
+  </property>
 	</category>
 	<category id="general" name="General">
       <property xsi:type="standardProperty" id="fontSize" name="Font Size" type="string" mode="static">
@@ -679,7 +678,7 @@
         <value>false</value>
       </property>
     </category>
-	
+
     <category id="images" name="Images">
 	  <property xsi:type="standardProperty" id="imagePadding" name="Image Padding" type="string" mode="static">
         <description>

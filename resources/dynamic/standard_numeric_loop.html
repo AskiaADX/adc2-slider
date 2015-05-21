@@ -8,8 +8,8 @@ Dim j
 Dim labelCount = 0
 
 Dim adcId = CurrentADC.InstanceId
-Dim interconnection = (CurrentADC.PropValue("interconnection") = "1") ' Convert to boolean
-Dim maxForInterconnection=CurrentADC.PropValue("maxForInterconnection")
+Dim interconnection = (CurrentADC.PropValue("interconnection") = "1")
+Dim freezeBoxLabel = CurrentADC.PropValue("freezeBoxLabel")
 
 IF CurrentADC.PropValue("rightLabelText") <> "" Then
 	labelCount = labelCount + 1
@@ -19,15 +19,15 @@ IF CurrentADC.PropValue("leftLabelText") <> "" Then
 EndIF
 
 For j = 1 To ar.Count
-	inputName = CurrentQuestion.Iteration(ar[j].Index).InputName() 
+	inputName = CurrentQuestion.Iteration(ar[j].Index).InputName()
     caption   = ar[j].Caption
     image	  = ar.ResourceURL[j]
 %}
 <!-- numeric loop -->
 	<input type="hidden" id="{%= inputName %}" name="{%= inputName %}" value="{%= CurrentQuestion.Iteration(ar[j].Index).inputValue() %}" class="result" />
-	
+
     {% IF CurrentADC.PropValue("sliderOrientation") = "horizontal" Then %}
-    
+
         <div class="sliderContainer" data-iteration="{%= j-1 %}">
         	<label class="caption">
                 {% IF CurrentADC.PropValue("imageAlign") = "left" Then %}
@@ -39,10 +39,10 @@ For j = 1 To ar.Count
                 {% EndIF %}
             </label>
             <table class="slider" border="0" cellpadding="0" cellspacing="0" width="100%">
-            
+
         {% IF CurrentADC.PropValue("labelPlacement") = "top" Then %}
-        
-        	{% IF labelCount > 0 and CurrentADC.PropValue("displayLabelText") <> "none" Then %} 
+
+        	{% IF labelCount > 0 and CurrentADC.PropValue("displayLabelText") <> "none" Then %}
                 <tr valign="middle" class="sliderTop">
                     {% IF CurrentADC.PropValue("leftLabelText") <> "" Then %}
                     <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-bottom:10px;" align="left">
@@ -57,22 +57,22 @@ For j = 1 To ar.Count
                     {% EndIF %}
                 </tr>
             {% EndIF %}
-            
+
             <tr valign="middle" class="sliderMiddle">
                 <td colspan="{%= labelCount + 1 %}" align="left"><div class="noUiSlider noUi-extended"></div></td>
             </tr>
-            
+
             <tr valign="middle" class="sliderBottom">
                 <td colspan="{%= labelCount + 1 %}" style="padding-top:10px;" align="{%= CurrentADC.PropValue("dkPosition") %}"><div class="dk" data-value="-1">{%:= CurrentADC.PropValue("dkText")%}</div></td>
             </tr>
-            
-        
+
+
         {% Else %}
-            
-            {% IF CurrentADC.PropValue("labelPlacement") = "side" Then %} 
-            
+
+            {% IF CurrentADC.PropValue("labelPlacement") = "side" Then %}
+
             	{% IF labelCount > 0 and CurrentADC.PropValue("displayLabelText") <> "none" Then %}
-                 
+
                     <tr valign="middle" class="sliderTop">
                         {% IF CurrentADC.PropValue("leftLabelText") <> "" Then %}
                         <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-bottom:10px;" align="left">
@@ -86,9 +86,9 @@ For j = 1 To ar.Count
                         </td>
                         {% EndIF %}
                     </tr>
-                
+
             	{% EndIF %}
-            
+
             	<tr valign="middle" class="sliderMiddle">
                 	{% IF CurrentADC.PropValue("leftLabelText") <> "" and CurrentADC.PropValue("displayLabelText") <> "none" Then %}
                         <td width="{%= CurrentADC.PropValue("labelWidth") %}" align="left" style="text-align:left;">
@@ -102,16 +102,16 @@ For j = 1 To ar.Count
                     </td>
                     {% EndIF %}
                 </tr>
-            
+
             {% Else %}
-            
+
             	<tr valign="middle" class="sliderMiddle">
                     <td colspan="{%= labelCount + 1 %}" align="left"><div class="noUiSlider noUi-extended"></div></td>
                 </tr>
-            
+
             {% EndIF %}
-            
-            {% IF labelCount > 0 and CurrentADC.PropValue("labelPlacement") = "bottom" and CurrentADC.PropValue("displayLabelText") <> "none" Then %} 
+
+            {% IF labelCount > 0 and CurrentADC.PropValue("labelPlacement") = "bottom" and CurrentADC.PropValue("displayLabelText") <> "none" Then %}
                 <tr valign="middle" class="sliderBottom">
                     {% IF CurrentADC.PropValue("leftLabelText") <> "" Then %}
                     <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-top:10px;" align="left">
@@ -125,25 +125,25 @@ For j = 1 To ar.Count
                     </td>
                     {% EndIF %}
                 </tr>
-                
+
             {% EndIF %}
             <tr valign="middle" class="sliderDK">
             	<td colspan="{%= labelCount + 1 %}" style="padding-top:10px;" align="{%= CurrentADC.PropValue("dkPosition") %}"><div class="dk" data-value="-1">{%:= CurrentADC.PropValue("dkText")%}</div></td>
 			</tr>
-        
+
         {% EndIF %}
-                
+
         </table>
-		
-	{% IF interconnection Then %}
-	<label><input class="freezeBox" type="checkbox" id="freeze{%= adcId %}_{%= j %}" onchange="dim{%= adcId %}(this.id)" /> Freeze this slider</label>
-	{% EndIF %}
-		
+
+				{% IF interconnection Then %}
+				<label><input class="freezeBox" type="checkbox" id="freeze{%= adcId %}_{%= j %}" onchange="dim{%= adcId %}(this.id)" />{%=freezeBoxLabel%}</label>
+				{% EndIF %}
+
     </div>
 
 {% Else %}
 <!-- VERTICAL LAYOUT -->
-	
+
 	<div class="sliderContainer">
         <table class="slider" border="0" cellpadding="0" cellspacing="0" width="100%">
         	{% IF CurrentADC.PropValue("rightLabelText") <> "" Then %}
@@ -168,16 +168,14 @@ For j = 1 To ar.Count
                     <div class="dk" data-value="-1">{%:= CurrentADC.PropValue("dkText")%}</div>
                 </td>
             </tr>
-            
+
         </table>
-		
+
 	{% IF interconnection Then %}
-	<label><input class="freezeBox" type="checkbox" id="freeze{%= adcId %}_{%= j %}" onchange="dim{%= adcId %}(this.id)" /> Freeze this slider</label>
+	<label><input class="freezeBox" type="checkbox" id="freeze{%= adcId %}_{%= j %}" onchange="dim{%= adcId %}(this.id)" />{%=freezeBoxLabel%}</label>
 	{% EndIF %}
     </div>
-    
+
 {% EndIF %}
 
 {% Next %}
-
-
