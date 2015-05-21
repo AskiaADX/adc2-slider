@@ -29,6 +29,7 @@ $(window).load(function() {
 		displayLabelText : '{%= CurrentADC.PropValue("displayLabelText") %}',
 		labelPlacement : '{%= CurrentADC.PropValue("labelPlacement") %}',
 		showMarkers : {%= (CurrentADC.PropValue("showMarkers") = "1") %},
+		interconnection : {%= (CurrentADC.PropValue("interconnection") = "1") %},
 		items : [
 			{% IF CurrentADC.PropValue("isInLoop") = "1" Then %}
 				{% IF CurrentQuestion.Type = "single" Then %}

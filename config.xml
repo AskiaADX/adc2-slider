@@ -8,7 +8,7 @@
     <name>adc2-slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
     <version>1.0.16</version>
-    <date>2014-02-05</date>
+    <date>2014-05-21</date>
     <description>
       <![CDATA[
         v1.0.2 - removed CSS3 Pie
@@ -40,10 +40,14 @@
 				- added showMarkers property
 		v1.0.15 - Loop Closed question slider behavior, #18 on github
 		v1.0.16 - Not using Value on looped closed, sometimes caused errors
+		v1.1.0 - Added the interconnected sliders option
       ]]>
     </description>
     <author>
-      <![CDATA[Paul Ferreira <paulf@askia.com>]]>
+      <![CDATA[
+	  Paul Ferreira <paulf@askia.com>,
+	  Thibault Piriou <thibault@askia.com> (interconnected sliders)
+	  ]]>
     </author>
     <company>Askia</company>
     <helpURL>https://dev.askia.com</helpURL>
@@ -101,6 +105,7 @@
 	  <content fileName="standard_single.js" type="javascript" mode="dynamic" position="none" />
 	  <content fileName="standard_numeric_loop.js" type="javascript" mode="dynamic" position="none" />
 	  <content fileName="standard_single_loop.js" type="javascript" mode="dynamic" position="none" />
+	  <content fileName="interconnection.js" type="javascript" mode="dynamic" position="foot" />
     </output>
   </outputs>
 
@@ -116,6 +121,24 @@
         </description>
         <value>1</value>
       </property>  
+	  	<property xsi:type="standardProperty" id="interconnection" name="Interconnection between sliders" type="boolean" mode="static">
+		<description>
+		<![CDATA[
+          Connect each slider to the others within the same loop, so that the sum of their value to not go beyond a certain maximum.
+		  A checkbox is added to each slider, freezing them at their current position.
+		  Must be used on numeric question sliders, within a loop.
+        ]]>
+		</description>
+		<value>false</value>
+	</property>
+	<property xsi:type="standardProperty" id="maxForInterconnection" name="Maximum for interconnection" type="number" mode="static">
+		<description>
+		<![CDATA[
+          Maximum authorised for the sum of the sliders, in the case of an interconnection.
+        ]]>
+		</description>
+		<value>100</value>
+	</property>
     </category>
 	
 	<category id="sliderSettings" name="Slider Settings">

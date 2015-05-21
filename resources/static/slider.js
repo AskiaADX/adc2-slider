@@ -30,6 +30,7 @@
 			displayLabelText = (options.displayLabelText == "block") ? true : false,
 			labelPlacement = options.labelPlacement,
 			showMarkers = Boolean(options.showMarkers),
+			interconnection = Boolean(options.interconnection),
 			sliderOrientation = options.sliderOrientation,
 			valuesArray = new Array(),
 			iteration = 0,
@@ -130,6 +131,9 @@
 					handleValue = Math.floor((roundToStep(options.minValue) + roundToStep(options.maxValue))/2);	
 				}
 			}
+			if(interconnection){
+				handleValue = roundToStep($input.val()) >= 0 ? roundToStep($input.val()) : Math.floor(roundToStep(options.minValue));
+			}
 														
 			$(this).find('.noUiSlider').eq(i).noUiSlider({
 				range: {'min':[options.minValue], 'max':[options.maxValue]},
@@ -154,12 +158,15 @@
 					
 					$('.focused').removeClass('focused');
 					
-					// make handle visible and add focus
-					$(this).parents('.controlContainer').find('.slider').eq(iteration).addClass('focused').find('.noUi-handle').show();
 					
-					// set slider base colour once selected
-					$container.addClass('selected');
-
+					if(!interconnection){ // (the interaction is bad with interconnected sliders)
+						// make handle visible and add focus
+						$(this).parents('.controlContainer').find('.slider').eq(iteration).addClass('focused').find('.noUi-handle').show();
+						
+						
+						// set slider base colour once selected
+						$container.addClass('selected');
+					}
 
 					if (showValue) {
 						var element = $(this).parents('.controlContainer'),
@@ -190,8 +197,9 @@
 					}
 					
 					$(this).parents('.sliderContainer').eq(iteration).find('.dk').removeClass('selected');
+				},
+				change : function(){
 				}
-				
 			})
 			
 			if ( showMarkers ) {
@@ -240,10 +248,10 @@
 		for ( var i=0; i<items.length; i++ ) {
 		
 			var $input = items[i].element;
-			
+
 			// If slide has value change base colour by adding class
 			if ( roundToStep($input.val()) >= 0 ) $(this).find('.sliderContainer').eq(i).addClass('selected');
-			
+
 			if (showValue) {
 				
 				var element = $(this).parents('.controlContainer'),

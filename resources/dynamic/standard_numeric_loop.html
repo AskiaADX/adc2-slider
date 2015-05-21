@@ -7,6 +7,10 @@ Dim image
 Dim j
 Dim labelCount = 0
 
+Dim adcId = CurrentADC.InstanceId
+Dim interconnection = (CurrentADC.PropValue("interconnection") = "1") ' Convert to boolean
+Dim maxForInterconnection=CurrentADC.PropValue("maxForInterconnection")
+
 IF CurrentADC.PropValue("rightLabelText") <> "" Then
 	labelCount = labelCount + 1
 EndIF
@@ -20,8 +24,8 @@ For j = 1 To ar.Count
     image	  = ar.ResourceURL[j]
 %}
 <!-- numeric loop -->
-	<input type="hidden" id="{%= inputName %}" name="{%= inputName %}" value="{%= CurrentQuestion.Iteration(ar[j].Index).inputValue() %}" />
-
+	<input type="hidden" id="{%= inputName %}" name="{%= inputName %}" value="{%= CurrentQuestion.Iteration(ar[j].Index).inputValue() %}" class="result" />
+	
     {% IF CurrentADC.PropValue("sliderOrientation") = "horizontal" Then %}
     
         <div class="sliderContainer" data-iteration="{%= j-1 %}">
@@ -130,6 +134,11 @@ For j = 1 To ar.Count
         {% EndIF %}
                 
         </table>
+		
+	{% IF interconnection Then %}
+	<label><input class="freezeBox" type="checkbox" id="freeze{%= adcId %}_{%= j %}" onchange="dim{%= adcId %}(this.id)" /> Freeze this slider</label>
+	{% EndIF %}
+		
     </div>
 
 {% Else %}
@@ -161,8 +170,14 @@ For j = 1 To ar.Count
             </tr>
             
         </table>
+		
+	{% IF interconnection Then %}
+	<label><input class="freezeBox" type="checkbox" id="freeze{%= adcId %}_{%= j %}" onchange="dim{%= adcId %}(this.id)" /> Freeze this slider</label>
+	{% EndIF %}
     </div>
     
 {% EndIF %}
 
 {% Next %}
+
+
