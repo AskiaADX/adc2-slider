@@ -142,7 +142,7 @@
 				step: options.unitStep, // step in range fore each point
 				behaviour: 'tap-drag',
 				orientation: options.sliderOrientation, // or 'vertical'
-				direction: options.sliderDirection == 'ltr' ? 'ltr' : 'rtl'
+				direction: ((options.sliderDirection == 'ltr') && (options.sliderOrientation != 'vertical')) ? 'ltr' : 'rtl'
 			}).on({
 				set : function() {
 
