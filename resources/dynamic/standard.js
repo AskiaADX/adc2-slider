@@ -15,6 +15,7 @@ $(window).load(function() {
 		maxValue : {%= CurrentADC.PropValue("maxValue") %},
 		isInLoop: {%= (CurrentADC.PropValue("isInLoop") = "1") %},
 		sliderOrientation : '{%= CurrentADC.PropValue("sliderOrientation") %}',
+		sliderDirection : '{%= CurrentADC.PropValue("sliderDirection") %}',
 		hideHandle : {%= (CurrentADC.PropValue("hideHandle") = "1") %},
 		showValue : {%= (CurrentADC.PropValue("showValue") = "1") %},
 		isSingle : {%= (CurrentQuestion.Type = "single") %},

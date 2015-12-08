@@ -10,6 +10,7 @@
 		(options.minValue = options.minValue || 0);
 		(options.maxValue = options.maxValue || 10);
 		(options.unitStep = options.unitStep || 1);
+		(options.sliderDirection = options.sliderDirection || "ltr");
 
 		// Delegate .transition() calls to .animate() if the browser can't do CSS transitions.
 		if (!$.support.transition) $.fn.transition = $.fn.animate;
@@ -141,7 +142,7 @@
 				step: options.unitStep, // step in range fore each point
 				behaviour: 'tap-drag',
 				orientation: options.sliderOrientation, // or 'vertical'
-				direction: options.sliderOrientation == 'horizontal' ? 'ltr' : 'rtl'
+				direction: options.sliderDirection == 'ltr' ? 'ltr' : 'rtl'
 			}).on({
 				set : function() {
 
