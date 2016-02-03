@@ -37,6 +37,8 @@
 			iteration = 0,
 			total_images = $container.find("img").length,
 			unitDP = decimalPlaces(options.unitStep),
+			leftHandleText = (options.handleTextPosition == "left") ? options.handleText : "",
+			rightHandleText = (options.handleTextPosition == "right") ? options.handleText : "",
 			images_loaded = 0;
 
 
@@ -174,7 +176,7 @@
 							handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : roundToStep($input.val());
 
 						element.find('.handleValue').eq(iteration).css('padding-top', '');
-						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + handleValue + "</div>" );
+						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + handleValue + "" + rightHandleText + "</div>" );
 						var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 						element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 					}
@@ -192,7 +194,7 @@
 							//handleValue = isSingle ? $.inArray(parseInt($(this).val()), valuesArray) + parseInt(options.minValue) : parseInt($(this).val());
 
 						element.find('.handleValue').eq(iteration).css('padding-top', '');
-						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + handleValue + "</div>" );
+						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + handleValue + "" + rightHandleText + "</div>" );
 						var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 						element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 					}
@@ -263,7 +265,7 @@
 					handleValue = roundToStep($input.val()) >= 0 ? ( isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : roundToStep($input.val()) ) : '';
 
 				element.find('.handleValue').eq(i).css('padding-top', '');
-				element.find('.noUi-handle').eq(i).html( "<div class='handleValue'>" + ( handleValue >= 0 ? handleValue : '' ) + "</div>" );
+				element.find('.noUi-handle').eq(i).html( "<div class='handleValue'>" + ( handleValue >= 0 ? (leftHandleText + "" + handleValue + "" + rightHandleText) : '' ) + "</div>" );
 				var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(i).height() - element.find('.handleValue').eq(i).outerHeight() ) * 0.5 );
 				element.find('.handleValue').eq(i).css('padding-top', topAdj + 'px');
 			}
@@ -478,7 +480,7 @@
 
 				if (showValue) {
 					element.find('.handleValue').eq(iteration).css('padding-top', '');
-					element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + handleValue + "</div>" );
+					element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + handleValue + "" + rightHandleText + "</div>" );
 					var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 					element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 				}
