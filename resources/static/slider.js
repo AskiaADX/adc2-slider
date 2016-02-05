@@ -13,7 +13,7 @@
 		(options.sliderDirection = options.sliderDirection || "ltr");
 
 		// Delegate .transition() calls to .animate() if the browser can't do CSS transitions.
-		if (!$.support.transition) $.fn.transition = $.fn.animate;
+		if (!$.support.transition) { $.fn.transition = $.fn.animate; }
 
 		var $container = $(this),
 			hideHandle = Boolean(options.hideHandle),
@@ -28,19 +28,25 @@
 			hideHandleBG = Boolean(options.hideHandleBG),
 			leftLabelText = Boolean(options.leftLabelText),
 			rightLabelText = Boolean(options.rightLabelText),
-			displayLabelText = (options.displayLabelText == "block") ? true : false,
+			displayLabelText = (options.displayLabelText === "block") ? true : false,
 			labelPlacement = options.labelPlacement,
 			showMarkers = Boolean(options.showMarkers),
+            showMarkerText = Boolean(options.showMarkerText),
 			interconnection = Boolean(options.interconnection),
 			sliderOrientation = options.sliderOrientation,
 			valuesArray = new Array(),
 			iteration = 0,
 			total_images = $container.find("img").length,
-			unitDP = decimalPlaces(options.unitStep),
-			leftHandleText = (options.handleTextPosition == "left") ? options.handleText : "",
-			rightHandleText = (options.handleTextPosition == "right") ? options.handleText : "",
-			images_loaded = 0;
-
+			unitStep = options.unitStep,
+			leftHandleText = (options.handleTextPosition === "left") ? options.handleText : "",
+			rightHandleText = (options.handleTextPosition === "right") ? options.handleText : "",
+			images_loaded = 0,
+            decimalPlaces = options.decimalPlaces;
+			
+		function filter500( value, type ){
+			return value % 100 ? 2 : 1;
+		}
+		
 
 		$(this).css({'max-width':options.maxWidth,'width':options.controlWidth});
 		/*if ( isInLoop ) $(this).parents('.controlContainer').css({'width':'100%','overflow':'hidden'});*/
@@ -62,7 +68,9 @@
 		if ( hasDK ) {
 			$('input[name="M' + DKID + ' -1"]').hide().next('span').hide();
 			$('#cpt' + DKID + '_-1').hide();
-		} else if ( !hasDK && !dkSingle ) $(this).find('.dk').hide();
+		} else if ( !hasDK && !dkSingle ) {
+			$(this).find('.dk').hide();
+		}
 
 		if ( isSingle ) {
 			if ( isSingle && !isInLoop ) {
@@ -77,8 +85,8 @@
 			}
 			//options.minValue = 1,
 			//options.maxValue = isInLoop ? parseInt(options.minValue) + (parseInt(options.maxValue) - parseInt(options.minValue)) : parseInt(options.minValue) + (items.length - 1),
-			options.maxValue = isInLoop ? parseInt(options.minValue) + (allValuesArray.length - 1) : parseInt(options.minValue) + (items.length - 1),
-			options.unitStep = 1;
+			options.maxValue = isInLoop ? parseInt(options.minValue) + (allValuesArray.length - 1) : parseInt(options.minValue) + (items.length - 1);
+			unitStep = 1;
 		}
 
 		if ( isSingle && dkSingle ) {
@@ -96,26 +104,26 @@
 			if (options.forceImageSize === "height" ) {
 				if ( size.height > parseInt(options.maxImageHeight,10) ) {
 					var ratio = ( parseInt(options.maxImageHeight,10) / size.height);
-					size.height *= ratio,
+					size.height *= ratio;
 					size.width  *= ratio;
 				}
 			} else if (options.forceImageSize === "width" ) {
 				if ( size.width > parseInt(options.maxImageWidth,10) ) {
 					var ratio = ( parseInt(options.maxImageWidth,10) / size.width);
-					size.width  *= ratio,
+					size.width  *= ratio;
 					size.height *= ratio;
 				}
 
 			} else if (options.forceImageSize === "both" ) {
 				if ( parseInt(options.maxImageHeight,10) > 0 && size.height > parseInt(options.maxImageHeight,10) ) {
 					var ratio = ( parseInt(options.maxImageHeight,10) / size.height);
-					size.height *= ratio,
+					size.height *= ratio;
 					size.width  *= ratio;
 				}
 
 				if ( parseInt(options.maxImageWidth,10) > 0 && size.width > parseInt(options.maxImageWidth,10) ) {
 					var ratio = ( parseInt(options.maxImageWidth,10) / size.width);
-					size.width  *= ratio,
+					size.width  *= ratio;
 					size.height *= ratio;
 				}
 
@@ -127,7 +135,7 @@
 		for ( var i=0; i<(isSingle && !isInLoop ? 1 : items.length); i++ ) {
 
 			var $input = items[i].element,
-				handleValue = roundToStep($input.val()) >= 0 ? ( isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : roundToStep($input.val()) ) : Math.floor((roundToStep(options.minValue) + roundToStep(options.maxValue))/2 );
+				handleValue = ($input.val()) >= 0 ? isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : ( decimalPlaces > 0 ? ( decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) ) : roundToStep($input.val()) ) : ( decimalPlaces > 0 ? ( decimalPlaces > 0 ? parseFloat(Math.floor((roundToStep(options.minValue) + roundToStep(options.maxValue))/2 )).toFixed(decimalPlaces) : Math.floor((roundToStep(options.minValue) + roundToStep(options.maxValue))/2 ) ) : Math.floor((roundToStep(options.minValue) + roundToStep(options.maxValue))/2 ) );
 
 			if ( isSingle && dkSingle ) {
 				if ( ($.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue)) > options.maxValue ) {
@@ -135,30 +143,35 @@
 				}
 			}
 			if(interconnection){
-				handleValue = roundToStep($input.val()) >= 0 ? roundToStep($input.val()) : Math.floor(roundToStep(options.minValue));
+				handleValue = ($input.val()) >= 0 ? ( decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val())) : ( decimalPlaces > 0 ? parseFloat(Math.floor(roundToStep(options.minValue))).toFixed(decimalPlaces) : Math.floor(roundToStep(options.minValue)));
 			}
+			
 
 			$(this).find('.noUiSlider').eq(i).noUiSlider({
 				range: {'min':[options.minValue], 'max':[options.maxValue]},
-				start: handleValue,
-				step: options.unitStep, // step in range fore each point
+				start: ( decimalPlaces > 0 ? parseFloat(handleValue).toFixed(decimalPlaces) : handleValue),
+				step: unitStep, // step in range fore each point
+				/*step:0.1,*/
 				behaviour: 'tap-drag',
+				format: wNumb({
+						decimals: 2
+					}),
 				orientation: options.sliderOrientation, // or 'vertical'
-				direction: ((options.sliderDirection == 'ltr') && (options.sliderOrientation != 'vertical')) ? 'ltr' : 'rtl'
+				direction: ((options.sliderDirection === 'ltr') && (options.sliderOrientation !== 'vertical')) ? 'ltr' : 'rtl'
 			}).on({
 				set : function() {
 
-					if ( isInLoop ) iteration = $(this).parents('.sliderContainer').data('iteration');
+					if ( isInLoop ) { iteration = $(this).parents('.sliderContainer').data('iteration'); }
 
 					var $container = $(this).parents('.sliderContainer'),
 						$input = items[iteration].element;
-					if ( isSingle && !isInLoop )
+					if ( isSingle && !isInLoop ) {
 						$input.val( items[ roundToStep( $(this).val() - roundToStep(options.minValue) ) ].value );
-					else if ( isSingle && isInLoop )
+					} else if ( isSingle && isInLoop ) {
 						$input.val( valuesArray[ ( roundToStep($(this).val()) - roundToStep(options.minValue) ) ] );
-					else
+					} else {
 						$input.val( roundToStep( $(this).val() ) );
-
+					}
 					$('.focused').removeClass('focused');
 
 
@@ -173,7 +186,7 @@
 
 					if (showValue) {
 						var element = $(this).parents('.controlContainer'),
-							handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : roundToStep($input.val());
+							handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) );
 
 						element.find('.handleValue').eq(iteration).css('padding-top', '');
 						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + handleValue + "" + rightHandleText + "</div>" );
@@ -185,12 +198,12 @@
 
 				},
 				slide : function() {
-					if ( isInLoop ) iteration = $(this).parents('.sliderContainer').data('iteration');
+					if ( isInLoop ) { iteration = $(this).parents('.sliderContainer').data('iteration'); }
 					if (showValue) {
 						var element = $(this).parents('.controlContainer'),
 							handleValue = isSingle ?
-								( isInLoop ? roundToStep($(this).val()) : $.inArray(roundToStep(items[ roundToStep( $(this).val() - roundToStep(options.minValue) ) ].value), valuesArray) + roundToStep(options.minValue) )
-								: roundToStep(roundToStep( $(this).val() ));
+								( isInLoop ? ( decimalPlaces > 0 ? parseFloat(roundToStep($(this).val())).toFixed(decimalPlaces) : roundToStep($(this).val()) ) : $.inArray(roundToStep(items[ roundToStep( $(this).val() - roundToStep(options.minValue) ) ].value), valuesArray) + roundToStep(options.minValue) )
+								: ( decimalPlaces > 0 ? parseFloat(roundToStep(roundToStep( $(this).val() ))).toFixed(decimalPlaces) : roundToStep(roundToStep( $(this).val() )) ) ;
 							//handleValue = isSingle ? $.inArray(parseInt($(this).val()), valuesArray) + parseInt(options.minValue) : parseInt($(this).val());
 
 						element.find('.handleValue').eq(iteration).css('padding-top', '');
@@ -207,14 +220,25 @@
 				},
 				change : function(){
 				}
-			})
+			});
 
 			if ( showMarkers ) {
+								
 				$(this).find('.noUiSlider').eq(i).noUiSlider_pips({
-					mode: 'steps',
-					density: 10
+					/*mode: 'steps',
+					density: 5,
+					filter: filter500,*/
+					
+					mode: 'count',
+					values: (options.maxValue - options.minValue)+1,
+					density: (options.maxValue - options.minValue)/2,
+					format: wNumb({
+						decimals: decimalPlaces,
+						prefix: leftHandleText,
+						suffix: rightHandleText
+					})
 				});
-				if ( sliderOrientation == 'horizontal' ) {
+				/*if ( sliderOrientation == 'horizontal' ) {
 					$(this).find('td.sliderDK').css('padding-top','40px');
 					var pipsWidth = $(this).find('.noUiSlider').width(),
 						pipsMargin = $(this).find('.noUi-handle').width()/2;
@@ -223,7 +247,13 @@
 					var pipsWidth = $(this).find('.noUiSlider').height(),
 						pipsMargin = $(this).find('.noUi-handle').height()/2;
 					$(this).find('.noUi-pips').css({'height':pipsWidth+'px','top':pipsMargin+'px'});
-				}
+				}*/
+				
+				//$('.noUi-pips-horizontal').width = $('.noUiSlider').width() - $('.noUi-handle').width();
+				$('.noUi-pips-horizontal').css({
+					'left': ($('.noUi-handle').width()/2)+'px',
+					'width': $('.noUiSlider').outerWidth() - $('.noUi-handle').outerWidth()
+				});
 			}
 
 			if ( isSingle && dkSingle ) {
@@ -239,8 +269,8 @@
 		// use handle for image?
 		if ( useHandleImage ) {
 			$container.find('.noUi-handle').css({'cssText': 'background-image:url('+options.handleImagePath+') !important', 'background-size':'100% 100%', 'background-position':'center'});
-			if ( options.handleImageWidth != '' ) $container.find('.noUi-handle').width(options.handleImageWidth);
-			if ( options.handleImageHeight != '' ) {
+			if ( options.handleImageWidth !== '' )  { $container.find('.noUi-handle').width(options.handleImageWidth);}
+			if ( options.handleImageHeight !== '' ) {
 				$container.find('.noUi-handle').height(options.handleImageHeight);
 				var newHeight = (parseInt(options.handleImageHeight))/2 - parseInt($('.noUi-base').height() )/2,
 					newWidth  = parseInt(options.handleImageHeight)/2;
@@ -248,8 +278,7 @@
 			}
 		}
 
-		//*//
-		$('.noUi-handle').click(function () { $(this).parents('.slider').addClass('focused'); })
+		$('.noUi-handle').click(function () { $(this).parents('.slider').addClass('focused'); });
 		//$container.delegate('.responseItem', 'click'
 		// If showValue then show on handle
 		for ( var i=0; i<items.length; i++ ) {
@@ -257,12 +286,12 @@
 			var $input = items[i].element;
 
 			// If slide has value change base colour by adding class
-			if ( roundToStep($input.val()) >= 0 ) $(this).find('.sliderContainer').eq(i).addClass('selected');
+			if ( roundToStep($input.val()) >= 0 ) { $(this).find('.sliderContainer').eq(i).addClass('selected'); }
 
 			if (showValue) {
 
 				var element = $(this).parents('.controlContainer'),
-					handleValue = roundToStep($input.val()) >= 0 ? ( isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : roundToStep($input.val()) ) : '';
+					handleValue = roundToStep($input.val()) >= 0 ? ( isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) ) ) : '';
 
 				element.find('.handleValue').eq(i).css('padding-top', '');
 				element.find('.noUi-handle').eq(i).html( "<div class='handleValue'>" + ( handleValue >= 0 ? (leftHandleText + "" + handleValue + "" + rightHandleText) : '' ) + "</div>" );
@@ -418,19 +447,19 @@
 
 		function roundToStep(num) {
 			/*
-			var resto = num%options.unitStep;
-			if (resto <= (options.unitStep/2)) {
+			var resto = num%unitStep;
+			if (resto <= (unitStep/2)) {
 				return num-resto;
 			} else {
-				return num+options.unitStep-resto;
+				return num+unitStep-resto;
 			}
 			*/
-			if(options.unitStep == 1 || unitDP == 0){
+			if(unitStep == 1 || decimalPlaces == 0){
 				return parseInt(num)
 			} else {
-				var stepMultiplyer = 1/options.unitStep;
-				//console.log("roundToStep" + Math.ceil(num*stepMultiplyer)/stepMultiplyer).toFixed(2)):
-				return (Math.ceil(num*stepMultiplyer)/stepMultiplyer).toFixed(unitDP)
+				var stepMultiplyer = 1/unitStep;
+				//console.log("roundToStep" + Math.ceil(num*stepMultiplyer)/stepMultiplyer).toFixed(decimalPlaces)):
+				return (Math.ceil(num*stepMultiplyer)/stepMultiplyer).toFixed(decimalPlaces)
 			}
 		}
 
@@ -445,6 +474,7 @@
 		  // Count the number of digits in the fraction and subtract the
 		  // exponent to simulate moving the decimal point left by exponent places.
 		  // 1.234e+2 has 1 fraction digit and '234'.length -  2 == 1
+
 		  // 1.234e-2 has 5 fraction digit and '234'.length - -2 == 5
 		  return Math.max(
 			  0,  // lower limit.
@@ -454,29 +484,36 @@
 
 		// enable keyboard interaction
 		$(document).keydown(function( e ) {
-
+            
+            e.preventDefault();
+						
 			// if focus found
-			if ( $('.focused').size() > 0 ) {
+			if ( $('.focused').size() > 0 && $container.find('.focused').length > 0 ) {
 
 				var element = $('.focused').parents('.controlContainer'),
 					iteration = isInLoop ? $('.focused').parents('.sliderContainer').data('iteration') : 0,
 					slider = $('.focused').parents('.controlContainer').find('.noUiSlider').eq(iteration),
 					value = roundToStep( slider.val() ),
 					$input = items[iteration].element;
+					
 
 				switch ( e.which ) {
 					case 38:
-						if ( value < options.maxValue ) value ++;
-						slider.val( value );
+						if ( value < options.maxValue ) {
+							value = (decimalPlaces > 0 ? parseFloat(value) + parseFloat(unitStep) : value + parseFloat(unitStep));
+						}
+						slider.val( (decimalPlaces > 0 ? parseFloat(value).toFixed(decimalPlaces) : value ) );
 						break;
 					case 40:
-						if ( value > options.minValue ) value --;
-						slider.val( value );
+						if ( value > options.minValue ) {
+							value -= (decimalPlaces > 0 ? parseFloat(unitStep) : unitStep);
+						}
+						slider.val( (decimalPlaces > 0 ? parseFloat(value).toFixed(decimalPlaces) : value ) );
 						break;
 				}
 
 				//var handleValue = parseInt(value);
-				var handleValue = roundToStep(value);
+				var handleValue = (decimalPlaces > 0 ? parseFloat(value).toFixed(decimalPlaces) : value );
 
 				if (showValue) {
 					element.find('.handleValue').eq(iteration).css('padding-top', '');

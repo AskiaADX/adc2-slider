@@ -98,6 +98,8 @@ Dim dkSelectedShadow =CurrentADC.PropValue("dkSelectedShadow")
 
 Dim useHandleImage =CurrentADC.PropValue("useHandleImage")
 
+Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
+
 %}
 
 #adc_{%= CurrentADC.InstanceId%} .sliderContainer { 
@@ -572,3 +574,8 @@ Dim useHandleImage =CurrentADC.PropValue("useHandleImage")
 	bottom: -{%= sliderHandleWidth.ToNumber() - 2%}px;
 }
 
+#adc_{%= CurrentADC.InstanceId%} .noUi-value {
+    {% IF CurrentADC.PropValue("showMarkerText") <> "1" Then %}
+    	display:none;
+  	{% EndIF %}	  
+}
