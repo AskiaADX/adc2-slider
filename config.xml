@@ -7,7 +7,7 @@
   <info>
     <name>adc2-slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>1.1.4</version>
+    <version>1.1.5</version>
     <date>2014-05-21</date>
     <description>
       <![CDATA[
@@ -40,20 +40,24 @@
 				- added showMarkers property
 		v1.0.15 - Loop Closed question slider behavior, #18 on github
 		v1.0.16 - Not using Value on looped closed, sometimes caused errors
-		v1.1.0 - Added the interconnected sliders option
+		v1.1.0 - TP - Added the interconnected sliders option
         v1.1.1 - Fixing some bugs on the interconnected sliders
-		v1.1.2 - Added slider direction parameter
-		v1.1.3 - Added handleText and handleTextPosition parameters
+		v1.1.2 - JD - Added slider direction parameter
+		v1.1.3 - JD - Added handleText and handleTextPosition parameters
 		v1.1.4 - Fixed marker positioning and enable increment according to unitStep value and using keyboard focus
 			   - Added Decimal Places
 			   - Added showMarkerText
+		v1.1.5 - JD - hide markers if window.width < 400 and horizontal orientation
+		       - Fixed value shown at start
+		       - Fixed position of the handle at start
+		       - Added a new param Slider Handle Start Position
       ]]>
     </description>
     <author>
       <![CDATA[
 	  Paul Ferreira <paulf@askia.com>,
-	  Thibault Piriou <thibault@askia.com> (interconnected sliders)
-	  Jérôme Duparc <jeromed@askia.com> (v1.1.2 and v1.1.3)
+	  Thibault Piriou <thibault@askia.com>
+	  Jérôme Duparc <jeromed@askia.com>
 	  ]]>
     </author>
     <company>Askia</company>
@@ -302,6 +306,17 @@
           <![CDATA[The width of the handle]]>
         </description>
         <value>34</value>
+      </property>
+      <property xsi:type="standardProperty" id="sliderHandleStartPosition" name="Slider Handle Start Position" type="string" mode="static">
+        <description>
+          <![CDATA[The start position of the handle]]>
+        </description>
+        <value>half</value>
+        <options>
+          <option value="min" text="Min"/>
+          <option value="half" text="Half"/>
+          <option value="max" text="Max"/>
+        </options>
       </property>
 	  <property xsi:type="standardProperty" id="hideHandle" name="Hide handle at start" type="boolean" mode="static">
         <description>

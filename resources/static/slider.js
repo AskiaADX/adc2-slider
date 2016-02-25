@@ -41,7 +41,12 @@
 			leftHandleText = (options.handleTextPosition === "left") ? options.handleText : "",
 			rightHandleText = (options.handleTextPosition === "right") ? options.handleText : "",
 			images_loaded = 0,
-            decimalPlaces = options.decimalPlaces;
+            decimalPlaces = options.decimalPlaces,
+			sliderHandleStartPosition = options.sliderHandleStartPosition,
+			startPosition = (parseFloat(options.minValue + options.maxValue)/2 );
+
+			if (sliderHandleStartPosition == "min") startPosition = parseFloat(options.minValue);
+			if (sliderHandleStartPosition == "max") startPosition = parseFloat(options.maxValue);
 			
 		function filter500( value, type ){
 			return value % 100 ? 2 : 1;
@@ -135,21 +140,20 @@
 		for ( var i=0; i<(isSingle && !isInLoop ? 1 : items.length); i++ ) {
 
 			var $input = items[i].element,
-				handleValue = ($input.val()) >= 0 ? isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : ( decimalPlaces > 0 ? ( decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) ) : roundToStep($input.val()) ) : ( decimalPlaces > 0 ? ( decimalPlaces > 0 ? parseFloat(Math.floor((roundToStep(options.minValue) + roundToStep(options.maxValue))/2 )).toFixed(decimalPlaces) : Math.floor((roundToStep(options.minValue) + roundToStep(options.maxValue))/2 ) ) : Math.floor((roundToStep(options.minValue) + roundToStep(options.maxValue))/2 ) );
+				handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : parseFloat($input.val());
 
 			if ( isSingle && dkSingle ) {
 				if ( ($.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue)) > options.maxValue ) {
-					handleValue = Math.floor((roundToStep(options.minValue) + roundToStep(options.maxValue))/2);
+					handleValue = startPosition;
 				}
 			}
-			if(interconnection){
-				handleValue = ($input.val()) >= 0 ? ( decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val())) : ( decimalPlaces > 0 ? parseFloat(Math.floor(roundToStep(options.minValue))).toFixed(decimalPlaces) : Math.floor(roundToStep(options.minValue)));
+			if (interconnection){
+				handleValue = parseFloat(roundToStep($input.val())).toFixed(decimalPlaces);
 			}
-			
 
 			$(this).find('.noUiSlider').eq(i).noUiSlider({
 				range: {'min':[options.minValue], 'max':[options.maxValue]},
-				start: ( decimalPlaces > 0 ? parseFloat(handleValue).toFixed(decimalPlaces) : handleValue),
+				start: ($input.val() !== "") ? parseFloat(handleValue) : startPosition,
 				step: unitStep, // step in range fore each point
 				/*step:0.1,*/
 				behaviour: 'tap-drag',
@@ -291,10 +295,9 @@
 			if (showValue) {
 
 				var element = $(this).parents('.controlContainer'),
-					handleValue = roundToStep($input.val()) >= 0 ? ( isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) ) ) : '';
-
+					handleValue = ($input.val()) !== "" ? (isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue)	: (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) 	: roundToStep($input.val()) ) ) : '';
 				element.find('.handleValue').eq(i).css('padding-top', '');
-				element.find('.noUi-handle').eq(i).html( "<div class='handleValue'>" + ( handleValue >= 0 ? (leftHandleText + "" + handleValue + "" + rightHandleText) : '' ) + "</div>" );
+				element.find('.noUi-handle').eq(i).html( "<div class='handleValue'>" + ( $input.val() !== "" ? (leftHandleText + "" + handleValue + "" + rightHandleText) : '' ) + "</div>" );
 				var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(i).height() - element.find('.handleValue').eq(i).outerHeight() ) * 0.5 );
 				element.find('.handleValue').eq(i).css('padding-top', topAdj + 'px');
 			}
@@ -334,8 +337,8 @@
 			$('.leftLabel, .rightLabel').width('');
 			if ( ($(window).width() < ($('.leftLabel').outerWidth(true) + $('.rightLabel').outerWidth(true)) || $(window).width() < 400) && options.sliderOrientation == 'horizontal' && displayLabelText ) {
 				// too small
-				// hide labels
-				$('.leftLabel, .rightLabel').hide();
+				// hide labels and markers
+				$('.leftLabel, .rightLabel, .noUi-pips-horizontal').hide();
 				// get control container width
 				var widthDiff = $('.leftLabel').outerWidth(true) - $('.leftLabel').innerWidth(),
 					availableWidth = ($container.outerWidth() - (widthDiff * 2))/2;
