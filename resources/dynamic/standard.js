@@ -12,6 +12,7 @@ $(window).load(function() {
 		labelWidth : '{%= CurrentADC.PropValue("labelWidth") %}',
 		unitStep : {%= CurrentADC.PropValue("unitStep") %},
 		minValue : {%= CurrentADC.PropValue("minValue") %},
+		intermediateValue : {% IF (CurrentADC.PropValue("intermediateValue") = "") THEN %}{%= (CurrentADC.PropValue("minValue").ToNumber() + CurrentADC.PropValue("maxValue").ToNumber()) / 2 %},{% ELSE %}{%= CurrentADC.PropValue("intermediateValue") %},{% ENDIF %}
 		maxValue : {%= CurrentADC.PropValue("maxValue") %},
 		isInLoop: {%= (CurrentADC.PropValue("isInLoop") = "1") %},
 		sliderOrientation : '{%= CurrentADC.PropValue("sliderOrientation") %}',

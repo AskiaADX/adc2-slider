@@ -9,6 +9,7 @@
 		(options.autoForward = Boolean(options.autoForward));
 		(options.minValue = options.minValue || 0);
 		(options.maxValue = options.maxValue || 10);
+		(options.intermediateValue = options.intermediateValue || ((options.minValue + options.maxValue) / 2));
 		(options.unitStep = options.unitStep || 1);
 		(options.sliderDirection = options.sliderDirection || "ltr");
 
@@ -43,7 +44,7 @@
 			images_loaded = 0,
             decimalPlaces = options.decimalPlaces,
 			sliderHandleStartPosition = options.sliderHandleStartPosition,
-			startPosition = (parseFloat(options.minValue + options.maxValue)/2 );
+			startPosition = (parseFloat(options.intermediateValue));
 
 			if (sliderHandleStartPosition == "min") startPosition = parseFloat(options.minValue);
 			if (sliderHandleStartPosition == "max") startPosition = parseFloat(options.maxValue);
@@ -152,7 +153,7 @@
 			}
 
 			$(this).find('.noUiSlider').eq(i).noUiSlider({
-				range: {'min':[options.minValue], 'max':[options.maxValue]},
+				range: {'min':[options.minValue], '50%':[options.intermediateValue], 'max':[options.maxValue]},
 				start: ($input.val() !== "") ? parseFloat(handleValue) : startPosition,
 				step: unitStep, // step in range fore each point
 				/*step:0.1,*/

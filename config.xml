@@ -7,7 +7,7 @@
   <info>
     <name>adc2-slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>1.1.5</version>
+    <version>1.1.6</version>
     <date>2014-05-21</date>
     <description>
       <![CDATA[
@@ -51,6 +51,7 @@
 		       - Fixed value shown at start
 		       - Fixed position of the handle at start
 		       - Added a new param Slider Handle Start Position
+		v1.1.6 - JD - Added intermediateValue parameter
       ]]>
     </description>
     <author>
@@ -177,6 +178,12 @@
           <![CDATA[Set min slider value]]>
         </description>
         <value>0</value>
+      </property>
+      <property xsi:type="standardProperty" id="intermediateValue" name="Intermediate value" type="number" mode="static">
+        <description>
+          <![CDATA[Set intermediate slider value (the value at 50% of the slider)]]>
+        </description>
+        <value></value>
       </property>
 	  <property xsi:type="standardProperty" id="maxValue" name="Maximum value" type="number" mode="static">
         <description>
