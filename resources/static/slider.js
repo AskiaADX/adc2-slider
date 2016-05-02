@@ -153,7 +153,7 @@
 			}
 
 			$(this).find('.noUiSlider').eq(i).noUiSlider({
-				range: {'min':[options.minValue], '50%':[options.intermediateValue], 'max':[options.maxValue]},
+				range: {'min':[options.minValue], '50%':[options.intermediateValue,unitStep], 'max':[options.maxValue]},
 				start: ($input.val() !== "") ? parseFloat(handleValue) : startPosition,
 				step: unitStep, // step in range fore each point
 				/*step:0.1,*/
