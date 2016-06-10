@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<fixture xmlns="http://www.askia.com/ADCUnitTestSchema"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.askia.com/ADCUnitTestSchema http://www.askia.com/Downloads/dev/schemas/adc2.0/UnitTests.xsd">
+  <arrange>
+    <Survey Version="1.0" Full="1" MaxQuestionID="3" MaxResponseID="0">
+      <Languages>
+      <Language ID="2057" Abbr="ENG" Name="English (United Kingdom)" Default="1"/>
+      </Languages>
+<Questions>
+<Question ID="4" Shortcut="A11 - Numeric" Order="1" ElementType="chapter" Pause="0" Translated="0">
+<LongCaption>A11 - Scaled</LongCaption>
+<Questions>
+<Question ID="5" Shortcut="A11a_N" Order="1" ElementType="question" AllowDK="0" QuestionType="numeric" Min="0" Max="10" Decimals="2" Translated="0">
+<LongCaption>Look at the product below...&lt;br /&gt;&lt;br /&gt;
+&lt;center&gt;&lt;img src="??ResPath??bottle.png" &gt;&lt;br /&gt;Southern Comfort Tea - 275ml bottle &lt;/center&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
+Please indicate what you feel would be an acceptable or too expensive price for &lt;u&gt;PRODUCT X in comparison to the other product in the image below&lt;/u&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;center&gt;&lt;img src="??ResPath??AllBottles.png" &gt;&lt;/center&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;u&gt;Accceptable&lt;/u&gt;</LongCaption>
+<ShortCaption>Accceptable</ShortCaption>
+</Question>
+<Question ID="6" Shortcut="A11b_N" Order="2" ElementType="question" AllowDK="0" QuestionType="numeric" Min="0" Max="10" Decimals="2" Translated="0">
+<LongCaption>&lt;u&gt;Too Expensive&lt;/u&gt;</LongCaption>
+<ShortCaption>Too Expensive</ShortCaption>
+</Question>
+</Questions>
+</Question>
+<Question ID="7" Shortcut="q1" Order="2" ElementType="question" AllowDK="1" QuestionType="open" Translated="0">
+<LongCaption>test</LongCaption>
+</Question>
+</Questions>
+    </Survey>
+  </arrange>
+</fixture>

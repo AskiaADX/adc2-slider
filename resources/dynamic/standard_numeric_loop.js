@@ -1,11 +1,11 @@
-﻿/* standard_numeric_loop.js 2 */
+/* standard_numeric_loop.js 2 */
 {% 
 Dim i 
 Dim inputName
 Dim ar = CurrentQuestion.ParentLoop.AvailableResponses
 
 For i = 1 To ar.Count 
-	inputName = CurrentQuestion.Iteration(i).InputName()
+	inputName = CurrentQuestion.Iteration(ar[i].Index).InputName()
 %}
 {element : $('#{%= inputName%}')}{%= On(i < ar.Count, ",", "") %}
 {% Next %}
