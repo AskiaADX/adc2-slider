@@ -7,11 +7,7 @@
   <info>
     <name>adc2-slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-<<<<<<< HEAD
     <version>1.1.9</version>
-=======
-    <version>1.1.8</version>
->>>>>>> origin/master
     <date>2014-05-21</date>
     <description><![CDATA[
       
@@ -58,20 +54,12 @@
 		v1.1.6 - JD - Added intermediateValue parameter
 		v1.1.7 - JD - Fixed the problem of jump not applied on the right of the slider
 		v1.1.8 - SB - Fixed an issue where "Nan" was showing in the handle of a numeric inside a loop instead of the propoer slider value
-<<<<<<< HEAD
-		v1.1.9 - PF - Fixed issue when typing into text areas on the same page as slider
-=======
->>>>>>> origin/master
-      
+        v1.1.9 - PF - Fixed issue when typing into text areas on the same page as slider
     ]]></description>
     <company>Askia</company>
     <author><![CDATA[
       
-<<<<<<< HEAD
-	  Paul Ferreira <paulf@askia.com>
-=======
 	  Paul Ferreira <paulf@askia.com>,
->>>>>>> origin/master
 	  Thibault Piriou <thibault@askia.com>
 	  Jérôme Duparc <jeromed@askia.com>
 	  Stephen Bronnec <stephen@askia.com>
