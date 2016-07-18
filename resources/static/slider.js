@@ -12,6 +12,7 @@
 		(options.intermediateValue = options.intermediateValue || ((options.minValue + options.maxValue) / 2));
 		(options.unitStep = options.unitStep || 1);
 		(options.sliderDirection = options.sliderDirection || "ltr");
+        (options.connect = options.connect || false);
 
 		// Delegate .transition() calls to .animate() if the browser can't do CSS transitions.
 		if (!$.support.transition) { $.fn.transition = $.fn.animate; }
@@ -155,6 +156,7 @@
 			$(this).find('.noUiSlider').eq(i).noUiSlider({
 				range: {'min':[options.minValue], '50%':[options.intermediateValue,unitStep], 'max':[options.maxValue]},
 				start: ($input.val() !== "") ? parseFloat(handleValue) : startPosition,
+                connect: (options.connect === 'false' || options.connect === false) ? false : 'lower',
 				step: unitStep, // step in range fore each point
 				/*step:0.1,*/
 				behaviour: 'tap-drag',

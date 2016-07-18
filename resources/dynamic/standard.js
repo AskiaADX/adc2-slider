@@ -1,4 +1,4 @@
-﻿/* standard.js */
+/* standard.js */
 $(window).load(function() {
 	$('#adc_{%= CurrentADC.InstanceId %}').adcSlider({
 		target : 'jsObj{%= CurrentADC.InstanceId%}',
@@ -37,6 +37,7 @@ $(window).load(function() {
         showMarkerText : {%= (CurrentADC.PropValue("showMarkerText") = "1") %},
 		interconnection : {%= (CurrentADC.PropValue("interconnection") = "1") %},
         decimalPlaces : {%= CurrentADC.PropValue("decimalPlaces") %},
+        connect : '{%= CurrentADC.PropValue("sliderConnect") %}',
 		items : [
 			{% IF CurrentADC.PropValue("isInLoop") = "1" Then %}
 				{% IF CurrentQuestion.Type = "single" Then %}

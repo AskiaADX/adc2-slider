@@ -1,4 +1,4 @@
-﻿/* standard.css */
+/* standard.css */
 {%
 Dim labelColourPrimary =CurrentADC.PropValue("labelColourPrimary")
 Dim labelColourSecondary =CurrentADC.PropValue("labelColourSecondary")
@@ -120,6 +120,10 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 	position:relative;
 	/*width:100%;*/
 	/*margin:0px auto;*/
+}
+
+#adc_{%= CurrentADC.InstanceId%} .noUi-origin {
+    border-radius: 0px;
 }
 
 #adc_{%= CurrentADC.InstanceId%} .slider tr, #adc_{%= CurrentADC.InstanceId%} .slider tr td { 
@@ -368,7 +372,7 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 #adc_{%= CurrentADC.InstanceId%} .selected .noUi-background {
 	
 	/* background */
-	{% IF CurrentADC.PropValue("sliderBaseGradientDirection") = "ltr" Then %}
+    {% IF (CurrentADC.PropValue("sliderBaseGradientDirection") = "ltr") and (CurrentADC.PropValue("sliderConnect") <> "lower") Then %}
 		background: rgb({%= sliderSelectedPrimaryColour%}) !important; 
 		background: -moz-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%, rgb({%= sliderSelectedSecondaryColour%}) 100%) !important;
 		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb({%= sliderSelectedPrimaryColour%})), color-stop(100%,rgb({%= sliderSelectedSecondaryColour%}))) !important;
@@ -377,7 +381,7 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 		background: -ms-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
 		background: linear-gradient(to right,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}',GradientType=1 ) !important;
-	{% Else %}
+	{% ElseIf (CurrentADC.PropValue("sliderBaseGradientDirection") <> "ltr") and (CurrentADC.PropValue("sliderConnect") <> "lower")  Then %}
 		background: rgb({%= sliderSelectedSecondaryColour%}) !important;
 		background: -moz-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%, rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderSelectedSecondaryColour%})), color-stop(100%,rgb({%= sliderSelectedPrimaryColour%}))) !important; 
@@ -390,6 +394,29 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 	
 	
 	box-shadow: none !important;
+}
+
+#adc_{%= CurrentADC.InstanceId%} .noUi-connect {
+    /* background */
+    {% IF (CurrentADC.PropValue("sliderBaseGradientDirection") = "ltr") and (CurrentADC.PropValue("sliderConnect") = "lower") Then %}
+		background: rgb({%= sliderSelectedPrimaryColour%}) !important; 
+		background: -moz-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%, rgb({%= sliderSelectedSecondaryColour%}) 100%) !important;
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb({%= sliderSelectedPrimaryColour%})), color-stop(100%,rgb({%= sliderSelectedSecondaryColour%}))) !important;
+		background: -webkit-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; /
+		background: -o-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
+		background: -ms-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
+		background: linear-gradient(to right,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}',GradientType=1 ) !important;
+	{% ElseIf (CurrentADC.PropValue("sliderBaseGradientDirection") <> "ltr") and (CurrentADC.PropValue("sliderConnect") = "lower") Then %}
+		background: rgb({%= sliderSelectedSecondaryColour%}) !important;
+		background: -moz-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%, rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderSelectedSecondaryColour%})), color-stop(100%,rgb({%= sliderSelectedPrimaryColour%}))) !important; 
+		background: -webkit-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important; 
+		background: -o-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
+		background: -ms-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
+		background: linear-gradient(to bottom,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important; 
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}',GradientType=0 ) !important; 
+	{% EndIF %}
 }
 
 .noUi-handle:after, .noUi-handle:before {

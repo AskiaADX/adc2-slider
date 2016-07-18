@@ -7,11 +7,9 @@
   <info>
     <name>adc2-slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>1.1.9</version>
+    <version>1.1.10</version>
     <date>2014-05-21</date>
-    <description><![CDATA[
-      
-        v1.0.2 - removed CSS3 Pie
+    <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
 			   - fixed storing data problem for single questions in loops
 			   - fixed gradient direction when selecting slider
@@ -55,16 +53,9 @@
 		v1.1.7 - JD - Fixed the problem of jump not applied on the right of the slider
 		v1.1.8 - SB - Fixed an issue where "Nan" was showing in the handle of a numeric inside a loop instead of the propoer slider value
         v1.1.9 - PF - Fixed issue when typing into text areas on the same page as slider
-    ]]></description>
+		v1.1.10 - JD - Added Slider Connect parameter]]></description>
     <company>Askia</company>
-    <author><![CDATA[
-      
-	  Paul Ferreira <paulf@askia.com>,
-	  Thibault Piriou <thibault@askia.com>
-	  Jérôme Duparc <jeromed@askia.com>
-	  Stephen Bronnec <stephen@askia.com>
-	  
-    ]]></author>
+    <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>]]></author>
     <site>http://www.askia.com</site>
     <helpURL>https://dev.askia.com</helpURL>
     <categories>
@@ -72,8 +63,9 @@
     </categories>
     <style width="400" height="300" />
     <constraints>
-      <constraint on="questions" numeric="true" single="true" />
-      <constraint on="controls" responseblock="true" textbox="true" />
+      <constraint on="questions" numeric="true" single="true" chapter="false" date="false" multiple="false" open="false" requireParentLoop="false" />
+      <constraint on="controls" responseblock="true" textbox="true" checkbox="false" label="false" listbox="false" radiobutton="false" />
+      <constraint on="responses" max="*" min="*" />
     </constraints>
   </info>
   <outputs defaultOutput="fallback">
@@ -298,6 +290,14 @@
           Secondary colour of the slider once a value has been set
         ]]></description>
         <value><![CDATA[0,128,192]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="sliderConnect" name="Slider Connect" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Connect the slider]]></description>
+        <value><![CDATA[false]]></value>
+        <options>
+          <option value="lower" text="Yes" />
+          <option value="false" text="No" />
+        </options>
       </property>
     </category>
     <category id="sliderHandleStyling" name="Slider Handle Styling">
