@@ -547,6 +547,13 @@
 
 			// Hide handle
 			slider.find('.noUi-handle').hide();
+            if (options.sliderOrientation === 'vertical' && options.connect === 'lower') {
+            	slider.find('.noUi-origin').css("top","120%");    
+            }
+            if (options.sliderOrientation !== 'vertical' && options.connect === 'lower') {
+            	slider.find('.noUi-background').css("left","0%");
+            }
+            
 
 			// Set value to input
 			//$input.val(value);
