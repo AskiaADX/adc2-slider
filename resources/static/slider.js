@@ -336,19 +336,15 @@
 
 		function layoutAdjust() {
 			//if ( $(window).width() < parseInt(options.labelWidth) * 3 && options.sliderOrientation == 'horizontal' ) {
-			$('.noUi-pips-horizontal').css({
-					'left': ($('.noUi-handle').width()/2)+'px',
-					'width': $('.noUiSlider').outerWidth() - $('.noUi-handle').outerWidth()
-			});
             
 			$('.leftLabel, .rightLabel').width('');
 			if ( ($(window).width() < ($('.leftLabel').outerWidth(true) + $('.rightLabel').outerWidth(true)) || $(window).width() < 400) && options.sliderOrientation == 'horizontal' && displayLabelText ) {
 				// too small
 				// hide labels and markers
 				$('.leftLabel, .rightLabel').hide();
-                //if ( labelPlacement == "side" ) {
-                	//$('.noUi-pips-horizontal').hide();
-                //}
+                if ( labelPlacement == "side" ) {
+                	$('.noUi-pips-horizontal').hide();
+                }
 				// get control container width
 				var widthDiff = $('.leftLabel').outerWidth(true) - $('.leftLabel').innerWidth(),
 					availableWidth = ($container.outerWidth() - (widthDiff * 2))/2;
@@ -424,6 +420,10 @@
 				var paddingAdjustmentH = Math.floor(($('.sliderLabel').outerWidth() - $('.noUiSlider').outerWidth() )/2) + 'px';
 				if ( options.sliderOrientation === 'vertical' ) $('.noUiSlider').css({'margin-left':paddingAdjustmentH,'margin-right':paddingAdjustmentH});
 			}
+            $('.noUi-pips-horizontal').css({
+					'left': ($('.noUi-handle').width()/2)+'px',
+					'width': $('.noUiSlider').outerWidth() - $('.noUi-handle').outerWidth()
+			});
 		}
 
 		// Adjust control width if using vertical layout
