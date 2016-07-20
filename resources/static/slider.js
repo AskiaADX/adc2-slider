@@ -336,12 +336,19 @@
 
 		function layoutAdjust() {
 			//if ( $(window).width() < parseInt(options.labelWidth) * 3 && options.sliderOrientation == 'horizontal' ) {
-
+			$('.noUi-pips-horizontal').css({
+					'left': ($('.noUi-handle').width()/2)+'px',
+					'width': $('.noUiSlider').outerWidth() - $('.noUi-handle').outerWidth()
+			});
+            
 			$('.leftLabel, .rightLabel').width('');
 			if ( ($(window).width() < ($('.leftLabel').outerWidth(true) + $('.rightLabel').outerWidth(true)) || $(window).width() < 400) && options.sliderOrientation == 'horizontal' && displayLabelText ) {
 				// too small
 				// hide labels and markers
-				$('.leftLabel, .rightLabel, .noUi-pips-horizontal').hide();
+				$('.leftLabel, .rightLabel').hide();
+                //if ( labelPlacement == "side" ) {
+                	//$('.noUi-pips-horizontal').hide();
+                //}
 				// get control container width
 				var widthDiff = $('.leftLabel').outerWidth(true) - $('.leftLabel').innerWidth(),
 					availableWidth = ($container.outerWidth() - (widthDiff * 2))/2;
@@ -374,7 +381,7 @@
 					//$('.sliderMiddle td:nth-child(3)').show();
 					if ( hasDK ) $('.sliderDK').attr('colspan',3);
 				}
-				$('.sliderTop .leftLabel, .sliderTop .rightLabel').show();
+				$('.sliderTop .leftLabel, .sliderTop .rightLabel, .noUi-pips-horizontal').show();
 
 
 				$('.sliderBottom .leftLabel, .sliderBottom .rightLabel').width(availableWidth + 'px').show();
@@ -390,7 +397,7 @@
 				adjustLabelHeight('.sliderLabel');
 
 			} else if ( displayLabelText && labelPlacement == "side" && options.sliderOrientation == 'horizontal' ) {
-				var colspan = 1;
+                var colspan = 1;
 				$('.sliderMiddle td:nth-child(1)').show();
 				$('.sliderMiddle td:nth-child(2)').show();
 				$('.sliderMiddle td:nth-child(3)').show();
