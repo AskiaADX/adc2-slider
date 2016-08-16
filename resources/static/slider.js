@@ -9,7 +9,7 @@
 		(options.autoForward = Boolean(options.autoForward));
 		(options.minValue = options.minValue || 0);
 		(options.maxValue = options.maxValue || 10);
-		(options.intermediateValue = options.intermediateValue || ((options.minValue + options.maxValue) / 2));
+        (options.intermediateValue = options.intermediateValue || ((options.minValue + options.maxValue) / 2));
 		(options.unitStep = options.unitStep || 1);
 		(options.sliderDirection = options.sliderDirection || "ltr");
         (options.connect = options.connect || false);
@@ -46,7 +46,6 @@
             decimalPlaces = options.decimalPlaces,
 			sliderHandleStartPosition = options.sliderHandleStartPosition,
 			startPosition = (parseFloat(options.intermediateValue));
-
 			if (sliderHandleStartPosition == "min") startPosition = parseFloat(options.minValue);
 			if (sliderHandleStartPosition == "max") startPosition = parseFloat(options.maxValue);
 			
@@ -152,9 +151,15 @@
 			if (interconnection){
 				handleValue = parseFloat(roundToStep($input.val())).toFixed(decimalPlaces);
 			}
+            var rangeData = {'min':[options.minValue]};
+            if (options.intermediateValue !== ((options.minValue + options.maxValue) / 2)) {
+                rangeData['50%'] = [options.intermediateValue,unitStep];
+            }
+            rangeData['max'] = [options.maxValue];
 
 			$(this).find('.noUiSlider').eq(i).noUiSlider({
-				range: {'min':[options.minValue], '50%':[options.intermediateValue,unitStep], 'max':[options.maxValue]},
+				//range: {'min':[options.minValue], '50%':[options.intermediateValue,unitStep], 'max':[options.maxValue]},
+                range: rangeData,
 				start: ($input.val() !== "") ? parseFloat(handleValue) : startPosition,
                 connect: (options.connect === 'false' || options.connect === false) ? false : 'lower',
 				step: unitStep, // step in range fore each point
