@@ -56,7 +56,8 @@
 		v1.1.10 - JD - Added Slider Connect parameter
 		v1.1.11 - JD - Fixed Weird behaviour with DK and Slider Connect parameter
 		v1.1.12 - JD - Recalculate the width of the pips
-		v1.1.13 - JD - Fixed half start position when unpaired number of values]]></description>
+		v1.1.13 - JD - Fixed half start position when unpaired number of values
+		v1.1.14 - JD - Fixed right text on pips]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>]]></author>
     <site>http://www.askia.com</site>

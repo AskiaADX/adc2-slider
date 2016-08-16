@@ -247,7 +247,7 @@
 					format: wNumb({
 						decimals: decimalPlaces,
 						prefix: leftHandleText,
-						suffix: rightHandleText
+						postfix: rightHandleText
 					})
 				});
 				/*if ( sliderOrientation == 'horizontal' ) {
