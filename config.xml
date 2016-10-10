@@ -7,7 +7,7 @@
   <info>
     <name>adc2-slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>1.1.13</version>
+    <version>1.1.15</version>
     <date>2014-05-21</date>
     <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
@@ -57,7 +57,8 @@
 		v1.1.11 - JD - Fixed Weird behaviour with DK and Slider Connect parameter
 		v1.1.12 - JD - Recalculate the width of the pips
 		v1.1.13 - JD - Fixed half start position when unpaired number of values
-		v1.1.14 - JD - Fixed right text on pips]]></description>
+		v1.1.14 - JD - Fixed right text on pips
+		v1.1.15 - JD - Fixed hover style on DK]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>]]></author>
     <site>http://www.askia.com</site>
@@ -901,10 +902,8 @@
           <option value="none" text="Off" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="showDkHoverColour" name="Show DK Hover Colour" type="boolean" mode="static">
-        <description><![CDATA[
-          This will change the colour of DK when hovered over
-        ]]></description>
+      <property xsi:type="standardProperty" id="showDkHoverColour" name="Show DK Hover Colour" type="boolean" mode="static" require="false" visible="true">
+        <description><![CDATA[This will change the colour of DK when hovered over]]></description>
         <value><![CDATA[false]]></value>
       </property>
       <property xsi:type="standardProperty" id="dkHoverColourPrimary" name="DK Hover Colour Primary" type="color" mode="static">
@@ -937,10 +936,8 @@
         ]]></description>
         <value><![CDATA[000,000,000]]></value>
       </property>
-      <property xsi:type="standardProperty" id="showDkHoverBorder" name="Show DK Hover Border" type="boolean" mode="static">
-        <description><![CDATA[
-          This will change the colour of the border of DK when hovered over
-        ]]></description>
+      <property xsi:type="standardProperty" id="showDkHoverBorder" name="Show DK Hover Border" type="boolean" mode="static" require="false" visible="true">
+        <description><![CDATA[This will change the colour of the border of DK when hovered over]]></description>
         <value><![CDATA[false]]></value>
       </property>
       <property xsi:type="standardProperty" id="dkHoverBorderColour" name="DK Hover Border Colour" type="color" mode="static">
@@ -982,18 +979,12 @@
           <option value="double" text="Double" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="showDkHoverShadow" name="Show DK Hover Shadow" type="boolean" mode="static">
-        <description><![CDATA[
-          This will change the colour of the shadow of DK when hovered over
-        ]]></description>
+      <property xsi:type="standardProperty" id="showDkHoverShadow" name="Show DK Hover Shadow" type="boolean" mode="static" require="false" visible="true">
+        <description><![CDATA[This will change the colour of the shadow of DK when hovered over]]></description>
         <value><![CDATA[false]]></value>
       </property>
-      <property xsi:type="standardProperty" id="dkHoverShadow" name="DK Hover Drop Shadow" type="string" mode="static">
-        <description><![CDATA[
-          
-	          The visibility of a dropshadow under the DK when hovering
-	        
-        ]]></description>
+      <property xsi:type="standardProperty" id="dkHoverShadow" name="DK Hover Drop Shadow" type="string" mode="static" require="false" visible="true">
+        <description><![CDATA[The visibility of a dropshadow under the DK when hovering]]></description>
         <value><![CDATA[#999 0px 2px 3px]]></value>
         <options>
           <option value="#999 0px 2px 3px" text="On" />

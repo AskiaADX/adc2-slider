@@ -552,7 +552,34 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 	user-select:none;
 }
 
-#adc_{%= CurrentADC.InstanceId%} .dk.selected 
+#adc_{%= CurrentADC.InstanceId%} .dk:hover 
+{	
+    /* Decoration */	
+    {% IF (CurrentADC.PropValue("dkHoverBorderThickness") = "none") and (CurrentADC.PropValue("showDkHoverBorder") = "1") Then %}
+	border: none;
+    {% ElseIf (CurrentADC.PropValue("dkHoverBorderThickness") <> "none") and (CurrentADC.PropValue("showDkHoverBorder") = "1") Then %}
+    border: {%= dkHoverBorderThickness%} {%= dkHoverBorderStyle%} rgb({%= dkHoverBorderColour%});
+	{% EndIF %}
+    {% IF CurrentADC.PropValue("showDkHoverColour") = "1" Then %}
+    background: rgb({%= dkHoverColourPrimary%}); 
+    background: -moz-linear-gradient(top,  rgb({%= dkHoverColourPrimary%}) 0%, rgb({%= dkHoverColourSecondary%}) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= dkHoverColourPrimary%})), color-stop(100%,rgb({%= dkHoverColourSecondary%}))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgb({%= dkHoverColourPrimary%}) 0%,rgb({%= dkHoverColourSecondary%}) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgb({%= dkHoverColourPrimary%}) 0%,rgb({%= dkHoverColourSecondary%}) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgb({%= dkHoverColourPrimary%}) 0%,rgb({%= dkHoverColourSecondary%}) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgb({%= dkHoverColourPrimary%}) 0%,rgb({%= dkHoverColourSecondary%}) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr={%= dkHoverColourPrimary.ToHexa()%}, endColorstr={%= dkHoverColourSecondary.ToHexa()%},GradientType=0 ); /* IE6-8 */
+	{% EndIF %}
+    -webkit-box-shadow: {%= dkHoverShadow%};
+    -moz-box-shadow: {%= dkHoverShadow%};
+    box-shadow: {%= dkHoverShadow%};
+	
+    {% IF CurrentADC.PropValue("showDkHoverFontColour") = "1" Then %}
+    color:rgb({%= dkHoverFontColour%});
+    {% EndIF %}
+}
+
+#adc_{%= CurrentADC.InstanceId%} .dk.selected, #adc_{%= CurrentADC.InstanceId%} .dk:hover.selected 
 {	
     /* Decoration */	
 	{% IF CurrentADC.PropValue("dkSelectedBorderThickness") = "none" Then %}
