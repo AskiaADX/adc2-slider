@@ -296,9 +296,9 @@
 		for ( var i=0; i<items.length; i++ ) {
 
 			var $input = items[i].element;
-
+			
 			// If slide has value change base colour by adding class
-			if ( roundToStep($input.val()) >= 0 ) { $(this).find('.sliderContainer').eq(i).addClass('selected'); }
+			if ( roundToStep($input.val()) > 0 ) { $(this).find('.sliderContainer').eq(i).addClass('selected'); }
 
 			if (showValue) {
 
