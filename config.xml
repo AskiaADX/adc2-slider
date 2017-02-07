@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<control  xmlns="http://www.askia.com/ADCSchema"
+<control  xmlns="http://www.askia.com/2.0.0/ADCSchema"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://www.askia.com/ADCSchema http://www.askia.com/Downloads/dev/schemas/adc2.0/Config.xsd"
+          xsi:schemaLocation="http://www.askia.com/2.0.0/ADCSchema https://raw.githubusercontent.com/AskiaADX/ADXSchema/2.0.0/ADCSchema.xsd"
           version="2.0.0"
           askiaCompat="5.3.3">
   <info>
     <name>adc2-slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>1.1.16</version>
+    <version>1.1.17</version>
     <date>2014-05-21</date>
     <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
@@ -59,7 +59,8 @@
 		v1.1.13 - JD - Fixed half start position when unpaired number of values
 		v1.1.14 - JD - Fixed right text on pips
 		v1.1.15 - JD - Fixed hover style on DK
-		v1.1.16 - JD - Fixed selected style applied when digit applied to numerical slider]]></description>
+		v1.1.16 - JD - Fixed selected style applied when digit applied to numerical slider
+		v1.1.17 - JD - Fixed coma digit for french intermediate value]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>]]></author>
     <site>http://www.askia.com</site>
