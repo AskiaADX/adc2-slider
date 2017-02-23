@@ -1,57 +1,54 @@
 /* standard.css */
 {%
-Dim labelColourPrimary =CurrentADC.PropValue("labelColourPrimary")
-Dim labelColourSecondary =CurrentADC.PropValue("labelColourSecondary")
-Dim fontColour =CurrentADC.PropValue("fontColour")
-Dim labelShadow =CurrentADC.PropValue("labelShadow")
-Dim textAlign =CurrentADC.PropValue("textAlign")
-Dim imageAlign =CurrentADC.PropValue("imageAlign")
-Dim displayLabelText =CurrentADC.PropValue("displayLabelText")
+Dim labelColourPrimary = CurrentADC.PropValue("labelColourPrimary")
+Dim fontColour = CurrentADC.PropValue("fontColour")
+Dim labelShadow = CurrentADC.PropValue("labelShadow")
+Dim textAlign = CurrentADC.PropValue("textAlign")
+Dim imageAlign = CurrentADC.PropValue("imageAlign")
+Dim displayLabelText = CurrentADC.PropValue("displayLabelText")
 
-Dim borderColour =CurrentADC.PropValue("borderColour")
-Dim borderThickness =CurrentADC.PropValue("borderThickness")
-Dim borderStyle =CurrentADC.PropValue("borderStyle")
+Dim borderColour = CurrentADC.PropValue("borderColour")
+Dim borderThickness = CurrentADC.PropValue("borderThickness")
+Dim borderStyle = CurrentADC.PropValue("borderStyle")
 
-Dim labelTextPadding =CurrentADC.PropValue("labelTextPadding")
-Dim labelTextLineHeight =CurrentADC.PropValue("labelTextLineHeight")
+Dim labelTextPadding = CurrentADC.PropValue("labelTextPadding")
+Dim labelTextLineHeight = CurrentADC.PropValue("labelTextLineHeight")
 
-Dim fontSize =CurrentADC.PropValue("fontSize")
+Dim fontSize = CurrentADC.PropValue("fontSize")
 
-Dim labelWidth =CurrentADC.PropValue("labelWidth")
-Dim sliderHeight =CurrentADC.PropValue("sliderHeight")
-Dim sliderOrientation =CurrentADC.PropValue("sliderOrientation")
-Dim controlAlign =CurrentADC.PropValue("controlAlign")
-Dim sliderBasePrimaryColour =CurrentADC.PropValue("sliderBasePrimaryColour")
-Dim sliderBaseSecondaryColour =CurrentADC.PropValue("sliderBaseSecondaryColour")
-Dim sliderBaseBorderColour =CurrentADC.PropValue("sliderBaseBorderColour")
-Dim sliderBaseBorderThickness =CurrentADC.PropValue("sliderBaseBorderThickness")
-Dim sliderBaseBorderStyle =CurrentADC.PropValue("sliderBaseBorderStyle")
-Dim sliderBaseBorderRadius =CurrentADC.PropValue("sliderBaseBorderRadius")
-Dim sliderHandlePrimaryColour =CurrentADC.PropValue("sliderHandlePrimaryColour")
-Dim sliderHandleSecondaryColour =CurrentADC.PropValue("sliderHandleSecondaryColour")
-Dim sliderHandleBorderColour =CurrentADC.PropValue("sliderHandleBorderColour")
-Dim sliderHandleBorderThickness =CurrentADC.PropValue("sliderHandleBorderThickness")
-Dim sliderHandleBorderStyle =CurrentADC.PropValue("sliderHandleBorderStyle")
-Dim sliderHandleBorderRadius =CurrentADC.PropValue("sliderHandleBorderRadius")
-Dim sliderHandleDropShadow =CurrentADC.PropValue("sliderHandleDropShadow")
-Dim sliderSelectedPrimaryColour =CurrentADC.PropValue("sliderSelectedPrimaryColour")
-Dim sliderSelectedSecondaryColour =CurrentADC.PropValue("sliderSelectedSecondaryColour")
-Dim labelBorderRadius =CurrentADC.PropValue("labelBorderRadius")
+Dim labelWidth = CurrentADC.PropValue("labelWidth")
+Dim sliderHeight = CurrentADC.PropValue("sliderHeight")
+Dim sliderOrientation = CurrentADC.PropValue("sliderOrientation")
+Dim controlAlign = CurrentADC.PropValue("controlAlign")
+Dim sliderBasePrimaryColour = CurrentADC.PropValue("sliderBasePrimaryColour")
+Dim sliderBaseSecondaryColour = CurrentADC.PropValue("sliderBaseSecondaryColour")
+Dim sliderBaseBorderColour = CurrentADC.PropValue("sliderBaseBorderColour")
+Dim sliderBaseBorderThickness = CurrentADC.PropValue("sliderBaseBorderThickness")
+Dim sliderBaseBorderStyle = CurrentADC.PropValue("sliderBaseBorderStyle")
+Dim sliderBaseBorderRadius = CurrentADC.PropValue("sliderBaseBorderRadius")
+Dim sliderHandlePrimaryColour = CurrentADC.PropValue("sliderHandlePrimaryColour")
+Dim sliderHandleBorderColour = CurrentADC.PropValue("sliderHandleBorderColour")
+Dim sliderHandleBorderThickness = CurrentADC.PropValue("sliderHandleBorderThickness")
+Dim sliderHandleBorderStyle = CurrentADC.PropValue("sliderHandleBorderStyle")
+Dim sliderHandleBorderRadius = CurrentADC.PropValue("sliderHandleBorderRadius")
+Dim sliderHandleDropShadow = CurrentADC.PropValue("sliderHandleDropShadow")
+Dim sliderSelectedPrimaryColour = CurrentADC.PropValue("sliderSelectedPrimaryColour")
+Dim sliderSelectedSecondaryColour = CurrentADC.PropValue("sliderSelectedSecondaryColour")
+Dim labelBorderRadius = CurrentADC.PropValue("labelBorderRadius")
 
-Dim showValue =CurrentADC.PropValue("showValue")
+Dim showValue = CurrentADC.PropValue("showValue")
 
-Dim sliderFocusPrimaryColour =CurrentADC.PropValue("sliderFocusPrimaryColour")
-Dim sliderFocusSecondaryColour =CurrentADC.PropValue("sliderFocusSecondaryColour")
-Dim sliderFocusBorderColour =CurrentADC.PropValue("sliderFocusBorderColour")
-Dim sliderFocusBorderThickness =CurrentADC.PropValue("sliderFocusBorderThickness")
-Dim handleFontColour =CurrentADC.PropValue("handleFontColour")
+Dim sliderFocusPrimaryColour = CurrentADC.PropValue("sliderFocusPrimaryColour")
+Dim sliderFocusBorderColour = CurrentADC.PropValue("sliderFocusBorderColour")
+Dim sliderFocusBorderThickness = CurrentADC.PropValue("sliderFocusBorderThickness")
+Dim handleFontColour = CurrentADC.PropValue("handleFontColour")
 
-Dim captionAlign =CurrentADC.PropValue("captionAlign")
-Dim captionPadding =CurrentADC.PropValue("captionPadding")
+Dim captionAlign = CurrentADC.PropValue("captionAlign")
+Dim captionPadding = CurrentADC.PropValue("captionPadding")
 
-Dim sliderBaseHeight =CurrentADC.PropValue("sliderBaseHeight")
-Dim sliderHandleHeight =CurrentADC.PropValue("sliderHandleHeight")
-Dim sliderHandleWidth =CurrentADC.PropValue("sliderHandleWidth")
+Dim sliderBaseHeight = CurrentADC.PropValue("sliderBaseHeight")
+Dim sliderHandleHeight = CurrentADC.PropValue("sliderHandleHeight")
+Dim sliderHandleWidth = CurrentADC.PropValue("sliderHandleWidth")
 Dim halfHandleHeight = (sliderBaseHeight.ToNumber() - sliderHandleHeight.ToNumber())/2
 Dim halfHandleWidth = sliderHandleWidth.ToNumber()/2
 IF CurrentADC.PropValue("sliderOrientation") = "vertical" Then
@@ -63,42 +60,39 @@ IF CurrentADC.PropValue("sliderOrientation") = "vertical" Then
 	halfHandleHeight = (sliderHandleHeight.ToNumber() + (sliderHandleBorderThicknessNumber.ToNumber()*2))/2
 EndIF
 
-Dim imagePadding =CurrentADC.PropValue("imagePadding")
+Dim imagePadding = CurrentADC.PropValue("imagePadding")
 
-Dim sliderBaseGradientDirection =CurrentADC.PropValue("sliderBaseGradientDirection")
+Dim sliderBaseGradientDirection = CurrentADC.PropValue("sliderBaseGradientDirection")
 
-Dim dkBorderRadius =CurrentADC.PropValue("dkBorderRadius")
-Dim dkTextPadding =CurrentADC.PropValue("dkTextPadding")
-Dim dkMargin =CurrentADC.PropValue("dkMargin")
-Dim dkColourPrimary =CurrentADC.PropValue("dkColourPrimary")
-Dim dkColourSecondary =CurrentADC.PropValue("dkColourSecondary")
-Dim dkFontColour =CurrentADC.PropValue("dkFontColour")
-Dim dkBorderColour =CurrentADC.PropValue("dkBorderColour")
-Dim dkBorderThickness =CurrentADC.PropValue("dkBorderThickness")
-Dim dkBorderStyle =CurrentADC.PropValue("dkBorderStyle")
-Dim dkShadow =CurrentADC.PropValue("dkShadow")
-Dim showDkHoverColour =CurrentADC.PropValue("showDkHoverColour")
-Dim dkHoverColourPrimary =CurrentADC.PropValue("dkHoverColourPrimary")
-Dim dkHoverColourSecondary =CurrentADC.PropValue("dkHoverColourSecondary")
-Dim showDkHoverFontColour =CurrentADC.PropValue("showDkHoverFontColour")
-Dim dkHoverFontColour =CurrentADC.PropValue("dkHoverFontColour")
-Dim showDkHoverBorder =CurrentADC.PropValue("showDkHoverBorder")
-Dim dkHoverBorderColour =CurrentADC.PropValue("dkHoverBorderColour")
-Dim dkHoverBorderThickness =CurrentADC.PropValue("dkHoverBorderThickness")
-Dim dkHoverBorderStyle =CurrentADC.PropValue("dkHoverBorderStyle")
-Dim showDkHoverShadow =CurrentADC.PropValue("showDkHoverShadow")
-Dim dkHoverShadow =CurrentADC.PropValue("dkHoverShadow")
-Dim dkSelectedColourPrimary =CurrentADC.PropValue("dkSelectedColourPrimary")
-Dim dkSelectedColourSecondary =CurrentADC.PropValue("dkSelectedColourSecondary")
-Dim dkSelectedFontColour =CurrentADC.PropValue("dkSelectedFontColour")
-Dim dkSelectedBorderColour =CurrentADC.PropValue("dkSelectedBorderColour")
-Dim dkSelectedBorderThickness =CurrentADC.PropValue("dkSelectedBorderThickness")
-Dim dkSelectedBorderStyle =CurrentADC.PropValue("dkSelectedBorderStyle")
-Dim dkSelectedShadow =CurrentADC.PropValue("dkSelectedShadow")
+Dim dkBorderRadius = CurrentADC.PropValue("dkBorderRadius")
+Dim dkTextPadding = CurrentADC.PropValue("dkTextPadding")
+Dim dkMargin = CurrentADC.PropValue("dkMargin")
+Dim dkColourPrimary = CurrentADC.PropValue("dkColourPrimary")
+Dim dkFontColour = CurrentADC.PropValue("dkFontColour")
+Dim dkBorderColour = CurrentADC.PropValue("dkBorderColour")
+Dim dkBorderThickness = CurrentADC.PropValue("dkBorderThickness")
+Dim dkBorderStyle = CurrentADC.PropValue("dkBorderStyle")
+Dim dkShadow = CurrentADC.PropValue("dkShadow")
+Dim showDkHoverColour = CurrentADC.PropValue("showDkHoverColour")
+Dim dkHoverColourPrimary = CurrentADC.PropValue("dkHoverColourPrimary")
+Dim showDkHoverFontColour = CurrentADC.PropValue("showDkHoverFontColour")
+Dim dkHoverFontColour = CurrentADC.PropValue("dkHoverFontColour")
+Dim showDkHoverBorder = CurrentADC.PropValue("showDkHoverBorder")
+Dim dkHoverBorderColour = CurrentADC.PropValue("dkHoverBorderColour")
+Dim dkHoverBorderThickness = CurrentADC.PropValue("dkHoverBorderThickness")
+Dim dkHoverBorderStyle = CurrentADC.PropValue("dkHoverBorderStyle")
+Dim showDkHoverShadow = CurrentADC.PropValue("showDkHoverShadow")
+Dim dkHoverShadow = CurrentADC.PropValue("dkHoverShadow")
+Dim dkSelectedColourPrimary = CurrentADC.PropValue("dkSelectedColourPrimary")
+Dim dkSelectedFontColour = CurrentADC.PropValue("dkSelectedFontColour")
+Dim dkSelectedBorderColour = CurrentADC.PropValue("dkSelectedBorderColour")
+Dim dkSelectedBorderThickness = CurrentADC.PropValue("dkSelectedBorderThickness")
+Dim dkSelectedBorderStyle = CurrentADC.PropValue("dkSelectedBorderStyle")
+Dim dkSelectedShadow = CurrentADC.PropValue("dkSelectedShadow")
 
-Dim useHandleImage =CurrentADC.PropValue("useHandleImage")
+Dim useHandleImage = CurrentADC.PropValue("useHandleImage")
 
-Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
+Dim showMarkerText = CurrentADC.PropValue("showMarkerText")
 
 %}
 
@@ -139,14 +133,7 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 		border: {%= borderThickness%} {%= borderStyle%} rgb({%= borderColour%});
 	{% EndIF %}	
 
-	background: rgb({%= labelColourPrimary%}); 
-	background: -moz-linear-gradient(top,  rgb({%= labelColourPrimary%}) 0%, rgb({%= labelColourSecondary%}) 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= labelColourPrimary%})), color-stop(100%,rgb({%= labelColourSecondary%}))); 
-	background: -webkit-linear-gradient(top,  rgb({%= labelColourPrimary%}) 0%,rgb({%= labelColourSecondary%}) 100%); 
-	background: -o-linear-gradient(top,  rgb({%= labelColourPrimary%}) 0%,rgb({%= labelColourSecondary%}) 100%);
-	background: -ms-linear-gradient(top,  rgb({%= labelColourPrimary%}) 0%,rgb({%= labelColourSecondary%}) 100%);
-	background: linear-gradient(to bottom,  rgb({%= labelColourPrimary%}) 0%,rgb({%= labelColourSecondary%}) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr={%= labelColourPrimary.ToHexa()%}, endColorstr={%= labelColourSecondary.ToHexa()%},GradientType=0 );
+	background-color: rgb({%= labelColourPrimary%});
 	
 	/* Effects */
 	-webkit-border-radius:	{%= labelBorderRadius%}; 
@@ -320,7 +307,7 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr={%= sliderBaseSecondaryColour.ToHexa()%}, endColorstr={%= sliderBasePrimaryColour.ToHexa()%},GradientType=0 );
 	{% EndIF %}
 	
-	box-shadow:none !important;
+	box-shadow:none;
 	
 	/*position:relative;*/
 }
@@ -344,17 +331,10 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 	
 	/* background */
 	{% IF CurrentADC.PropValue("useHandleImage") <> "1" AND CurrentADC.PropValue("hideHandleBG") <> "1" Then %}
-		background: rgb({%= sliderHandlePrimaryColour%}); 
-		background: -moz-linear-gradient(top,  rgb({%= sliderHandlePrimaryColour%}) 0%, rgb({%= sliderHandleSecondaryColour%}) 100%); 
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderHandlePrimaryColour%})), color-stop(100%,rgb({%= sliderHandleSecondaryColour%})));
-		background: -webkit-linear-gradient(top,  rgb({%= sliderHandlePrimaryColour%}) 0%,rgb({%= sliderHandleSecondaryColour%}) 100%);
-		background: -o-linear-gradient(top,  rgb({%= sliderHandlePrimaryColour%}) 0%,rgb({%= sliderHandleSecondaryColour%}) 100%);
-		background: -ms-linear-gradient(top,  rgb({%= sliderHandlePrimaryColour%}) 0%,rgb({%= sliderHandleSecondaryColour%}) 100%);
-		background: linear-gradient(to bottom,  rgb({%= sliderHandlePrimaryColour%}) 0%,rgb({%= sliderHandleSecondaryColour%}) 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr={%= sliderHandlePrimaryColour.ToHexa()%}, endColorstr={%= sliderHandleSecondaryColour.ToHexa()%},GradientType=0 );
+		background-color: rgb({%= sliderHandlePrimaryColour%});
 	{% ElseIF CurrentADC.PropValue("hideHandleBG") = "1" Then %}
 		background-color:none;
-		box-shadow: none !important;
+		box-shadow: none;
 	{% EndIF %}	
 	
 	-webkit-border-radius:	{%= sliderHandleBorderRadius%}; 
@@ -373,58 +353,54 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 	
 	/* background */
     {% IF (CurrentADC.PropValue("sliderBaseGradientDirection") = "ltr") and (CurrentADC.PropValue("sliderConnect") <> "lower") Then %}
-		background: rgb({%= sliderSelectedPrimaryColour%}) !important; 
-		background: -moz-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%, rgb({%= sliderSelectedSecondaryColour%}) 100%) !important;
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb({%= sliderSelectedPrimaryColour%})), color-stop(100%,rgb({%= sliderSelectedSecondaryColour%}))) !important;
-		background: -webkit-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; /
-		background: -o-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
-		background: -ms-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
-		background: linear-gradient(to right,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}',GradientType=1 ) !important;
+		background: rgb({%= sliderSelectedPrimaryColour%}); 
+		background: -moz-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%, rgb({%= sliderSelectedSecondaryColour%}) 100%);
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb({%= sliderSelectedPrimaryColour%})), color-stop(100%,rgb({%= sliderSelectedSecondaryColour%})));
+		background: -webkit-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%);
+		background: -o-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%); 
+		background: -ms-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%); 
+		background: linear-gradient(to right,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%); 
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}',GradientType=1 );
 	{% ElseIf (CurrentADC.PropValue("sliderBaseGradientDirection") <> "ltr") and (CurrentADC.PropValue("sliderConnect") <> "lower")  Then %}
-		background: rgb({%= sliderSelectedSecondaryColour%}) !important;
-		background: -moz-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%, rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderSelectedSecondaryColour%})), color-stop(100%,rgb({%= sliderSelectedPrimaryColour%}))) !important; 
-		background: -webkit-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important; 
-		background: -o-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
-		background: -ms-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
-		background: linear-gradient(to bottom,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important; 
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}',GradientType=0 ) !important; 
+		background: rgb({%= sliderSelectedSecondaryColour%});
+		background: -moz-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%, rgb({%= sliderSelectedPrimaryColour%}) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderSelectedSecondaryColour%})), color-stop(100%,rgb({%= sliderSelectedPrimaryColour%}))); 
+		background: -webkit-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%); 
+		background: -o-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%);
+		background: -ms-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%);
+		background: linear-gradient(to bottom,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%); 
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}',GradientType=0 ); 
 	{% EndIF %}
 	
 	
-	box-shadow: none !important;
+	box-shadow: none;
 }
 
 #adc_{%= CurrentADC.InstanceId%} .noUi-connect {
     /* background */
     {% IF (CurrentADC.PropValue("sliderBaseGradientDirection") = "ltr") and (CurrentADC.PropValue("sliderConnect") = "lower") Then %}
-		background: rgb({%= sliderSelectedPrimaryColour%}) !important; 
-		background: -moz-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%, rgb({%= sliderSelectedSecondaryColour%}) 100%) !important;
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb({%= sliderSelectedPrimaryColour%})), color-stop(100%,rgb({%= sliderSelectedSecondaryColour%}))) !important;
-		background: -webkit-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; /
-		background: -o-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
-		background: -ms-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
-		background: linear-gradient(to right,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%) !important; 
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}',GradientType=1 ) !important;
+		background: rgb({%= sliderSelectedPrimaryColour%}); 
+		background: -moz-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%, rgb({%= sliderSelectedSecondaryColour%}) 100%);
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb({%= sliderSelectedPrimaryColour%})), color-stop(100%,rgb({%= sliderSelectedSecondaryColour%})));
+		background: -webkit-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%);
+		background: -o-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%); 
+		background: -ms-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%); 
+		background: linear-gradient(to right,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%); 
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}',GradientType=1 );
 	{% ElseIf (CurrentADC.PropValue("sliderBaseGradientDirection") <> "ltr") and (CurrentADC.PropValue("sliderConnect") = "lower") Then %}
-		background: rgb({%= sliderSelectedSecondaryColour%}) !important;
-		background: -moz-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%, rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderSelectedSecondaryColour%})), color-stop(100%,rgb({%= sliderSelectedPrimaryColour%}))) !important; 
-		background: -webkit-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important; 
-		background: -o-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
-		background: -ms-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important;
-		background: linear-gradient(to bottom,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%) !important; 
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}',GradientType=0 ) !important; 
+		background: rgb({%= sliderSelectedSecondaryColour%});
+		background: -moz-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%, rgb({%= sliderSelectedPrimaryColour%}) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderSelectedSecondaryColour%})), color-stop(100%,rgb({%= sliderSelectedPrimaryColour%}))); 
+		background: -webkit-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%); 
+		background: -o-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%);
+		background: -ms-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%);
+		background: linear-gradient(to bottom,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%); 
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}',GradientType=0 ); 
 	{% EndIF %}
 }
 
-.noUi-handle:after, .noUi-handle:before {
-	
-	{% IF showValue = "1" OR useHandleImage = "1" Then %}
+#adc_{%= CurrentADC.InstanceId%} .noUi-handle:after, .noUi-handle:before {
 		background:none !important;
-	{% EndIF %}
-		
 }
 
 #adc_{%= CurrentADC.InstanceId%} .handleValue {
@@ -446,22 +422,9 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 	 
 	/* background */
 	{% IF CurrentADC.PropValue("useHandleImage") <> "1" Then %}
-		background: rgb({%= sliderFocusPrimaryColour%}) !important;
-		background: -moz-linear-gradient(top,  rgb({%= sliderFocusPrimaryColour%}) 0%, rgb({%= sliderFocusSecondaryColour%}) 100%) !important; 
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderFocusPrimaryColour%})), color-stop(100%,rgb({%= sliderFocusSecondaryColour%}))) !important;
-		background: -webkit-linear-gradient(top,  rgb({%= sliderFocusPrimaryColour%}) 0%,rgb({%= sliderFocusSecondaryColour%}) 100%) !important; 
-		background: -o-linear-gradient(top,  rgb({%= sliderFocusPrimaryColour%}) 0%,rgb({%= sliderFocusSecondaryColour%}) 100%) !important;
-		background: -ms-linear-gradient(top,  rgb({%= sliderFocusPrimaryColour%}) 0%,rgb({%= sliderFocusSecondaryColour%}) 100%) !important;
-		background: linear-gradient(to bottom,  rgb({%= sliderFocusPrimaryColour%}) 0%,rgb({%= sliderFocusSecondaryColour%}) 100%) !important;
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderFocusPrimaryColour.ToHexa()%}', endColorstr='{%= sliderFocusSecondaryColour.ToHexa()%}',GradientType=0 ) !important;
+		background-color: rgb({%= sliderFocusPrimaryColour%});
 	{% ElseIF CurrentADC.PropValue("useHandleImage") = "1" AND CurrentADC.PropValue("hideHandleBG") <> "1" Then %}
-	 	background-color: rgb({%= sliderFocusPrimaryColour%}) !important;
-		background-color: -moz-linear-gradient(top,  rgb({%= sliderFocusPrimaryColour%}) 0%, rgb({%= sliderFocusSecondaryColour%}) 100%) !important; 
-		background-color: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderFocusPrimaryColour%})), color-stop(100%,rgb({%= sliderFocusSecondaryColour%}))) !important;
-		background-color: -webkit-linear-gradient(top,  rgb({%= sliderFocusPrimaryColour%}) 0%,rgb({%= sliderFocusSecondaryColour%}) 100%) !important; 
-		background-color: -o-linear-gradient(top,  rgb({%= sliderFocusPrimaryColour%}) 0%,rgb({%= sliderFocusSecondaryColour%}) 100%) !important;
-		background-color: -ms-linear-gradient(top,  rgb({%= sliderFocusPrimaryColour%}) 0%,rgb({%= sliderFocusSecondaryColour%}) 100%) !important;
-		background-color: linear-gradient(to bottom,  rgb({%= sliderFocusPrimaryColour%}) 0%,rgb({%= sliderFocusSecondaryColour%}) 100%) !important;
+	 	background-color: rgb({%= sliderFocusPrimaryColour%});
 	{% ElseIF CurrentADC.PropValue("useHandleImage") <> "1" AND CurrentADC.PropValue("hideHandleBG") = "1" Then %}
 		background-color:none;
 	{% EndIF %}
@@ -475,7 +438,7 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 	{% IF CurrentADC.PropValue("sliderFocusBorderThickness") = "none" OR CurrentADC.PropValue("hideHandleBG") = "1" Then %}
 		border: none;
 	{% Else %}
-		border: {%= sliderFocusBorderThickness%} {%= sliderHandleBorderStyle%} rgb({%= sliderFocusBorderColour%}) !important;
+		border: {%= sliderFocusBorderThickness%} {%= sliderHandleBorderStyle%} rgb({%= sliderFocusBorderColour%});
 	{% EndIF %}	
 }
 
@@ -520,14 +483,7 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 	{% Else %}
 		border: {%= dkBorderThickness%} {%= dkBorderStyle%} rgb({%= dkBorderColour%});
 	{% EndIF %}	
-	background: rgb({%= dkColourPrimary%}); 
-	background: -moz-linear-gradient(top,  rgb({%= dkColourPrimary%}) 0%, rgb({%= dkColourSecondary%}) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= dkColourPrimary%})), color-stop(100%,rgb({%= dkColourSecondary%}))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  rgb({%= dkColourPrimary%}) 0%,rgb({%= dkColourSecondary%}) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  rgb({%= dkColourPrimary%}) 0%,rgb({%= dkColourSecondary%}) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  rgb({%= dkColourPrimary%}) 0%,rgb({%= dkColourSecondary%}) 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  rgb({%= dkColourPrimary%}) 0%,rgb({%= dkColourSecondary%}) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr={%= dkColourPrimary.ToHexa()%}, endColorstr={%= dkColourSecondary.ToHexa()%},GradientType=0 ); /* IE6-8 */
+	background-color: rgb({%= dkColourPrimary%});
 	
 	/* Effects */
 	-webkit-border-radius:	{%= dkBorderRadius%}; 
@@ -561,14 +517,7 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
     border: {%= dkHoverBorderThickness%} {%= dkHoverBorderStyle%} rgb({%= dkHoverBorderColour%});
 	{% EndIF %}
     {% IF CurrentADC.PropValue("showDkHoverColour") = "1" Then %}
-    background: rgb({%= dkHoverColourPrimary%}); 
-    background: -moz-linear-gradient(top,  rgb({%= dkHoverColourPrimary%}) 0%, rgb({%= dkHoverColourSecondary%}) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= dkHoverColourPrimary%})), color-stop(100%,rgb({%= dkHoverColourSecondary%}))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgb({%= dkHoverColourPrimary%}) 0%,rgb({%= dkHoverColourSecondary%}) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgb({%= dkHoverColourPrimary%}) 0%,rgb({%= dkHoverColourSecondary%}) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgb({%= dkHoverColourPrimary%}) 0%,rgb({%= dkHoverColourSecondary%}) 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  rgb({%= dkHoverColourPrimary%}) 0%,rgb({%= dkHoverColourSecondary%}) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr={%= dkHoverColourPrimary.ToHexa()%}, endColorstr={%= dkHoverColourSecondary.ToHexa()%},GradientType=0 ); /* IE6-8 */
+    background-color: rgb({%= dkHoverColourPrimary%});
 	{% EndIF %}
     -webkit-box-shadow: {%= dkHoverShadow%};
     -moz-box-shadow: {%= dkHoverShadow%};
@@ -587,14 +536,7 @@ Dim showMarkerText =CurrentADC.PropValue("showMarkerText")
 	{% Else %}
 		border: {%= dkSelectedBorderThickness%} {%= dkSelectedBorderStyle%} rgb({%= dkSelectedBorderColour%});
 	{% EndIF %}	
-	background: rgb({%= dkSelectedColourPrimary%}); 
-	background: -moz-linear-gradient(top,  rgb({%= dkSelectedColourPrimary%}) 0%, rgb({%= dkSelectedColourSecondary%}) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= dkSelectedColourPrimary%})), color-stop(100%,rgb({%= dkSelectedColourSecondary%}))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  rgb({%= dkSelectedColourPrimary%}) 0%,rgb({%= dkSelectedColourSecondary%}) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  rgb({%= dkSelectedColourPrimary%}) 0%,rgb({%= dkSelectedColourSecondary%}) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  rgb({%= dkSelectedColourPrimary%}) 0%,rgb({%= dkSelectedColourSecondary%}) 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  rgb({%= dkSelectedColourPrimary%}) 0%,rgb({%= dkSelectedColourSecondary%}) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr={%= dkSelectedColourPrimary.ToHexa()%}, endColorstr={%= dkSelectedColourSecondary.ToHexa()%},GradientType=0 ); /* IE6-8 */
+	background-color: rgb({%= dkSelectedColourPrimary%});
 	
 	-webkit-box-shadow: {%= dkSelectedShadow%};
 	-moz-box-shadow: {%= dkSelectedShadow%};

@@ -18,7 +18,7 @@
 		if (!$.support.transition) { $.fn.transition = $.fn.animate; }
 
 		var $container = $(this),
-			hideHandle = Boolean(options.hideHandle),
+			hideHandle = Boolean(options.hideHandle = "1"),
 			showValue = Boolean(options.showValue),
 			isSingle = Boolean(options.isSingle),
 			isInLoop = Boolean(options.isInLoop),
@@ -207,7 +207,9 @@
 					}
 
 					$(this).parents('.sliderContainer').find('.dk').removeClass('selected');
-
+                    if (window.askia) {
+                        askia.triggerAnswer();
+                    }
 				},
 				slide : function() {
 					if ( isInLoop ) { iteration = $(this).parents('.sliderContainer').data('iteration'); }
@@ -545,6 +547,9 @@
 					if ( e.which == 38 ) $input.val( valuesArray[ (value - parseInt(options.minValue) ) ] );
 					else if ( e.which == 40 ) $input.val( valuesArray[ (value - parseInt(options.minValue)) ] );
 				} else $input.val( roundToStep( value ) );
+                if (window.askia) {
+                    askia.triggerAnswer();
+                }
 			}
 		});
 
@@ -582,7 +587,9 @@
 				$('input[name="M' + DKID + ' -1"]').prop('checked', true);
 				$(this).parents('.sliderContainer').addClass('selected');
 			}
-
+            if (window.askia) {
+                askia.triggerAnswer();
+            }
 		}
 		$container.on('click', '.dk', selectDK);
 

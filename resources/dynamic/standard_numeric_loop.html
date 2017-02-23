@@ -1,4 +1,4 @@
-﻿{%
+{%
 Dim ar = CurrentQuestion.ParentLoop.AvailableResponses
 Dim inputName
 Dim inputValue
@@ -136,7 +136,7 @@ For j = 1 To ar.Count
         </table>
 
 				{% IF interconnection Then %}
-				<label><input class="freezeBox" type="checkbox" id="freeze{%= adcId %}_{%= j %}" onchange="dim{%= adcId %}(this.id)" />{%=freezeBoxLabel%}</label>
+				<label class="freezeLabel"><input class="freezeBox" type="checkbox" id="freeze{%= adcId %}_{%= j %}" onchange="dim{%= adcId %}(this.id)" />{%=freezeBoxLabel%}</label>
 				{% EndIF %}
 
     </div>
