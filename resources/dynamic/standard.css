@@ -575,3 +575,8 @@ Dim showMarkerText = CurrentADC.PropValue("showMarkerText")
     	display:none;
   	{% EndIF %}	  
 }
+#adc_{%= CurrentADC.InstanceId%} .noUi-marker-normal {
+    {% IF CurrentADC.PropValue("showSubMarkers") <> "1" Then %}
+    	display:none;
+  	{% EndIF %}	  
+}
