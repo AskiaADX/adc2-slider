@@ -13,6 +13,7 @@
 		(options.unitStep = options.unitStep || 1);
 		(options.sliderDirection = options.sliderDirection || "ltr");
         (options.connect = options.connect || false);
+        (options.currentQuestion = options.currentQuestion || '');
 
 		// Delegate .transition() calls to .animate() if the browser can't do CSS transitions.
 		if (!$.support.transition) { $.fn.transition = $.fn.animate; }
@@ -207,7 +208,10 @@
 					}
 
 					$(this).parents('.sliderContainer').find('.dk').removeClass('selected');
-                    if (window.askia) {
+                    if (window.askia 
+                        && window.arrLiveRoutingShortcut 
+                        && window.arrLiveRoutingShortcut.length > 0
+                        && window.arrLiveRoutingShortcut.indexOf(options.currentQuestion) >= 0) {
                         askia.triggerAnswer();
                     }
 				},
@@ -547,7 +551,10 @@
 					if ( e.which == 38 ) $input.val( valuesArray[ (value - parseInt(options.minValue) ) ] );
 					else if ( e.which == 40 ) $input.val( valuesArray[ (value - parseInt(options.minValue)) ] );
 				} else $input.val( roundToStep( value ) );
-                if (window.askia) {
+                if (window.askia 
+                    && window.arrLiveRoutingShortcut 
+                    && window.arrLiveRoutingShortcut.length > 0
+                    && window.arrLiveRoutingShortcut.indexOf(options.currentQuestion) >= 0) {
                     askia.triggerAnswer();
                 }
 			}
@@ -587,7 +594,10 @@
 				$('input[name="M' + DKID + ' -1"]').prop('checked', true);
 				$(this).parents('.sliderContainer').addClass('selected');
 			}
-            if (window.askia) {
+            if (window.askia 
+                && window.arrLiveRoutingShortcut 
+                && window.arrLiveRoutingShortcut.length > 0
+                && window.arrLiveRoutingShortcut.indexOf(options.currentQuestion) >= 0) {
                 askia.triggerAnswer();
             }
 		}
