@@ -1,4 +1,4 @@
-﻿<div id="adc_{%= CurrentQuestion.Id %}" class="adc-default">
+<div id="adc_{%= CurrentQuestion.Id %}" class="adc-default">
 {% If CurrentQuestion.Type = "single" and CurrentADC.PropValue("isInLoop") = "1" Then %}
     {%:= CurrentADC.GetContent("dynamic/single_loop.html").ToText() %}
 {% ElseIf CurrentQuestion.Type = "single" Then %}

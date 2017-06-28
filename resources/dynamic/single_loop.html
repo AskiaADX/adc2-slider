@@ -1,11 +1,11 @@
-﻿{%
+{%
 Dim useList   = (CurrentADC.PropValue("useList") = "1") ' Convert to boolean
 Dim inputName = CurrentQuestion.InputName()
 Dim inputValue
 Dim caption
 Dim imageAlign = CurrentADC.PropValue("imageAlign")
 Dim j
-Dim ar = CurrentQuestion.ParentLoop.AvailableResponses
+Dim ar = CurrentQuestion.ParentLoop.Answers
 Dim image
 
 Dim i
