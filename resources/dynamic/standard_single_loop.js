@@ -1,9 +1,9 @@
-﻿/* standard_single_loop.js */
+/* standard_single_loop.js */
 {% 
 Dim i 
 Dim j
 Dim inputName
-Dim ar = CurrentQuestion.ParentLoop.AvailableResponses
+Dim ar = CurrentQuestion.ParentLoop.Answers
 Dim avR = CurrentQuestion.AvailableResponses
 Dim allValues = avR[1].inputValue()
 

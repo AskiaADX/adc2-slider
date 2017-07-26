@@ -2,7 +2,7 @@
 {% 
 Dim i 
 Dim inputName
-Dim ar = CurrentQuestion.ParentLoop.AvailableResponses
+Dim ar = CurrentQuestion.ParentLoop.Answers
 
 For i = 1 To ar.Count 
 	inputName = CurrentQuestion.Iteration(ar[i].Index).InputName()
