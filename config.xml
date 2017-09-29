@@ -7,7 +7,7 @@
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <date>2014-05-21</date>
     <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
@@ -172,17 +172,29 @@
         <description><![CDATA[The slider height]]></description>
         <value><![CDATA[200px]]></value>
       </property>
-      <property xsi:type="standardProperty" id="showMarkers" name="Show markers" type="boolean" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="showMarkers" name="Show markers" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Show markers below base.]]></description>
         <value><![CDATA[1]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
-      <property xsi:type="standardProperty" id="showSubMarkers" name="Show sub markers" type="boolean" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="showSubMarkers" name="Show sub markers" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Show sub markers]]></description>
         <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
-      <property xsi:type="standardProperty" id="showMarkerText" name="Show marker text" type="boolean" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="showMarkerText" name="Show marker text" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Show marker text below markers.]]></description>
         <value><![CDATA[1]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
     </category>
     <category id="sliderBaseStyling" name="Slider Base Styling">
@@ -264,9 +276,13 @@
           <option value="max" text="Max" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="hideHandle" name="Hide handle at start" type="boolean" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="hideHandle" name="Hide handle at start" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Show or hide handle if no value is set]]></description>
         <value><![CDATA[1]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="sliderHandlePrimaryColour" name="Slider Handle Background Colour" type="color" mode="dynamic" require="true" visible="false">
         <description><![CDATA[Background colour of the Handle]]></description>
@@ -315,9 +331,13 @@
         <description><![CDATA[The thickness of the border around the slider Focus]]></description>
         <value><![CDATA[{%= Theme.BorderWidth %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="showValue" name="Show value on handle" type="boolean" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="showValue" name="Show value on handle" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Show value on handle]]></description>
         <value><![CDATA[1]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="handleText" name="Text to add on handle" type="string" mode="static" require="false" visible="true">
         <description><![CDATA[Text to add on handle]]></description>
@@ -335,9 +355,13 @@
         <description><![CDATA[Handle font colour]]></description>
         <value><![CDATA[{%= Theme.BlackColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="useHandleImage" name="Use Handle Image" type="boolean" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="useHandleImage" name="Use Handle Image" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Turn this on to use an image in the handle]]></description>
         <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="handleImagePath" name="Handle Image Path" type="string" mode="static" require="false" visible="true">
         <description><![CDATA[Path and filename of image to be used for handle]]></description>
@@ -351,15 +375,23 @@
         <description><![CDATA[Handle image height]]></description>
         <value></value>
       </property>
-      <property xsi:type="standardProperty" id="hideHandleBG" name="Hide Handle Background" type="boolean" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="hideHandleBG" name="Hide Handle Background" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Turn this on to hide the handle background and only display the image]]></description>
         <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
     </category>
     <category id="looped" name="Looped Questions">
-      <property xsi:type="standardProperty" id="isInLoop" name="Is in loop" type="boolean" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="isInLoop" name="Is in loop" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Turn this on to use the control in a loop]]></description>
         <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="captionAlign" name="Caption Alignment" type="string" mode="static" require="false" visible="true">
         <description><![CDATA[The alignment of the text in the caption when the question is looped]]></description>
@@ -396,11 +428,15 @@
           <option value="right" text="Right" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="interconnection" name="Interconnection between sliders" type="boolean" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="interconnection" name="Interconnection between sliders" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Connect each slider to the others within the same loop, so that the sum of their value to not go beyond a certain maximum.
       A checkbox is added to each slider, freezing them at their current position.
       Must be used on numeric question sliders, within a loop.]]></description>
         <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="freezeBoxLabel" name="Label for the freeze checkbox" type="string" mode="static" require="false" visible="true">
         <description><![CDATA[The label for the checkbox freezing the current slider]]></description>
@@ -422,7 +458,7 @@
       </property>
       <property xsi:type="standardProperty" id="controlAlign" name="Control Alignment" type="string" mode="static" require="false" visible="true">
         <description><![CDATA[The alignment of the control]]></description>
-        <value><![CDATA[left]]></value>
+        <value><![CDATA[center]]></value>
         <options>
           <option value="left" text="Left" />
           <option value="center" text="Center" />
@@ -518,11 +554,15 @@
           <option value="none" text="Off" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="useList" name="Use a selection list" type="boolean" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="useList" name="Use a selection list" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Use a select list to enumerate all available responses.
           This option works with closed and numeric questions.
           For numeric question, the range between bounds should be inferior than 20. It take in account the step option.]]></description>
         <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
     </category>
     <category id="images" name="Images">
@@ -554,9 +594,13 @@
       </property>
     </category>
     <category id="dk" name="DK">
-      <property xsi:type="standardProperty" id="dkSingle" name="Turn on DK for single choice question" type="boolean" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="dkSingle" name="Turn on DK for single choice question" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Whether or not to use the last single choice option as a DK]]></description>
         <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="dkPosition" name="DK Position" type="string" mode="static" require="false" visible="true">
         <description><![CDATA[Position of DK]]></description>
@@ -618,25 +662,37 @@
           <option value="none" text="Off" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="showDkHoverColour" name="Show DK Hover Colour" type="boolean" mode="static" require="false" visible="false">
+      <property xsi:type="standardProperty" id="showDkHoverColour" name="Show DK Hover Colour" type="string" mode="dynamic" require="true" visible="false">
         <description><![CDATA[This will change the colour of DK when hovered over]]></description>
         <value><![CDATA[1]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="dkHoverColourPrimary" name="DK Hover Colour Primary" type="color" mode="dynamic" require="true" visible="false">
         <description><![CDATA[Primary colour of the DK when hovering]]></description>
         <value><![CDATA[{%= Theme.WhiteColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="showDkHoverFontColour" name="Show DK Hover Font Colour" type="boolean" mode="static" require="false" visible="false">
+      <property xsi:type="standardProperty" id="showDkHoverFontColour" name="Show DK Hover Font Colour" type="string" mode="dynamic" require="true" visible="false">
         <description><![CDATA[This will change the colour of the text of DK when hovered over]]></description>
         <value><![CDATA[1]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="dkHoverFontColour" name="DK Hover Font Colour" type="color" mode="dynamic" require="true" visible="false">
         <description><![CDATA[Font colour for DK when hovering]]></description>
         <value><![CDATA[{%= Theme.BlackColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="showDkHoverBorder" name="Show DK Hover Border" type="boolean" mode="static" require="false" visible="false">
+      <property xsi:type="standardProperty" id="showDkHoverBorder" name="Show DK Hover Border" type="string" mode="dynamic" require="true" visible="false">
         <description><![CDATA[This will change the colour of the border of DK when hovered over]]></description>
         <value><![CDATA[1]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="dkHoverBorderColour" name="DK Hover Border Colour" type="color" mode="dynamic" require="true" visible="false">
         <description><![CDATA[Border colour for DK when hovering]]></description>
@@ -657,9 +713,13 @@
           <option value="double" text="Double" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="showDkHoverShadow" name="Show DK Hover Shadow" type="boolean" mode="static" require="false" visible="false">
+      <property xsi:type="standardProperty" id="showDkHoverShadow" name="Show DK Hover Shadow" type="string" mode="dynamic" require="true" visible="false">
         <description><![CDATA[This will change the colour of the shadow of DK when hovered over]]></description>
         <value><![CDATA[1]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="dkHoverShadow" name="DK Hover Drop Shadow" type="string" mode="static" require="false" visible="false">
         <description><![CDATA[The visibility of a dropshadow under the DK when hovering]]></description>
