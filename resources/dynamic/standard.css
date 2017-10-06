@@ -580,3 +580,13 @@ Dim showMarkerText = CurrentADC.PropValue("showMarkerText")
     	display:none;
   	{% EndIF %}	  
 }
+#adc_{%= CurrentADC.InstanceId%} .freezeLabel {
+    {% IF (CurrentADC.PropValue("showMarkers") = "1" and CurrentADC.PropValue("showMarkerText") = "1") Then %}
+    	margin-top: 25px;
+    {% ElseIf (CurrentADC.PropValue("showMarkers") = "1" and CurrentADC.PropValue("showMarkerText") = "0") Then %}
+    	margin-top: 15px;
+    {% Else %}
+    	margin-top: 0px;
+  	{% EndIF %}
+    
+}

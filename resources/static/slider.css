@@ -18,6 +18,7 @@
 .caption { display:block; width:100%; padding:10px 0; clear:both; }
 
 .freezeLabel {
+    display: block;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;

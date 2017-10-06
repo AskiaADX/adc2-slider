@@ -19,7 +19,7 @@
 		if (!$.support.transition) { $.fn.transition = $.fn.animate; }
 
 		var $container = $(this),
-			hideHandle = Boolean(options.hideHandle = "1"),
+			hideHandle = Boolean(options.hideHandle),
 			showValue = Boolean(options.showValue),
 			isSingle = Boolean(options.isSingle),
 			isInLoop = Boolean(options.isInLoop),
