@@ -26,7 +26,8 @@ function dim{%= adcId %}(cbid){
      }else{
 		associatedSlider.removeAttr("disabled");
 		associatedSlider.removeClass("greyOut{%= adcId %}");
-		if(Number(associatedSlider.val())>0){
+        associatedSlider.addClass('movable{%= adcId %}');
+		if(Number(associatedSlider.val())>= 0){
 			associatedSlider.parents('.sliderContainer').addClass('selected');
 		}
 	 }
@@ -48,6 +49,7 @@ function recalculate{%= adcId %} (currentSlider) {
 	var sumGreyOut = 0.0;
 	var sumMovable = 0.0;
 	var nbSlidersMovable = 0;
+    var nbMovable = 0;
 
 
 	$(".greyOut{%= adcId %}").each(function(index,slider) {
@@ -56,20 +58,36 @@ function recalculate{%= adcId %} (currentSlider) {
 	var delta = {%= maxForInterconnection %} -currentValue -sumGreyOut;
 
 	$(".movable{%= adcId %}").each(function(index,slider) {
+        nbMovable += 1; 
 		sumMovable += Number($(slider).val());
 	})
 
-	if (sumMovable === 0){
-		$(currentSlider).val({%= maxForInterconnection %} - sumGreyOut);
-	}else if(sumGreyOut+currentValue>{%= maxForInterconnection %}){
-		$(currentSlider).val({%= maxForInterconnection %} - sumGreyOut);
-		recalculate{%= adcId %}(currentSlider);
-	}else{
-		$(".movable{%= adcId %}").each(function(index,slider) {
-			var val = Number( ( Number($(slider).val())/sumMovable)*delta );
-			$(slider).val(val);
-		})
-	}
+	if (nbMovable > 1 && currentValue !== sumMovable) {
+    	$(".movable{%= adcId %}").each(function(index,slider) {
+        	if ($(slider)[0].id !== $(currentSlider)[0].id) {
+            	var val = Number( ( Number($(slider).val())  / (sumMovable - Number($(currentSlider).val())) ) * delta );
+        		$(slider).val(val);
+        	} else if (($(slider)[0].id === $(currentSlider)[0].id) && (delta < 0) ) {
+                var val = Number( currentValue + delta );
+        		$(slider).val(val);
+            }
+    	});    
+    } else if (nbMovable > 1 && currentValue === sumMovable) {
+        $(".movable{%= adcId %}").each(function(index,slider) {
+        	if ($(slider)[0].id !== $(currentSlider)[0].id) {
+            	var val = Number( delta / (nbMovable - 1) );
+        		$(slider).val(val);
+        	} else if (($(slider)[0].id === $(currentSlider)[0].id) && (delta < 0) ) {
+                var val = Number( currentValue + delta );
+        		$(slider).val(val);
+            }
+    	});
+    } else {
+        if (delta < 0) {
+            var val = Number( currentValue + delta );
+        	$(currentSlider).val(val);
+        }
+    }
 
 	$("#adc_{%= adcId %} .noUiSlider").each(function(index,slider) {
 		if(Number($(slider).val())==0){
@@ -93,12 +111,9 @@ $(document).ready(function() {
 		set: function(){
 		},
 		change: function(){
-			$("#adc_{%= adcId %} .noUiSlider").each(function(index,slider) {
-				if(!($(slider).hasClass("greyOut{%= adcId %}"))){
-					$(slider).addClass('movable{%= adcId %}');
-				}
-			})
-			$(this).removeClass('movable{%= adcId %}');
+            if (!($(this).hasClass("greyOut{%= adcId %}"))) {
+            	$(this).addClass('movable{%= adcId %}');
+            }
 			recalculate{%= adcId %}(this);
 		}
 	});
