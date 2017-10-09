@@ -7,7 +7,8 @@ Dim nbItemsInLoop = ar.Count
 
 Dim adcId = CurrentADC.InstanceId
 Dim interconnection = (CurrentADC.PropValue("interconnection") = "1")
-Dim maxForInterconnection=CurrentADC.PropValue("maxValue")
+Dim maxForInterconnection = CurrentADC.PropValue("maxValue")
+Dim hideHandle = CurrentADC.PropValue("hideHandle")
 
 If interconnection = true Then
 %}
@@ -101,6 +102,9 @@ $(document).ready(function() {
 
 	$('#adc_{%= adcId %} .noUiSlider').each(function(i) {
 		$(this).attr('id','myslider{%= adcId %}_'+(i+1));
+        {% If (hideHandle = "0") Then %}
+        $(this).addClass('movable{%= adcId %}');
+        {% EndIf %}
 	});
 
 
