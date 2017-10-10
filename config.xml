@@ -7,7 +7,7 @@
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>2.0.4</version>
+    <version>2.0.5</version>
     <date>2014-05-21</date>
     <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
@@ -62,7 +62,10 @@
 		v1.1.16 - JD - Fixed selected style applied when digit applied to numerical slider
 		v1.1.17 - JD - Fixed coma digit for french intermediate value
 		v1.1.18 - SB - removed visibility:hidden on ControlContainer
-		v2.0.0 - JD - Theme implementation]]></description>
+		v2.0.0 - JD - Theme implementation
+		v2.0.5 - When using in a loop multiple labels can be used split by "|" (pipe)
+				  - Added option to hide captions
+	]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>]]></author>
     <site>http://www.askia.com</site>
@@ -387,6 +390,14 @@
     <category id="looped" name="Looped Questions">
       <property xsi:type="standardProperty" id="isInLoop" name="Is in loop" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Turn this on to use the control in a loop]]></description>
+        <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="hideCaption" name="Hide Caption" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Turn this on to hide the caption]]></description>
         <value><![CDATA[0]]></value>
         <options>
           <option value="1" text="Yes" />

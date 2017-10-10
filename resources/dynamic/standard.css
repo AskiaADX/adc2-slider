@@ -94,6 +94,8 @@ Dim useHandleImage = CurrentADC.PropValue("useHandleImage")
 
 Dim showMarkerText = CurrentADC.PropValue("showMarkerText")
 
+Dim hideCaption = CurrentADC.PropValue("hideCaption")
+
 %}
 
 #adc_{%= CurrentADC.InstanceId%} .sliderContainer { 
@@ -447,6 +449,9 @@ Dim showMarkerText = CurrentADC.PropValue("showMarkerText")
 	text-align:{%= captionAlign%};
 	font-size:{%= fontSize%};
 	padding:{%= captionPadding%};
+    {% IF CurrentADC.PropValue("hideCaption") = "1" Then %}
+    display:none;
+    {% EndIF %}	
 }
 
 #adc_{%= CurrentADC.InstanceId%} .noUi-horizontal {

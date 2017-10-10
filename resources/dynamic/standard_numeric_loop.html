@@ -6,6 +6,8 @@ Dim caption
 Dim image
 Dim j
 Dim labelCount = 0
+Dim leftLabelArray
+Dim rightLabelArray
 
 Dim adcId = CurrentADC.InstanceId
 Dim interconnection = (CurrentADC.PropValue("interconnection") = "1")
@@ -13,9 +15,11 @@ Dim freezeBoxLabel = CurrentADC.PropValue("freezeBoxLabel")
 
 IF CurrentADC.PropValue("rightLabelText") <> "" Then
 	labelCount = labelCount + 1
+    rightLabelArray = CurrentADC.PropValue("rightLabelText").Split("|")
 EndIF
 IF CurrentADC.PropValue("leftLabelText") <> "" Then
 	labelCount = labelCount + 1
+    leftLabelArray = CurrentADC.PropValue("leftLabelText").Split("|")
 EndIF
 
 For j = 1 To ar.Count
@@ -46,13 +50,21 @@ For j = 1 To ar.Count
                 <tr valign="middle" class="sliderTop">
                     {% IF CurrentADC.PropValue("leftLabelText") <> "" Then %}
                     <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-bottom:10px;" align="left">
+                        {% IF leftLabelArray.Count > 1 Then %}
+                        <div class="leftLabel"><div class="sliderLabel">{%:= leftLabelArray[ar[j].Index] %}</div></div>
+                        {% Else %}
                         <div class="leftLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("leftLabelText") %}</div></div>
+                        {% EndIF %}
                     </td>
                     {% EndIF %}
                     <td width="100%"></td>
                     {% IF CurrentADC.PropValue("rightLabelText") <> "" Then %}
                     <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-bottom:10px;" align="right">
+                        {% IF rightLabelArray.Count > 1 Then %}
+                        <div class="rightLabel"><div class="sliderLabel">{%:= rightLabelArray[ar[j].Index] %}</div></div>
+                        {% Else %}
                         <div class="rightLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("rightLabelText") %}</div></div>
+                        {% EndIF %}
                     </td>
                     {% EndIF %}
                 </tr>
@@ -76,13 +88,21 @@ For j = 1 To ar.Count
                     <tr valign="middle" class="sliderTop">
                         {% IF CurrentADC.PropValue("leftLabelText") <> "" Then %}
                         <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-bottom:10px;" align="left">
+                            {% IF leftLabelArray.Count > 1 Then %}
+                            <div class="leftLabel"><div class="sliderLabel">{%:= leftLabelArray[ar[j].Index] %}</div></div>
+                            {% Else %}
                             <div class="leftLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("leftLabelText") %}</div></div>
+                            {% EndIF %}
                         </td>
                        {% EndIF %}
                        <td width="100%"></td>
                        {% IF CurrentADC.PropValue("rightLabelText") <> "" Then %}
                         <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-bottom:10px;" align="right">
+                            {% IF rightLabelArray.Count > 1 Then %}
+                            <div class="rightLabel"><div class="sliderLabel">{%:= rightLabelArray[ar[j].Index] %}</div></div>
+                            {% Else %}
                             <div class="rightLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("rightLabelText") %}</div></div>
+                            {% EndIF %}
                         </td>
                         {% EndIF %}
                     </tr>
@@ -91,14 +111,22 @@ For j = 1 To ar.Count
 
             	<tr valign="middle" class="sliderMiddle">
                 	{% IF CurrentADC.PropValue("leftLabelText") <> "" and CurrentADC.PropValue("displayLabelText") <> "none" Then %}
-                        <td width="{%= CurrentADC.PropValue("labelWidth") %}" align="left" style="text-align:left;">
+                    <td width="{%= CurrentADC.PropValue("labelWidth") %}" align="left" style="text-align:left;">
+                        {% IF leftLabelArray.Count > 1 Then %}
+                        <div class="leftLabel"><div class="sliderLabel">{%:= leftLabelArray[ar[j].Index] %}</div></div>
+                        {% Else %}
                         <div class="leftLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("leftLabelText") %}</div></div>
+                        {% EndIF %}
                     </td>
                     {% EndIF %}
                     <td align="left"><div class="noUiSlider noUi-extended"></div></td>
                     {% IF CurrentADC.PropValue("rightLabelText") <> "" and CurrentADC.PropValue("displayLabelText") <> "none" Then %}
                     <td width="{%= CurrentADC.PropValue("labelWidth") %}" align="right" style="text-align:right;">
+                        {% IF rightLabelArray.Count > 1 Then %}
+                        <div class="rightLabel"><div class="sliderLabel">{%:= rightLabelArray[ar[j].Index] %}</div></div>
+                        {% Else %}
                         <div class="rightLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("rightLabelText") %}</div></div>
+                        {% EndIF %}
                     </td>
                     {% EndIF %}
                 </tr>
@@ -115,13 +143,21 @@ For j = 1 To ar.Count
                 <tr valign="middle" class="sliderBottom">
                     {% IF CurrentADC.PropValue("leftLabelText") <> "" Then %}
                     <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-top:10px;" align="left">
+                        {% IF leftLabelArray.Count > 1 Then %}
+                        <div class="leftLabel"><div class="sliderLabel">{%:= leftLabelArray[ar[j].Index] %}</div></div>
+                        {% Else %}
                         <div class="leftLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("leftLabelText") %}</div></div>
+                        {% EndIF %}
                     </td>
                    {% EndIF %}
                    <td width="100%"></td>
                    {% IF CurrentADC.PropValue("rightLabelText") <> "" Then %}
                     <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-top:10px;" align="right">
+                        {% IF rightLabelArray.Count > 1 Then %}
+                        <div class="rightLabel"><div class="sliderLabel">{%:= rightLabelArray[ar[j].Index] %}</div></div>
+                        {% Else %}
                         <div class="rightLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("rightLabelText") %}</div></div>
+                        {% EndIF %}
                     </td>
                     {% EndIF %}
                 </tr>
@@ -149,7 +185,11 @@ For j = 1 To ar.Count
         	{% IF CurrentADC.PropValue("rightLabelText") <> "" Then %}
         	<tr valign="middle">
                 <td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-bottom:10px;" align="center">
+                    {% IF rightLabelArray.Count > 1 Then %}
+                    <div class="rightLabel"><div class="sliderLabel">{%:= rightLabelArray[ar[j].Index] %}</div></div>
+                    {% Else %}
                     <div class="rightLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("rightLabelText") %}</div></div>
+                    {% EndIF %}
                 </td>
             </tr>
             {% EndIF %}
@@ -159,7 +199,11 @@ For j = 1 To ar.Count
             {% IF CurrentADC.PropValue("leftLabelText") <> "" Then %}
             <tr valign="middle">
             	<td width="{%= CurrentADC.PropValue("labelWidth") %}" style="padding-top:10px;">
+                    {% IF leftLabelArray.Count > 1 Then %}
+                    <div class="leftLabel"><div class="sliderLabel">{%:= leftLabelArray[ar[j].Index] %}</div></div>
+                    {% Else %}
                     <div class="leftLabel"><div class="sliderLabel">{%:= CurrentADC.PropValue("leftLabelText") %}</div></div>
+                    {% EndIF %}
                 </td>
             </tr>
             {% EndIF %}
