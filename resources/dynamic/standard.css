@@ -599,5 +599,13 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
     {% Else %}
     	margin-top: 0px;
   	{% EndIF %}
-    
+}
+
+/* tooltips */
+.tippy-tooltip {
+	background-color: {%= Theme.PrimaryDarkColor.ToString().ToHexa() %} !important;
+    border: 2px solid {%= Theme.PrimaryLightColor.ToString().ToHexa() %} !important;
+}
+.tippy-tooltip .tippy-tooltip-content {
+	color: {%= Theme.WhiteColor.ToString().ToHexa() %} !important;
 }

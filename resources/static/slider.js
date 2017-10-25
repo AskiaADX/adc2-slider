@@ -33,6 +33,7 @@
 			rightLabelText = Boolean(options.rightLabelText),
 			displayLabelText = (options.displayLabelText === "block") ? true : false,
 			labelPlacement = options.labelPlacement,
+            showTooltips = Boolean(options.showTooltips),
 			showMarkers = Boolean(options.showMarkers),
             showMarkerText = Boolean(options.showMarkerText),
 			interconnection = Boolean(options.interconnection),
@@ -53,7 +54,6 @@
 		function filter500( value, type ){
 			return value % 100 ? 2 : 1;
 		}
-		
 
 		$(this).css({'max-width':options.maxWidth,'width':options.controlWidth});
 		/*if ( isInLoop ) $(this).parents('.controlContainer').css({'width':'100%','overflow':'hidden'});*/
@@ -191,8 +191,7 @@
 					if(!interconnection){ // (the interaction is bad with interconnected sliders, the handles will be shown on slide, not on set)
 						// make handle visible and add focus
 						$(this).parents('.controlContainer').find('.slider').eq(iteration).addClass('focused').find('.noUi-handle').show();
-
-
+                                                
 						// set slider base colour once selected
 						$container.addClass('selected');
 					}
@@ -206,6 +205,11 @@
 						var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 						element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 					}
+                    if (showTooltips) {
+						var element = $(this).parents('.controlContainer'),
+							handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) );
+                     	element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
+                    }
 
 					$(this).parents('.sliderContainer').find('.dk').removeClass('selected');
                     if (window.askia 
@@ -229,6 +233,13 @@
 						var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 						element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 					}
+                   if (showTooltips) {
+                        var element = $(this).parents('.controlContainer'),
+                            handleValue = isSingle ?
+                                ( isInLoop ? ( decimalPlaces > 0 ? parseFloat(roundToStep($(this).val())).toFixed(decimalPlaces) : roundToStep($(this).val()) ) : $.inArray(roundToStep(items[ roundToStep( $(this).val() - roundToStep(options.minValue) ) ].value), valuesArray) + roundToStep(options.minValue) ) :
+                                ( decimalPlaces > 0 ? parseFloat(roundToStep(roundToStep( $(this).val() ))).toFixed(decimalPlaces) : roundToStep(roundToStep( $(this).val() )) ) ;                     	
+                        element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
+                    }
 
 					$(this).parents('.sliderContainer').eq(iteration).find('.dk').removeClass('selected');
 
@@ -400,8 +411,6 @@
 
 				$('.sliderBottom .leftLabel, .sliderBottom .rightLabel').width(availableWidth + 'px').show();
 
-				//alert( $container.outerWidth() )
-
 				//$('.bottomLabels.left').css('position','');
 				//$('.bottomLabels').hide();
 				//$('.topLabels').show();
@@ -462,7 +471,20 @@
         	var additionalHeight = $(this).find('.noUi-pips-horizontal').outerHeight();
             $(this).css('marginBottom',additionalHeight + 'px');
         });
-        
+        if ( showTooltips) {
+            $('.noUi-handle').each(function() {
+            	if ( !$(this).attr('title')  ) $(this).attr('title',' ');
+            });
+            tippy(document.querySelectorAll('.noUi-handle'), {
+                arrow: true,
+            	dynamicTitle: true,
+            	sticky: true,
+            	hideOnClick: 'persistent',
+                duration: 0,
+                trigger: 'mouseenter focus click',
+                interactive: true
+            });
+		}
 		// hide handle
 		if ( hideHandle && !(roundToStep($input.val()) >= 0) ) $('.noUi-handle').hide();
 
@@ -479,7 +501,6 @@
 					element.find('.handleValue').eq(i).css('padding-top', '');
 					var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(i).height() - element.find('.handleValue').eq(i).outerHeight() ) * 0.5);
 					element.find('.handleValue').eq(i).css('padding-top', topAdj + 'px');
-
 				}
 
 			}

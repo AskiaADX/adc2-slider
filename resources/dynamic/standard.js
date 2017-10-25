@@ -33,6 +33,7 @@ $(window).load(function() {
 		rightLabelText : {%= (CurrentADC.PropValue("rightLabelText") <> "") %},
 		displayLabelText : '{%= CurrentADC.PropValue("displayLabelText") %}',
 		labelPlacement : '{%= CurrentADC.PropValue("labelPlacement") %}',
+        showTooltips : {%= (CurrentADC.PropValue("showTooltips") = "1") %},
 		showMarkers : {%= (CurrentADC.PropValue("showMarkers") = "1") %},
         showMarkerText : {%= (CurrentADC.PropValue("showMarkerText") = "1") %},
 		interconnection : {%= (CurrentADC.PropValue("interconnection") = "1") %},
