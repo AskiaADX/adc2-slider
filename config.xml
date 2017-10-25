@@ -7,7 +7,7 @@
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>2.0.5</version>
+    <version>2.0.6</version>
     <date>2014-05-21</date>
     <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
@@ -65,7 +65,11 @@
 		v2.0.0 - JD - Theme implementation
 		v2.0.5 - When using in a loop multiple labels can be used split by "|" (pipe)
 				  - Added option to hide captions
-	]]></description>
+		v.2.0.6 - Fixed issue with single choice displaying incorrect scale in pips
+				   - Fixed issue with pip and vertical layout
+				   - Fixed issue with handle position and vertical layout
+				   - Fixed issue with spacing and multiple sliders in loop
+]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>]]></author>
     <site>http://www.askia.com</site>

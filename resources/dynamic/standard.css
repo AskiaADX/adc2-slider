@@ -56,6 +56,9 @@ IF CurrentADC.PropValue("sliderOrientation") = "vertical" Then
 		sliderHandleBorderThicknessNumber = sliderHandleBorderThicknessNumber.Replace("px","")
 		sliderHandleBorderThicknessNumber = sliderHandleBorderThicknessNumber.Replace("%","")
 		sliderHandleBorderThicknessNumber = sliderHandleBorderThicknessNumber.Replace("none","0")
+    IF sliderHandleBorderThicknessNumber.Right(2) = "em" Then
+        sliderHandleBorderThicknessNumber = "1"
+    EndIf
 	halfHandleWidth = ((sliderHandleWidth.ToNumber() + (sliderHandleBorderThicknessNumber.ToNumber()*2)) - sliderBaseHeight.ToNumber() )/2
 	halfHandleHeight = (sliderHandleHeight.ToNumber() + (sliderHandleBorderThicknessNumber.ToNumber()*2))/2
 EndIF
@@ -463,6 +466,9 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 	left: -{%= halfHandleWidth%}px;
 	top: {%= halfHandleHeight%}px; /* Coming out as -- */
 }
+#adc_{%= CurrentADC.InstanceId%} .noUi-vertical {
+	width: {%= sliderBaseHeight%}px;
+}
 #adc_{%= CurrentADC.InstanceId%} .noUi-vertical .noUi-handle {
 	width: {%= sliderHandleWidth%}px;
 	height: {%= sliderHandleHeight%}px;
@@ -566,13 +572,13 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 
 #adc_{%= CurrentADC.InstanceId%} .noUi-vertical.noUi-extended {
 	position:relative;
-	padding-bottom: {%= sliderHandleWidth.ToNumber() - 2%}px;
+    padding-bottom: {%= sliderHandleHeight.ToNumber() - 2%}px;
 }
 #adc_{%= CurrentADC.InstanceId%} .noUi-vertical.noUi-extended .noUi-handle {
 	top: -1px;
 }
 #adc_{%= CurrentADC.InstanceId%} .noUi-vertical.noUi-extended .noUi-origin  {
-	bottom: -{%= sliderHandleWidth.ToNumber() - 2%}px;
+	bottom: -{%= sliderHandleHeight.ToNumber() - 2%}px;
 }
 
 #adc_{%= CurrentADC.InstanceId%} .noUi-value {
