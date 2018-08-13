@@ -70,6 +70,7 @@
 				   - PF - Fixed issue with handle position and vertical layout
 				   - PF - Fixed issue with spacing and multiple sliders in loop
 		v.2.0.7 - PF - Added tooltips
+		v2.0.8 - Added alt attribute to img
 ]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>]]></author>

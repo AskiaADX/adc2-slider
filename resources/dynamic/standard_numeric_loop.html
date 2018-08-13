@@ -27,6 +27,18 @@ For j = 1 To ar.Count
     caption   = ar[j].Caption
     image	  = ar.ResourceURL[j]
 %}
+
+<script>
+window.addEventListener("load", function() {
+    var imgTags = document.getElementsByTagName("img");
+    for (var i = 0; i < imgTags.length; i++) {
+        if (!imgTags[i].hasAttribute("alt")) {
+            imgTags[i].alt = imgTags[i].src.split("/")[imgTags[i].src.split("/").length-1].split(".")[0];
+        }
+    }
+}, false);
+</script>
+
 <!-- numeric loop -->
 	<input type="hidden" id="{%= inputName %}" name="{%= inputName %}" value="{%= CurrentQuestion.Iteration(ar[j].Index).inputValue() %}" class="result" />
 
@@ -35,11 +47,11 @@ For j = 1 To ar.Count
         <div class="sliderContainer" data-iteration="{%= j-1 %}">
         	<label class="caption">
                 {% IF CurrentADC.PropValue("imageAlign") = "left" Then %}
-                    {% IF image <> "" Then %} <img src="{%= image %}" /> {% EndIF %}
+                {% IF image <> "" Then %} <img src="{%= image %}" alt="{%= caption %}"/> {% EndIF %}
                 {% EndIF %}
                 {%:= caption %}
                 {% IF CurrentADC.PropValue("imageAlign") = "right" Then %}
-                    {% IF image <> "" Then %} <img src="{%= image %}" /> {% EndIF %}
+                {% IF image <> "" Then %} <img src="{%= image %}" alt="{%= caption %}"/> {% EndIF %}
                 {% EndIF %}
             </label>
             <table class="slider" border="0" cellpadding="0" cellspacing="0" width="100%">
