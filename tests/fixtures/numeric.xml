@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <fixture xmlns="http://www.askia.com/ADCUnitTestSchema"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.askia.com/ADCUnitTestSchema http://www.askia.com/Downloads/dev/schemas/adc2.0/UnitTests.xsd">
@@ -22,7 +22,7 @@
 	</Modality>
 	</Modalities>
 	<Questions>
-      <Question ID="1" Shortcut="numeric" Order="1" ElementType="question" AllowDK="1" QuestionType="numeric" Min="0" Max="10" Decimals="0" Translated="0">
+      <Question ID="1" Shortcut="numeric" Order="1" ElementType="question" AllowDK="1" QuestionType="numeric" Min="0" Max="100" Decimals="0" Translated="0">
       <LongCaption>numeric</LongCaption>
 	</Question>
 	</Questions>

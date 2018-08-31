@@ -40,6 +40,7 @@ $(window).load(function() {
         decimalPlaces : {%= CurrentADC.PropValue("decimalPlaces") %},
       	currentQuestion: '{%:= CurrentQuestion.Shortcut %}',
         connect : '{%= CurrentADC.PropValue("sliderConnect") %}',
+				stepMarkerText : {%= CurrentADC.PropValue("stepMarkerText")%},
 		items : [
 			{% IF CurrentADC.PropValue("isInLoop") = "1" Then %}
 				{% IF CurrentQuestion.Type = "single" Then %}
