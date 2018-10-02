@@ -323,7 +323,7 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 	
 	/* border */
 	{% IF CurrentADC.PropValue("sliderHandleBorderThickness") = "none" OR CurrentADC.PropValue("hideHandleBG") = "1" Then %}
-		border: none;
+		border: 0px solid transparent;
 	{% Else %}
 		border: {%= sliderHandleBorderThickness%} {%= sliderHandleBorderStyle%} rgb({%= sliderHandleBorderColour%});
 	{% EndIF %}	
@@ -338,8 +338,9 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 	{% IF CurrentADC.PropValue("useHandleImage") <> "1" AND CurrentADC.PropValue("hideHandleBG") <> "1" Then %}
 		background-color: rgb({%= sliderHandlePrimaryColour%});
 	{% ElseIF CurrentADC.PropValue("hideHandleBG") = "1" Then %}
-		background-color:none;
+		background-color:transparent;
 		box-shadow: none;
+    	outline: none;
 	{% EndIF %}	
 	
 	-webkit-border-radius:	{%= sliderHandleBorderRadius%}; 
