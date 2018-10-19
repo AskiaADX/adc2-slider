@@ -101,7 +101,7 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 
 %}
 
-#adc_{%= CurrentADC.InstanceId%} .sliderContainer { 
+#adc_{%= CurrentADC.InstanceId%} .sliderContainer {
 	position:relative;
 	text-align:{%= controlAlign%};
 	{% IF controlAlign = "center" Then %}
@@ -111,11 +111,11 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 		margin:0px;
 		width:auto;
 	{% EndIF %}
-	
+
 	margin-bottom:20px;
 }
 
-#adc_{%= CurrentADC.InstanceId%} .slider { 
+#adc_{%= CurrentADC.InstanceId%} .slider {
 	position:relative;
 	/*width:100%;*/
 	/*margin:0px auto;*/
@@ -125,31 +125,31 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
     border-radius: 0px;
 }
 
-#adc_{%= CurrentADC.InstanceId%} .slider tr, #adc_{%= CurrentADC.InstanceId%} .slider tr td { 
+#adc_{%= CurrentADC.InstanceId%} .slider tr, #adc_{%= CurrentADC.InstanceId%} .slider tr td {
 	min-height:0;
 }
 
-#adc_{%= CurrentADC.InstanceId%} .sliderLabel { 
-	
+#adc_{%= CurrentADC.InstanceId%} .sliderLabel {
+
 	/* Decoration */
 	{% IF CurrentADC.PropValue("borderThickness") = "none" Then %}
 		border: none;
 	{% Else %}
 		border: {%= borderThickness%} {%= borderStyle%} rgb({%= borderColour%});
-	{% EndIF %}	
+	{% EndIF %}
 
 	background-color: rgb({%= labelColourPrimary%});
-	
+
 	/* Effects */
-	-webkit-border-radius:	{%= labelBorderRadius%}; 
-	-moz-border-radius:		{%= labelBorderRadius%}; 
-	-khtml-border-radius:	{%= labelBorderRadius%}; 
+	-webkit-border-radius:	{%= labelBorderRadius%};
+	-moz-border-radius:		{%= labelBorderRadius%};
+	-khtml-border-radius:	{%= labelBorderRadius%};
 	border-radius:			{%= labelBorderRadius%};
-	
+
 	-webkit-box-shadow: {%= labelShadow%};
 	-moz-box-shadow: {%= labelShadow%};
 	box-shadow: {%= labelShadow%};
-	
+
 	display:{%= displayLabelText%};
 	font-size:{%= fontSize%};
 	{% IF CurrentADC.PropValue("textAlign") <> "lr" And CurrentADC.PropValue("textAlign") <> "rl" Then %}
@@ -158,23 +158,23 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 	color:rgb({%= fontColour%});
 	padding:{%= labelTextPadding%};
 	line-height:{%= labelTextLineHeight%};
-	
+
 	position:relative;
 	display:block;
 }
 
 #adc_{%= CurrentADC.InstanceId%} .left, #adc_{%= CurrentADC.InstanceId%} .right, .rightLabel, .leftLabel {
-	width: {%= labelWidth%};  
+	width: {%= labelWidth%};
 	position:relative;
 	display:block;
 }
 
 #adc_{%= CurrentADC.InstanceId%} { width:100%; }
 #adc_{%= CurrentADC.InstanceId%} .leftLabel {
-	position:relative; 
+	position:relative;
 	display:block;
-	margin: 0px; 
-	
+	margin: 0px;
+
 	{% IF CurrentADC.PropValue("textAlign") = "lr" OR CurrentADC.PropValue("textAlign") = "left" Then %}
 		text-align:left;
 	{% ElseIF CurrentADC.PropValue("textAlign") = "rl" OR CurrentADC.PropValue("textAlign") = "right" Then %}
@@ -185,18 +185,18 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 	{% IF CurrentADC.PropValue("sliderOrientation") = "horizontal" Then %}
 		margin-right:10px;
 	{% EndIF %}
-	
+
 	/* disable highlight text */
-	-moz-user-select: none; 
-	-webkit-user-select: none; 
-	-ms-user-select:none; 
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
 	user-select:none;
 }
-#adc_{%= CurrentADC.InstanceId%} .rightLabel { 
+#adc_{%= CurrentADC.InstanceId%} .rightLabel {
 	position:relative;
 	display:block;
 	margin: 0px;
-	
+
 	{% IF CurrentADC.PropValue("textAlign") = "lr" OR CurrentADC.PropValue("textAlign") = "right" Then %}
 		text-align:right;
 	{% ElseIF CurrentADC.PropValue("textAlign") = "rl" OR CurrentADC.PropValue("textAlign") = "left" Then %}
@@ -204,21 +204,21 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 	{% ElseIF CurrentADC.PropValue("textAlign") = "center" Then %}
 		text-align:center;
 	{% EndIF %}
-	
+
 	{% IF CurrentADC.PropValue("sliderOrientation") = "horizontal" Then %}
 		margin-left:10px;
 	{% EndIF %}
-	
+
 	/* disable highlight text */
-	-moz-user-select: none; 
-	-webkit-user-select: none; 
-	-ms-user-select:none; 
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
 	user-select:none;
 }
 #adc_{%= CurrentADC.InstanceId%} .leftLabel .sliderLabel {
 	position:relative;
 	display:block;
-	
+
 	{% IF CurrentADC.PropValue("sliderOrientation") = "horizontal" Then %}
 		/*margin-right:10px;*/
 	{% Else %}
@@ -229,11 +229,11 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 	{% ElseIF CurrentADC.PropValue("textAlign") = "rl" Then %}
 		text-align:right;
 	{% EndIF %}
-	
+
 	/* disable highlight text */
-	-moz-user-select: none; 
-	-webkit-user-select: none; 
-	-ms-user-select:none; 
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
 	user-select:none;
 }
 #adc_{%= CurrentADC.InstanceId%} .rightLabel .sliderLabel {
@@ -250,11 +250,11 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 	{% ElseIF CurrentADC.PropValue("textAlign") = "rl" Then %}
 		text-align:left;
 	{% EndIF %}
-	
+
 	/* disable highlight text */
-	-moz-user-select: none; 
-	-webkit-user-select: none; 
-	-ms-user-select:none; 
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
 	user-select:none;
 }
 
@@ -267,7 +267,7 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 }
 
 #adc_{%= CurrentADC.InstanceId%} .noUiSlider,
-#adc_{%= CurrentADC.InstanceId%} .leftLabel, 
+#adc_{%= CurrentADC.InstanceId%} .leftLabel,
 #adc_{%= CurrentADC.InstanceId%} .rightLabel {
 
 }
@@ -278,22 +278,22 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 		border: none;
 	{% Else %}
 		border: {%= sliderBaseBorderThickness%} {%= sliderBaseBorderStyle%} rgb({%= sliderBaseBorderColour%});
-	{% EndIF %}	
-	/* border-radius */	
-	-webkit-border-radius:	{%= sliderBaseBorderRadius%}; 
-	-moz-border-radius:		{%= sliderBaseBorderRadius%}; 
-	-khtml-border-radius:	{%= sliderBaseBorderRadius%}; 
+	{% EndIF %}
+	/* border-radius */
+	-webkit-border-radius:	{%= sliderBaseBorderRadius%};
+	-moz-border-radius:		{%= sliderBaseBorderRadius%};
+	-khtml-border-radius:	{%= sliderBaseBorderRadius%};
 	border-radius:			{%= sliderBaseBorderRadius%};
 }
 
 #adc_{%= CurrentADC.InstanceId%} .noUi-background {
-	
+
 	cursor:pointer;
-	
+
 	/* background */
 	{% IF CurrentADC.PropValue("sliderBaseGradientDirection") = "ltr" Then %}
 		background: rgb({%= sliderBasePrimaryColour%});
-		background: -moz-linear-gradient(left,  rgb({%= sliderBasePrimaryColour%}) 0%, rgb({%= sliderBaseSecondaryColour%}) 100%); 
+		background: -moz-linear-gradient(left,  rgb({%= sliderBasePrimaryColour%}) 0%, rgb({%= sliderBaseSecondaryColour%}) 100%);
 		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb({%= sliderBasePrimaryColour%})), color-stop(100%,rgb({%= sliderBaseSecondaryColour%})));
 		background: -webkit-linear-gradient(left,  rgb({%= sliderBasePrimaryColour%}) 0%,rgb({%= sliderBaseSecondaryColour%}) 100%);
 		background: -o-linear-gradient(left,  rgb({%= sliderBasePrimaryColour%}) 0%,rgb({%= sliderBaseSecondaryColour%}) 100%);
@@ -302,38 +302,38 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderBasePrimaryColour.ToHexa()%}', endColorstr='{%= sliderBaseSecondaryColour.ToHexa()%}',GradientType=1 );
 
 	{% Else %}
-		background: rgb({%= sliderBaseSecondaryColour%}); 
+		background: rgb({%= sliderBaseSecondaryColour%});
 		background: -moz-linear-gradient(top,  rgb({%= sliderBaseSecondaryColour%}) 0%, rgb({%= sliderBasePrimaryColour%}) 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderBaseSecondaryColour%})), color-stop(100%,rgb({%= sliderBasePrimaryColour%})));
-		background: -webkit-linear-gradient(top,  rgb({%= sliderBaseSecondaryColour%}) 0%,rgb({%= sliderBasePrimaryColour%}) 100%); 
+		background: -webkit-linear-gradient(top,  rgb({%= sliderBaseSecondaryColour%}) 0%,rgb({%= sliderBasePrimaryColour%}) 100%);
 		background: -o-linear-gradient(top,  rgb({%= sliderBaseSecondaryColour%}) 0%,rgb({%= sliderBasePrimaryColour%}) 100%);
-		background: -ms-linear-gradient(top,  rgb({%= sliderBaseSecondaryColour%}) 0%,rgb({%= sliderBasePrimaryColour%}) 100%); 
-		background: linear-gradient(to bottom,  rgb({%= sliderBaseSecondaryColour%}) 0%,rgb({%= sliderBasePrimaryColour%}) 100%); 
+		background: -ms-linear-gradient(top,  rgb({%= sliderBaseSecondaryColour%}) 0%,rgb({%= sliderBasePrimaryColour%}) 100%);
+		background: linear-gradient(to bottom,  rgb({%= sliderBaseSecondaryColour%}) 0%,rgb({%= sliderBasePrimaryColour%}) 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr={%= sliderBaseSecondaryColour.ToHexa()%}, endColorstr={%= sliderBasePrimaryColour.ToHexa()%},GradientType=0 );
 	{% EndIF %}
-	
+
 	box-shadow:none;
-	
+
 	/*position:relative;*/
 }
 
 #adc_{%= CurrentADC.InstanceId%} .noUi-handle {
-	
+
 	cursor:pointer;
-	
+
 	/* border */
 	{% IF CurrentADC.PropValue("sliderHandleBorderThickness") = "none" OR CurrentADC.PropValue("hideHandleBG") = "1" Then %}
 		border: 0px solid transparent;
 	{% Else %}
 		border: {%= sliderHandleBorderThickness%} {%= sliderHandleBorderStyle%} rgb({%= sliderHandleBorderColour%});
-	{% EndIF %}	
-	
+	{% EndIF %}
+
 	-webkit-box-shadow: {%= sliderHandleDropShadow%};
 	-moz-box-shadow: {%= sliderHandleDropShadow%};
 	box-shadow: {%= sliderHandleDropShadow%};
-	
-	/* border-radius */	
-	
+
+	/* border-radius */
+
 	/* background */
 	{% IF CurrentADC.PropValue("useHandleImage") <> "1" AND CurrentADC.PropValue("hideHandleBG") <> "1" Then %}
 		background-color: rgb({%= sliderHandlePrimaryColour%});
@@ -341,67 +341,67 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 		background-color:transparent;
 		box-shadow: none;
     	outline: none;
-	{% EndIF %}	
-	
-	-webkit-border-radius:	{%= sliderHandleBorderRadius%}; 
-	-moz-border-radius:		{%= sliderHandleBorderRadius%}; 
-	-khtml-border-radius:	{%= sliderHandleBorderRadius%}; 
+	{% EndIF %}
+
+	-webkit-border-radius:	{%= sliderHandleBorderRadius%};
+	-moz-border-radius:		{%= sliderHandleBorderRadius%};
+	-khtml-border-radius:	{%= sliderHandleBorderRadius%};
 	border-radius:			{%= sliderHandleBorderRadius%};
-	
+
 	/* disable highlight text */
-	/*-moz-user-select: none; 
-	-webkit-user-select: none; 
-	-ms-user-select:none; 
+	/*-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
 	user-select:none;*/
 }
 
 #adc_{%= CurrentADC.InstanceId%} .selected .noUi-background {
-	
+
 	/* background */
     {% IF (CurrentADC.PropValue("sliderBaseGradientDirection") = "ltr") and (CurrentADC.PropValue("sliderConnect") <> "lower") Then %}
-		background: rgb({%= sliderSelectedPrimaryColour%}); 
+		background: rgb({%= sliderSelectedPrimaryColour%});
 		background: -moz-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%, rgb({%= sliderSelectedSecondaryColour%}) 100%);
 		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb({%= sliderSelectedPrimaryColour%})), color-stop(100%,rgb({%= sliderSelectedSecondaryColour%})));
 		background: -webkit-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%);
-		background: -o-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%); 
-		background: -ms-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%); 
-		background: linear-gradient(to right,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%); 
+		background: -o-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%);
+		background: -ms-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%);
+		background: linear-gradient(to right,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}',GradientType=1 );
 	{% ElseIf (CurrentADC.PropValue("sliderBaseGradientDirection") <> "ltr") and (CurrentADC.PropValue("sliderConnect") <> "lower")  Then %}
 		background: rgb({%= sliderSelectedSecondaryColour%});
 		background: -moz-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%, rgb({%= sliderSelectedPrimaryColour%}) 100%);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderSelectedSecondaryColour%})), color-stop(100%,rgb({%= sliderSelectedPrimaryColour%}))); 
-		background: -webkit-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%); 
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderSelectedSecondaryColour%})), color-stop(100%,rgb({%= sliderSelectedPrimaryColour%})));
+		background: -webkit-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%);
 		background: -o-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%);
 		background: -ms-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%);
-		background: linear-gradient(to bottom,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%); 
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}',GradientType=0 ); 
+		background: linear-gradient(to bottom,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}',GradientType=0 );
 	{% EndIF %}
-	
-	
+
+
 	box-shadow: none;
 }
 
 #adc_{%= CurrentADC.InstanceId%} .noUi-connect {
     /* background */
     {% IF (CurrentADC.PropValue("sliderBaseGradientDirection") = "ltr") and (CurrentADC.PropValue("sliderConnect") = "lower") Then %}
-		background: rgb({%= sliderSelectedPrimaryColour%}); 
+		background: rgb({%= sliderSelectedPrimaryColour%});
 		background: -moz-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%, rgb({%= sliderSelectedSecondaryColour%}) 100%);
 		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb({%= sliderSelectedPrimaryColour%})), color-stop(100%,rgb({%= sliderSelectedSecondaryColour%})));
 		background: -webkit-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%);
-		background: -o-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%); 
-		background: -ms-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%); 
-		background: linear-gradient(to right,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%); 
+		background: -o-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%);
+		background: -ms-linear-gradient(left,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%);
+		background: linear-gradient(to right,  rgb({%= sliderSelectedPrimaryColour%}) 0%,rgb({%= sliderSelectedSecondaryColour%}) 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}',GradientType=1 );
 	{% ElseIf (CurrentADC.PropValue("sliderBaseGradientDirection") <> "ltr") and (CurrentADC.PropValue("sliderConnect") = "lower") Then %}
 		background: rgb({%= sliderSelectedSecondaryColour%});
 		background: -moz-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%, rgb({%= sliderSelectedPrimaryColour%}) 100%);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderSelectedSecondaryColour%})), color-stop(100%,rgb({%= sliderSelectedPrimaryColour%}))); 
-		background: -webkit-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%); 
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb({%= sliderSelectedSecondaryColour%})), color-stop(100%,rgb({%= sliderSelectedPrimaryColour%})));
+		background: -webkit-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%);
 		background: -o-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%);
 		background: -ms-linear-gradient(top,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%);
-		background: linear-gradient(to bottom,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%); 
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}',GradientType=0 ); 
+		background: linear-gradient(to bottom,  rgb({%= sliderSelectedSecondaryColour%}) 0%,rgb({%= sliderSelectedPrimaryColour%}) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderSelectedSecondaryColour.ToHexa()%}', endColorstr='{%= sliderSelectedPrimaryColour.ToHexa()%}',GradientType=0 );
 	{% EndIF %}
 }
 
@@ -410,22 +410,22 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 }
 
 #adc_{%= CurrentADC.InstanceId%} .handleValue {
-	width:100%; 
+	width:100%;
 	text-align:center;
-	font-size:{%= fontSize%};
+	font-size: .8rem;
 	color:rgb({%= handleFontColour%});
 	line-height:100%;
 	pointer-events: none;
-	
+
 	/* disable highlight text */
-	-moz-user-select: none; 
-	-webkit-user-select: none; 
-	-ms-user-select:none; 
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
 	user-select:none;
 }
 
 #adc_{%= CurrentADC.InstanceId%} .focused .noUi-handle {
-	 
+
 	/* background */
 	{% IF CurrentADC.PropValue("useHandleImage") <> "1" Then %}
 		background-color: rgb({%= sliderFocusPrimaryColour%});
@@ -434,18 +434,18 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 	{% ElseIF CurrentADC.PropValue("useHandleImage") <> "1" AND CurrentADC.PropValue("hideHandleBG") = "1" Then %}
 		background-color:none;
 	{% EndIF %}
-	
+
 	-webkit-box-shadow: {%= sliderHandleDropShadow%};
 	-moz-box-shadow: {%= sliderHandleDropShadow%};
 	box-shadow: {%= sliderHandleDropShadow%};
-		
+
 	/* border */
-	
+
 	{% IF CurrentADC.PropValue("sliderFocusBorderThickness") = "none" OR CurrentADC.PropValue("hideHandleBG") = "1" Then %}
 		border: none;
 	{% Else %}
 		border: {%= sliderFocusBorderThickness%} {%= sliderHandleBorderStyle%} rgb({%= sliderFocusBorderColour%});
-	{% EndIF %}	
+	{% EndIF %}
 }
 
 #adc_{%= CurrentADC.InstanceId%} .caption {
@@ -455,7 +455,7 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 	padding:{%= captionPadding%};
     {% IF CurrentADC.PropValue("hideCaption") = "1" Then %}
     display:none;
-    {% EndIF %}	
+    {% EndIF %}
 }
 
 #adc_{%= CurrentADC.InstanceId%} .noUi-horizontal {
@@ -480,12 +480,12 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 #adc_{%= CurrentADC.InstanceId%} img {
 	padding:{%= imagePadding%};
 	vertical-align: middle;
-		
+
 }
 
-#adc_{%= CurrentADC.InstanceId%} .dk { 
+#adc_{%= CurrentADC.InstanceId%} .dk {
 	cursor:pointer;
-	
+
 	display:inline-block;
 	*display: inline;
     zoom: 1;
@@ -494,35 +494,35 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 		border: none;
 	{% Else %}
 		border: {%= dkBorderThickness%} {%= dkBorderStyle%} rgb({%= dkBorderColour%});
-	{% EndIF %}	
+	{% EndIF %}
 	background-color: rgb({%= dkColourPrimary%});
-	
+
 	/* Effects */
-	-webkit-border-radius:	{%= dkBorderRadius%}; 
-	-moz-border-radius:		{%= dkBorderRadius%}; 
-	-khtml-border-radius:	{%= dkBorderRadius%}; 
+	-webkit-border-radius:	{%= dkBorderRadius%};
+	-moz-border-radius:		{%= dkBorderRadius%};
+	-khtml-border-radius:	{%= dkBorderRadius%};
 	border-radius:			{%= dkBorderRadius%};
-	
+
 	-webkit-box-shadow: {%= dkShadow%};
 	-moz-box-shadow: {%= dkShadow%};
 	box-shadow: {%= dkShadow%};
-	
+
 	padding: {%= dkTextPadding%};
-	
+
 	color: rgb({%= dkFontColour%});
-	
+
 	margin: {%= dkMargin%};
-	
+
 	/* disable highlight text */
-	-moz-user-select: none; 
-	-webkit-user-select: none; 
-	-ms-user-select:none; 
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
 	user-select:none;
 }
 
-#adc_{%= CurrentADC.InstanceId%} .dk:hover 
-{	
-    /* Decoration */	
+#adc_{%= CurrentADC.InstanceId%} .dk:hover
+{
+    /* Decoration */
     {% IF (CurrentADC.PropValue("dkHoverBorderThickness") = "none") and (CurrentADC.PropValue("showDkHoverBorder") = "1") Then %}
 	border: none;
     {% ElseIf (CurrentADC.PropValue("dkHoverBorderThickness") <> "none") and (CurrentADC.PropValue("showDkHoverBorder") = "1") Then %}
@@ -534,22 +534,22 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
     -webkit-box-shadow: {%= dkHoverShadow%};
     -moz-box-shadow: {%= dkHoverShadow%};
     box-shadow: {%= dkHoverShadow%};
-	
+
     {% IF CurrentADC.PropValue("showDkHoverFontColour") = "1" Then %}
     color:rgb({%= dkHoverFontColour%});
     {% EndIF %}
 }
 
-#adc_{%= CurrentADC.InstanceId%} .dk.selected, #adc_{%= CurrentADC.InstanceId%} .dk:hover.selected 
-{	
-    /* Decoration */	
+#adc_{%= CurrentADC.InstanceId%} .dk.selected, #adc_{%= CurrentADC.InstanceId%} .dk:hover.selected
+{
+    /* Decoration */
 	{% IF CurrentADC.PropValue("dkSelectedBorderThickness") = "none" Then %}
 		border: none;
 	{% Else %}
 		border: {%= dkSelectedBorderThickness%} {%= dkSelectedBorderStyle%} rgb({%= dkSelectedBorderColour%});
-	{% EndIF %}	
+	{% EndIF %}
 	background-color: rgb({%= dkSelectedColourPrimary%});
-	
+
 	-webkit-box-shadow: {%= dkSelectedShadow%};
 	-moz-box-shadow: {%= dkSelectedShadow%};
 	box-shadow: {%= dkSelectedShadow%};
@@ -585,12 +585,12 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
 #adc_{%= CurrentADC.InstanceId%} .noUi-value {
     {% IF CurrentADC.PropValue("showMarkerText") <> "1" Then %}
     	display:none;
-  	{% EndIF %}	  
+  	{% EndIF %}
 }
 #adc_{%= CurrentADC.InstanceId%} .noUi-marker-normal {
     {% IF CurrentADC.PropValue("showSubMarkers") <> "1" Then %}
     	display:none;
-  	{% EndIF %}	  
+  	{% EndIF %}
 }
 #adc_{%= CurrentADC.InstanceId%} .freezeLabel {
     {% IF (CurrentADC.PropValue("showMarkers") = "1" and CurrentADC.PropValue("showMarkerText") = "1") Then %}
