@@ -1,4 +1,4 @@
-﻿{% 
+﻿{%
 Dim useList    =  (CurrentADC.PropValue("useList") = "true") ' Convert to boolean
 
 Dim inputName  = CurrentQuestion.InputName()
@@ -15,6 +15,9 @@ Dim attrRequired = On(CurrentQuestion.IsAllowDK, "required=\"required\"", "")
 Dim unitStep = CurrentADC.PropValue("unitStep").ToNumber()
 Dim attrStep = On(unitStep > 1, "step=\"" + unitStep + "\"", "")
 
+Dim stepMarkerText = CurrentADC.PropValue("stepMarkerText").ToNumber()
+Dim attrMarkerStep = On(stepMarkerText > 1, "step=\"" + stepMarkerText + "\"", "")
+
 If useList And minValue <> DK And maxValue <> DK Then
     rangeLength = (maxValue - minValue) / unitStep
 EndIf
@@ -24,7 +27,7 @@ If rangeLength > 0 And rangeLength <= 20 Then
     Dim x = minValue
 %}
     <select name="{%= inputName %}">
-        <option value=""></option>    
+        <option value=""></option>
     {% For i = 0 To rangeLength %}
         <option value="{%= x %}">{%= x %}</option>
         {% x = x + unitStep %}

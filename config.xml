@@ -7,7 +7,7 @@
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>2.0.7</version>
+    <version>2.0.9</version>
     <date>2014-05-21</date>
     <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
@@ -71,7 +71,8 @@
 				   - PF - Fixed issue with spacing and multiple sliders in loop
 		v.2.0.7 - PF - Added tooltips
 		v2.0.8 - Added alt attribute to img
-]]></description>
+    v2.0.9 - Fixed marker stepping by enabling the possibility of give a step value for marker text/in the meantime it will reduce the markers density]]>
+    </description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>]]></author>
     <site>http://www.askia.com</site>
@@ -214,6 +215,11 @@
           <option value="1" text="Yes" />
           <option value="0" text="No" />
         </options>
+      </property>
+      <property xsi:type="standardProperty" id="stepMarkerText" name="Step value for markers" type="number" mode="static" require="false" visible="true">
+        <description><![CDATA[Using HTML 5, in modern browser.
+          Indicates the unit to seperate the numeric value/marker text of markers.]]></description>
+        <value><![CDATA[1]]></value>
       </property>
     </category>
     <category id="sliderBaseStyling" name="Slider Base Styling">

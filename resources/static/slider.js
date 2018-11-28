@@ -11,6 +11,7 @@
 		(options.maxValue = options.maxValue || 10);
         (options.intermediateValue = options.intermediateValue || ((options.minValue + options.maxValue) / 2));
 		(options.unitStep = options.unitStep || 1);
+		(options.stepMarkerText = options.stepMarkerText || 1);
 		(options.sliderDirection = options.sliderDirection || "ltr");
         (options.connect = options.connect || false);
         (options.currentQuestion = options.currentQuestion || '');
@@ -42,6 +43,7 @@
 			iteration = 0,
 			total_images = $container.find("img").length,
 			unitStep = options.unitStep,
+			stepMarkerText = options.stepMarkerText,
 			leftHandleText = (options.handleTextPosition === "left") ? options.handleText : "",
 			rightHandleText = (options.handleTextPosition === "right") ? options.handleText : "",
 			images_loaded = 0,
@@ -50,7 +52,7 @@
 			startPosition = (parseFloat(options.intermediateValue));
 			if (sliderHandleStartPosition == "min") startPosition = parseFloat(options.minValue);
 			if (sliderHandleStartPosition == "max") startPosition = parseFloat(options.maxValue);
-			
+
 		function filter500( value, type ){
 			return value % 100 ? 2 : 1;
 		}
@@ -94,6 +96,7 @@
 			//options.maxValue = isInLoop ? parseInt(options.minValue) + (parseInt(options.maxValue) - parseInt(options.minValue)) : parseInt(options.minValue) + (items.length - 1),
 			options.maxValue = isInLoop ? parseInt(options.minValue) + (allValuesArray.length - 1) : parseInt(options.minValue) + (items.length - 1);
             unitStep = 1;
+						stepMarkerText = 1;
 		}
 
 		if ( isSingle && dkSingle ) {
@@ -152,17 +155,17 @@
 			if (interconnection){
 				handleValue = parseFloat(roundToStep($input.val())).toFixed(decimalPlaces);
 			}
-            var rangeData = {'min':[options.minValue]};
-            if (options.intermediateValue !== ((options.minValue + options.maxValue) / 2) && !isSingle) {
-                rangeData['50%'] = [options.intermediateValue,unitStep];
-            }
-            rangeData['max'] = [options.maxValue];
+      var rangeData = {'min':[options.minValue]};
+      if (options.intermediateValue !== ((options.minValue + options.maxValue) / 2) && !isSingle) {
+          rangeData['50%'] = [options.intermediateValue,unitStep];
+      }
+      rangeData['max'] = [options.maxValue];
 
 			$(this).find('.noUiSlider').eq(i).noUiSlider({
 				//range: {'min':[options.minValue], '50%':[options.intermediateValue,unitStep], 'max':[options.maxValue]},
-                range: rangeData,
+        range: rangeData,
 				start: ($input.val() !== "") ? parseFloat(handleValue) : startPosition,
-                connect: (options.connect === 'false' || options.connect === false) ? false : 'lower',
+        connect: (options.connect === 'false' || options.connect === false) ? false : 'lower',
 				step: unitStep, // step in range fore each point
 				/*step:0.1,*/
 				behaviour: 'tap-drag',
@@ -191,7 +194,7 @@
 					if(!interconnection){ // (the interaction is bad with interconnected sliders, the handles will be shown on slide, not on set)
 						// make handle visible and add focus
 						$(this).parents('.controlContainer').find('.slider').eq(iteration).addClass('focused').find('.noUi-handle').show();
-                                                
+
 						// set slider base colour once selected
 						$container.addClass('selected');
 					}
@@ -212,8 +215,8 @@
                     }
 
 					$(this).parents('.sliderContainer').find('.dk').removeClass('selected');
-                    if (window.askia 
-                        && window.arrLiveRoutingShortcut 
+                    if (window.askia
+                        && window.arrLiveRoutingShortcut
                         && window.arrLiveRoutingShortcut.length > 0
                         && window.arrLiveRoutingShortcut.indexOf(options.currentQuestion) >= 0) {
                         askia.triggerAnswer();
@@ -237,7 +240,7 @@
                         var element = $(this).parents('.controlContainer'),
                             handleValue = isSingle ?
                                 ( isInLoop ? ( decimalPlaces > 0 ? parseFloat(roundToStep($(this).val())).toFixed(decimalPlaces) : roundToStep($(this).val()) ) : $.inArray(roundToStep(items[ roundToStep( $(this).val() - roundToStep(options.minValue) ) ].value), valuesArray) + roundToStep(options.minValue) ) :
-                                ( decimalPlaces > 0 ? parseFloat(roundToStep(roundToStep( $(this).val() ))).toFixed(decimalPlaces) : roundToStep(roundToStep( $(this).val() )) ) ;                     	
+                                ( decimalPlaces > 0 ? parseFloat(roundToStep(roundToStep( $(this).val() ))).toFixed(decimalPlaces) : roundToStep(roundToStep( $(this).val() )) ) ;
                         element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
                     }
 
@@ -252,21 +255,29 @@
 			});
 
 			if ( showMarkers ) {
-								
-				$(this).find('.noUiSlider').eq(i).noUiSlider_pips({
-					/*mode: 'steps',
-					density: 5,
-					filter: filter500,*/
-					
-					mode: 'count',
-					values: (options.maxValue - options.minValue)+1,
-					density: (options.maxValue - options.minValue)/2,
-					format: wNumb({
-						decimals: decimalPlaces,
-						prefix: leftHandleText,
-						postfix: rightHandleText
-					})
-				});
+				if (stepMarkerText > 1) {
+					$(this).find('.noUiSlider').eq(i).noUiSlider_pips({
+						mode: 'count',
+						values: stepMarkerText + 1,
+						format: wNumb({
+							decimals: decimalPlaces,
+							prefix: leftHandleText,
+							postfix: rightHandleText
+						})
+					});
+				} else {
+						$(this).find('.noUiSlider').eq(i).noUiSlider_pips({
+								mode: 'count',
+								values: (options.maxValue - options.minValue)+1,
+								density: (options.maxValue - options.minValue)/2,
+								format: wNumb({
+									decimals: decimalPlaces,
+									prefix: leftHandleText,
+									postfix: rightHandleText
+								})
+						});
+				}
+
 				/*if ( sliderOrientation == 'horizontal' ) {
 					$(this).find('td.sliderDK').css('padding-top','40px');
 					var pipsWidth = $(this).find('.noUiSlider').width(),
@@ -277,7 +288,7 @@
 						pipsMargin = $(this).find('.noUi-handle').height()/2;
 					$(this).find('.noUi-pips').css({'height':pipsWidth+'px','top':pipsMargin+'px'});
 				}*/
-				
+
 				//$('.noUi-pips-horizontal').width = $('.noUiSlider').width() - $('.noUi-handle').width();
 				$('.noUi-pips-horizontal').css({
 					'left': ($('.noUi-handle').width()/2)+'px',
@@ -320,7 +331,7 @@
 		for ( var i=0; i<items.length; i++ ) {
 
 			var $input = items[i].element;
-			
+
 			// If slide has value change base colour by adding class
 			if ( roundToStep($input.val()) > 0 ) { $(this).find('.sliderContainer').eq(i).addClass('selected'); }
 
@@ -365,7 +376,7 @@
 
 		function layoutAdjust() {
 			//if ( $(window).width() < parseInt(options.labelWidth) * 3 && options.sliderOrientation == 'horizontal' ) {
-            
+
 			$('.leftLabel, .rightLabel').width('');
 			if ( ($(window).width() < ($('.leftLabel').outerWidth(true) + $('.rightLabel').outerWidth(true)) || $(window).width() < 400) && options.sliderOrientation == 'horizontal' && displayLabelText ) {
 				// too small
@@ -420,7 +431,7 @@
 				adjustLabelHeight('.sliderLabel');
 
 			} else if ( displayLabelText && labelPlacement == "side" && options.sliderOrientation == 'horizontal' ) {
-                var colspan = 1;
+        var colspan = 1;
 				$('.sliderMiddle td:nth-child(1)').show();
 				$('.sliderMiddle td:nth-child(2)').show();
 				$('.sliderMiddle td:nth-child(3)').show();
@@ -461,10 +472,10 @@
 
 			$(this).css({'width':maxLabelWidth});
 		}
-        
+
         // remove extra space from empty tds
         $('.sliderTop > td, .sliderBotton > td, .sliderDK > td').each( function() {
-           if ( $(this).html() === "" || $(this).find('div:hidden').length > 0 ) $(this).hide(); 
+           if ( $(this).html() === "" || $(this).find('div:hidden').length > 0 ) $(this).hide();
         });
         // add extra space from pips
         $container.find('.sliderContainer').each( function() {
@@ -476,13 +487,13 @@
             	if ( !$(this).attr('title')  ) $(this).attr('title',' ');
             });
             tippy(document.querySelectorAll('.noUi-handle'), {
-                arrow: true,
+              arrow: true,
             	dynamicTitle: true,
             	sticky: true,
             	hideOnClick: 'persistent',
-                duration: 0,
-                trigger: 'mouseenter focus click',
-                interactive: true
+            	duration: 0,
+              trigger: 'mouseenter focus click',
+              interactive: true
             });
 		}
 		// hide handle
@@ -545,9 +556,9 @@
 
 		// enable keyboard interaction
 		$container.keydown(function( e ) {
-            
+
             e.preventDefault();
-						
+
 			// if focus found
 			if ( $('.focused').size() > 0 && $container.find('.focused').length > 0 ) {
 
@@ -556,7 +567,7 @@
 					slider = $('.focused').parents('.controlContainer').find('.noUiSlider').eq(iteration),
 					value = roundToStep( slider.val() ),
 					$input = items[iteration].element;
-					
+
 
 				switch ( e.which ) {
 					case 38:
@@ -588,8 +599,8 @@
 					if ( e.which == 38 ) $input.val( valuesArray[ (value - parseInt(options.minValue) ) ] );
 					else if ( e.which == 40 ) $input.val( valuesArray[ (value - parseInt(options.minValue)) ] );
 				} else $input.val( roundToStep( value ) );
-                if (window.askia 
-                    && window.arrLiveRoutingShortcut 
+                if (window.askia
+                    && window.arrLiveRoutingShortcut
                     && window.arrLiveRoutingShortcut.length > 0
                     && window.arrLiveRoutingShortcut.indexOf(options.currentQuestion) >= 0) {
                     askia.triggerAnswer();
@@ -609,12 +620,12 @@
 			// Hide handle
 			slider.find('.noUi-handle').hide();
             if (options.sliderOrientation === 'vertical' && options.connect === 'lower') {
-            	slider.find('.noUi-origin').css("top","120%");    
+            	slider.find('.noUi-origin').css("top","120%");
             }
             if (options.sliderOrientation !== 'vertical' && options.connect === 'lower') {
             	slider.find('.noUi-background').css("left","0%");
             }
-            
+
 
 			// Set value to input
 			//$input.val(value);
@@ -631,8 +642,8 @@
 				$('input[name="M' + DKID + ' -1"]').prop('checked', true);
 				$(this).parents('.sliderContainer').addClass('selected');
 			}
-            if (window.askia 
-                && window.arrLiveRoutingShortcut 
+            if (window.askia
+                && window.arrLiveRoutingShortcut
                 && window.arrLiveRoutingShortcut.length > 0
                 && window.arrLiveRoutingShortcut.indexOf(options.currentQuestion) >= 0) {
                 askia.triggerAnswer();

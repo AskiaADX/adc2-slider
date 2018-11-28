@@ -1,4 +1,4 @@
-{% 
+{%
 Dim useList    =  (CurrentADC.PropValue("useList") = "true") ' Convert to boolean
 
 Dim inputName  = CurrentQuestion.InputName()
@@ -20,6 +20,10 @@ Dim attrRequired = On(CurrentQuestion.IsAllowDK, "required=\"required\"", "")
 Dim unitStep = 1
 Dim attrStep = On(unitStep > 1, "step=\"" + unitStep + "\"", "")
 
+Dim stepMarkerText = 1
+Dim attrMarkerStep = On(stepMarkerText > 1, "step=\"" + stepMarkerText + "\"", "")
+
+Dim
 If useList And minValue <> DK And maxValue <> DK Then
     rangeLength = (maxValue - minValue) / unitStep
 EndIf
@@ -28,7 +32,7 @@ EndIf
 <table cellpadding="0" cellspacing="0" border="0">
 {%
 For j = 1 To ar.Count
-    inputName = CurrentQuestion.Iteration(ar[j].Index).InputName() 
+    inputName = CurrentQuestion.Iteration(ar[j].Index).InputName()
     caption   = ar[j].Caption
     image	  = ar.ResourceURL[j]
     %}
@@ -44,10 +48,10 @@ For j = 1 To ar.Count
 {% If rangeLength > 0 And rangeLength <= 20 Then
     Dim i
     Dim x = minValue
- %}   
+ %}
 
     <select name="{%= inputName %}">
-        <option value=""></option>    
+        <option value=""></option>
     {% For i = 0 To rangeLength %}
         <option value="{%= x %}">{%= x %}</option>
         {% x = x + unitStep %}
