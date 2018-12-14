@@ -1,7 +1,7 @@
 
 {%
 
-Dim ar = CurrentQuestion.ParentLoop.Answers
+Dim ar = CurrentQuestion.ParentLoop.AvailableAnswers
 Dim nbItemsInLoop = ar.Count
 
 
