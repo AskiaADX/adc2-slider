@@ -84,13 +84,13 @@
       <category>General</category>
     </categories>
     <constraints>
-      <constraint on="questions" numeric="true" single="true" chapter="false" date="false" multiple="false" open="false" requireParentLoop="false" RequireLoopDepth="false" />
+      <constraint on="questions" numeric="true" single="true" chapter="false" date="false" multiple="false" open="false" requireParentLoop="false" RequireLoopDepth="0" />
       <constraint on="controls" responseblock="true" textbox="true" checkbox="false" label="false" listbox="false" radiobutton="false" />
       <constraint on="responses" max="*" min="*" />
     </constraints>
   </info>
   <outputs defaultOutput="fallback">
-    <output id="fallback">
+    <output id="fallback" ManageLoopDepth="1">
       <description><![CDATA[Fallback when the browser doesnt support Javascript]]></description>
       <condition><![CDATA[Not(Browser.Support("javascript"))]]></condition>
       <content fileName="default.css" type="css" mode="static" position="head" />
@@ -100,7 +100,7 @@
       <content fileName="single_loop.html" type="html" mode="dynamic" position="none" />
       <content fileName="default.html" type="html" mode="dynamic" position="placeholder" />
     </output>
-    <output id="standard">
+    <output id="standard" ManageLoopDepth="1">
       <description><![CDATA[
         Output when the browser support Javascript
       ]]></description>
