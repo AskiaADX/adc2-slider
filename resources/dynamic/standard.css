@@ -99,6 +99,8 @@ Dim showMarkerText = CurrentADC.PropValue("showMarkerText")
 
 Dim hideCaption = CurrentADC.PropValue("hideCaption")
 
+Dim markerColor = CurrentADC.PropValue("sliderMarkerColor")
+
 %}
 
 #adc_{%= CurrentADC.InstanceId%} .sliderContainer {
@@ -600,6 +602,16 @@ Dim hideCaption = CurrentADC.PropValue("hideCaption")
     {% Else %}
     	margin-top: 0px;
   	{% EndIF %}
+}
+
+#adc_{%= CurrentADC.InstanceId%} .noUi-marker-large, #adc_{%= CurrentADC.InstanceId%} .noUi-marker-sub {
+	background: rgb({%= markerColor %}) !important;
+}
+#adc_{%= CurrentADC.InstanceId%} .noUi-marker {
+	background: rgb({%= markerColor %}) !important;
+}
+#adc_{%= CurrentADC.InstanceId%} .noUi-pips {
+	color: rgb({%= markerColor %}) !important;
 }
 
 /* tooltips */
