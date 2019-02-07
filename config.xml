@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<control  xmlns="http://www.askia.com/2.1.0/ADCSchema"
+<control  xmlns="http://www.askia.com/2.2.0/ADCSchema"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://www.askia.com/2.1.0/ADCSchema https://raw.githubusercontent.com/AskiaADX/ADXSchema/2.1.0/ADCSchema.xsd"
-          version="2.1.0"
-          askiaCompat="5.4.2">
+          xsi:schemaLocation="http://www.askia.com/2.2.0/ADCSchema https://raw.githubusercontent.com/AskiaADX/ADXSchema/2.2.0/ADCSchema.xsd"
+          version="2.2.0"
+          askiaCompat="5.3.3">
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
@@ -75,8 +75,7 @@
 		v2.0.10 - Fixed background transparency when handle use image
     	v2.0.11 - Fixed handleValue overlapping problem
 		v3.0.0 - AvailableAnswers
-    v3.0.1 - new property for marker and marker-pips color / "sliderMarkerColor"
-    ]]></description>
+    v3.0.1 - new property for marker and marker-pips color / "sliderMarkerColor"]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>   Prabath Gamage <prabath@askia.com>]]></author>
     <site>http://www.askia.com</site>
@@ -101,7 +100,7 @@
       <content fileName="single_loop.html" type="html" mode="dynamic" position="none" />
       <content fileName="default.html" type="html" mode="dynamic" position="placeholder" />
     </output>
-    <output id="standard" manageLoopDepth="1">
+    <output id="standard"  manageLoopDepth="1">
       <description><![CDATA[
         Output when the browser support Javascript
       ]]></description>
