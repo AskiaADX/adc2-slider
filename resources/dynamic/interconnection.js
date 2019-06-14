@@ -1,7 +1,7 @@
 
 {%
 
-Dim ar = CurrentQuestion.ParentLoop.AvailableAnswers
+Dim ar = CurrentQuestion.ParentLoop.Answers
 Dim nbItemsInLoop = ar.Count
 
 
@@ -59,7 +59,7 @@ function recalculate{%= adcId %} (currentSlider) {
 	var delta = {%= maxForInterconnection %} -currentValue -sumGreyOut;
 
 	$(".movable{%= adcId %}").each(function(index,slider) {
-        nbMovable += 1; 
+        nbMovable += 1;
 		sumMovable += Number($(slider).val());
 	})
 
@@ -72,7 +72,7 @@ function recalculate{%= adcId %} (currentSlider) {
                 var val = Number( currentValue + delta );
         		$(slider).val(val);
             }
-    	});    
+    	});
     } else if (nbMovable > 1 && currentValue === sumMovable) {
         $(".movable{%= adcId %}").each(function(index,slider) {
         	if ($(slider)[0].id !== $(currentSlider)[0].id) {
