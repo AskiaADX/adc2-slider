@@ -211,7 +211,9 @@
                     if (showTooltips) {
 						var element = $(this).parents('.controlContainer'),
 							handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) );
-                     	element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
+                     	// element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
+											element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
+
                     }
 
 					$(this).parents('.sliderContainer').find('.dk').removeClass('selected');
@@ -241,7 +243,9 @@
                             handleValue = isSingle ?
                                 ( isInLoop ? ( decimalPlaces > 0 ? parseFloat(roundToStep($(this).val())).toFixed(decimalPlaces) : roundToStep($(this).val()) ) : $.inArray(roundToStep(items[ roundToStep( $(this).val() - roundToStep(options.minValue) ) ].value), valuesArray) + roundToStep(options.minValue) ) :
                                 ( decimalPlaces > 0 ? parseFloat(roundToStep(roundToStep( $(this).val() ))).toFixed(decimalPlaces) : roundToStep(roundToStep( $(this).val() )) ) ;
-                        element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
+                        // element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
+												element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
+
                     }
 
 					$(this).parents('.sliderContainer').eq(iteration).find('.dk').removeClass('selected');
