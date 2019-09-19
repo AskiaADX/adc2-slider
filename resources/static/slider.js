@@ -465,7 +465,8 @@
             $('.noUi-pips-horizontal').css({
 					'left': ($('.noUi-handle').width()/2)+'px',
 					'width': $('.noUiSlider').outerWidth() - $('.noUi-handle').outerWidth()
-			});
+            });
+            adjustLabelHeight('.sliderLabel');
 		}
 
 		// Adjust control width if using vertical layout
