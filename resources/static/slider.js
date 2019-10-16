@@ -375,7 +375,19 @@
 			$container.find(target).each(function(index, element) {
                 if ( $(this).outerHeight() < maxLabelHeight ) $(this).outerHeight(maxLabelHeight);
             });
+        }
+        
+        function adjustLabelWidth(target) {
+			var $target = $container.find(target);
 
+			var maxLabelWidth = Math.max.apply( null, $target.map( function () {
+				return $( this ).outerWidth();
+			}).get() );
+
+			// check each and adjust if smaller
+			$container.find(target).each(function(index, element) {
+                if ( $(this).outerWidth() < maxLabelWidth ) $(this).outerWidth(maxLabelWidth);
+            });
 		}
 
 		function layoutAdjust() {
@@ -430,9 +442,7 @@
 				//$('.bottomLabels').hide();
 				//$('.topLabels').show();
 				$('.slider').css({'padding':'0px'});
-				$('.noUiSlider').css({'margin':'0px'});
-
-				adjustLabelHeight('.sliderLabel');
+                $('.noUiSlider').css({'margin':'0px'});
 
 			} else if ( displayLabelText && labelPlacement == "side" && options.sliderOrientation == 'horizontal' ) {
         var colspan = 1;
@@ -466,6 +476,7 @@
 					'left': ($('.noUi-handle').width()/2)+'px',
 					'width': $('.noUiSlider').outerWidth() - $('.noUi-handle').outerWidth()
             });
+            adjustLabelWidth('.sliderLabel');
             adjustLabelHeight('.sliderLabel');
 		}
 
@@ -502,7 +513,10 @@
             });
 		}
 		// hide handle
-		if ( hideHandle && !(roundToStep($input.val()) >= 0) ) $('.noUi-handle').hide();
+        if ( hideHandle && !(roundToStep($input.val()) >= 0) ) $('.noUi-handle').hide();
+        
+        adjustLabelWidth('.sliderLabel');
+        adjustLabelHeight('.sliderLabel');
 
 		// Remove focus when not clicking on slider
 		$(document).click(function(e) {
@@ -654,7 +668,7 @@
                 askia.triggerAnswer();
             }
 		}
-		$container.on('click', '.dk', selectDK);
+        $container.on('click', '.dk', selectDK);
 
 		if ( total_images > 0 ) {
 			$container.find('img').each(function() {
@@ -662,7 +676,7 @@
 				$("<img/>").css('display', 'none').load(function() {
 					images_loaded++;
 					if (images_loaded >= total_images) {
-
+                        adjustLabelHeight('.sliderLabel');
 						// now all images are loaded.
 						$container.css('visibility','visible');
 
@@ -670,6 +684,7 @@
 				}).attr("src", fakeSrc);
 			});
 		} else {
+            adjustLabelHeight('.sliderLabel');
 			$container.css('visibility','visible');
 		}
 
