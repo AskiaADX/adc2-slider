@@ -7,7 +7,7 @@
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>3.0.5</version>
+    <version>4.0.0</version>
     <date>2014-05-21</date>
     <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
@@ -77,7 +77,9 @@
 		v3.0.0 - AvailableAnswers
     v3.0.1 - new property for marker and marker-pips color / "sliderMarkerColor"
     v3.0.4 - fixed height label same size
-    v3.0.5 - fixed height label same size]]></description>
+    v3.0.5 - fixed height label same size
+    v4.0.0 - Non-selectable headers
+    ]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>   Prabath Gamage <prabath@askia.com>]]></author>
     <site>http://www.askia.com</site>
@@ -86,7 +88,7 @@
       <category>General</category>
     </categories>
     <constraints>
-      <constraint on="questions" numeric="true" single="true" chapter="false" date="false" multiple="false" open="false" requireParentLoop="false" requireLoopDepth="0" />
+      <constraint on="questions" numeric="true" single="true" chapter="false" date="false" multiple="false" open="false" requireParentLoop="false" requireLoopDepth="0" manageHeader="true"/>
       <constraint on="controls" responseblock="true" textbox="true" checkbox="false" label="false" listbox="false" radiobutton="false" />
       <constraint on="responses" max="*" min="*" />
     </constraints>
@@ -805,6 +807,45 @@
           <option value="0px 2px 4px rgba(0,0,0,.2)" text="On" />
           <option value="none" text="Off" />
         </options>
+      </property>
+    </category>
+    <category id="headers" name="Headers (non clickable responses)">
+      <property xsi:type="standardProperty" id="showHeaders" name="Show Headers" type="string" require="false" visible="true">
+        <description><![CDATA[]]></description>
+        <value><![CDATA[1]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="headerColourPrimary" name="Header Background Colour" type="color" mode="dynamic" visible="true">
+        <description><![CDATA[Background colour of the header item]]></description>
+        <value><![CDATA[{%= Theme.NeutralDarkColor %}]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="headerHoverColourPrimary" name="Header Hover Background Colour" type="color" mode="dynamic" visible="true">
+        <description><![CDATA[Hover background colour of the header item]]></description>
+        <value><![CDATA[{%= Theme.NeutralLightColor %}]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="headerFontColour" name="Header Font Colour" type="color" mode="dynamic" visible="true">
+        <description><![CDATA[Header colour]]></description>
+        <value><![CDATA[{%= Theme.BlackColor %}]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="headerTextAlign" name="Header text align" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[position of the header row text]]></description>
+        <value><![CDATA[center]]></value>
+        <options>
+          <option value="center" text="Center" />
+          <option value="right" text="Right" />
+          <option value="left" text="Left" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="headerGroupPadding" name="Header group padding" type="string" mode="dynamic" visible="true">
+        <description><![CDATA[Header group box padding]]></description>
+        <value><![CDATA[10px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="headerGroupBorderColor" name="Header Group Border Colour" type="color" mode="dynamic" visible="true">
+        <description><![CDATA[Border colour of the header group box]]></description>
+        <value><![CDATA[{%= Theme.NeutralColor %}]]></value>
       </property>
     </category>
   </properties>

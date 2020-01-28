@@ -71,14 +71,28 @@
 		var $container = $(this),
 			items = options.items;
 
+			var headerList = document.querySelectorAll('.headerLabel');
+			for (var i = 0; i < headerList.length; i++) {
+				headerList[i].onclick = function(){
+					var id = this.id;
+					var num = id.substring(id.length - 1);
+					if (i > 9) {
+						num = id.substring(id.length - 2);
+					}
+					$("#headerGroup"+num).slideToggle('slow');
+				};
+			}
+
 		// Check for DK
-		var DKID = items[0].element.attr('id').replace(/[^0-9]/g, ''),
-			hasDK = ( $('input[name="M' + DKID + ' -1"]').size() > 0 ) ? true : false;
-		if ( hasDK ) {
-			$('input[name="M' + DKID + ' -1"]').hide().next('span').hide();
-			$('#cpt' + DKID + '_-1').hide();
-		} else if ( !hasDK && !dkSingle ) {
-			$(this).find('.dk').hide();
+		if (items[0].element.attr('id') != undefined) {
+			var DKID = items[0].element.attr('id').replace(/[^0-9]/g, ''),
+				hasDK = ( $('input[name="M' + DKID + ' -1"]').size() > 0 ) ? true : false;
+			if ( hasDK ) {
+				$('input[name="M' + DKID + ' -1"]').hide().next('span').hide();
+				$('#cpt' + DKID + '_-1').hide();
+			} else if ( !hasDK && !dkSingle ) {
+				$(this).find('.dk').hide();
+			}
 		}
 
 		if ( isSingle ) {
@@ -143,7 +157,6 @@
 
 		// Run noUiSlider
 		for ( var i=0; i<(isSingle && !isInLoop ? 1 : items.length); i++ ) {
-
 			var $input = items[i].element,
 				handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : parseFloat($input.val());
 
@@ -376,7 +389,7 @@
                 if ( $(this).outerHeight() < maxLabelHeight ) $(this).outerHeight(maxLabelHeight);
             });
         }
-        
+
         function adjustLabelWidth(target) {
 			var $target = $container.find(target);
 
@@ -514,7 +527,7 @@
 		}
 		// hide handle
         if ( hideHandle && !(roundToStep($input.val()) >= 0) ) $('.noUi-handle').hide();
-        
+
         adjustLabelWidth('.sliderLabel');
         adjustLabelHeight('.sliderLabel');
 

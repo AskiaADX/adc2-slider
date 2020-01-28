@@ -1,5 +1,11 @@
 /* standard.css */
 {%
+Dim headerColourPrimary = CurrentADC.PropValue("headerColourPrimary")
+Dim headerFontColour = CurrentADC.PropValue("headerFontColour")
+Dim headerGroupPadding = CurrentADC.PropValue("headerGroupPadding")
+Dim headerHoverColourPrimary = CurrentADC.PropValue("headerHoverColourPrimary")
+Dim headerGroupBorderColor = CurrentADC.PropValue("headerGroupBorderColor")
+
 Dim labelColourPrimary = CurrentADC.PropValue("labelColourPrimary")
 Dim fontColour = CurrentADC.PropValue("fontColour")
 Dim labelShadow = CurrentADC.PropValue("labelShadow")
@@ -612,6 +618,29 @@ Dim markerColor = CurrentADC.PropValue("sliderMarkerColor")
 }
 #adc_{%= CurrentADC.InstanceId%} .noUi-pips {
 	color: rgb({%= markerColor %}) !important;
+}
+
+#adc_{%= CurrentADC.InstanceId%} .headerGroupWrap {
+	border: 1px solid rgb({%= headerGroupBorderColor %});
+	/* border-radius: 0.1875em; */
+	padding: {%= headerGroupPadding %}
+}
+#adc_{%= CurrentADC.InstanceId%} .headerLabel {
+		background-color: rgb({%= headerColourPrimary %}) !important;
+		border: 1px solid rgb({%= headerColourPrimary %});
+		cursor: pointer;
+		font-weight: bold;
+		color: rgb({%= headerFontColour %}) !important;
+		z-index: 0;
+		box-sizing: border-box;
+	  padding: 5px 15px 5px 15px;
+	  text-align: {%= CurrentADC.PropValue("headerTextAlign") %};
+		margin-bottom: 0px;
+		/* border-radius: 0.1875em; */
+}
+
+#adc_{%= CurrentADC.InstanceId%} .headerLabel:hover {
+	background-color: rgb({%= headerHoverColourPrimary %}) !important;
 }
 
 /* tooltips */
