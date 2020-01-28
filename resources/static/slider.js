@@ -80,6 +80,7 @@
 						num = id.substring(id.length - 2);
 					}
 					$("#headerGroup"+num).slideToggle('slow');
+					$("i", this).toggleClass("plus minus");					
 				};
 			}
 

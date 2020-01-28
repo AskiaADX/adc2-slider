@@ -6,6 +6,13 @@ Dim headerGroupPadding = CurrentADC.PropValue("headerGroupPadding")
 Dim headerHoverColourPrimary = CurrentADC.PropValue("headerHoverColourPrimary")
 Dim headerGroupBorderColor = CurrentADC.PropValue("headerGroupBorderColor")
 
+Dim headerTextAlign = CurrentADC.PropValue("headerTextAlign")
+
+Dim symbolPosition = "left"
+IF headerTextAlign = "left" Then
+		symbolPosition = "right"
+EndIF
+
 Dim labelColourPrimary = CurrentADC.PropValue("labelColourPrimary")
 Dim fontColour = CurrentADC.PropValue("fontColour")
 Dim labelShadow = CurrentADC.PropValue("labelShadow")
@@ -622,9 +629,9 @@ Dim markerColor = CurrentADC.PropValue("sliderMarkerColor")
 
 #adc_{%= CurrentADC.InstanceId%} .headerGroupWrap {
 	border: 1px solid rgb({%= headerGroupBorderColor %});
-	/* border-radius: 0.1875em; */
 	padding: {%= headerGroupPadding %}
 }
+
 #adc_{%= CurrentADC.InstanceId%} .headerLabel {
 		background-color: rgb({%= headerColourPrimary %}) !important;
 		border: 1px solid rgb({%= headerColourPrimary %});
@@ -634,13 +641,26 @@ Dim markerColor = CurrentADC.PropValue("sliderMarkerColor")
 		z-index: 0;
 		box-sizing: border-box;
 	  padding: 5px 15px 5px 15px;
-	  text-align: {%= CurrentADC.PropValue("headerTextAlign") %};
+	  text-align: {%= headerTextAlign %};
 		margin-bottom: 0px;
-		/* border-radius: 0.1875em; */
 }
 
 #adc_{%= CurrentADC.InstanceId%} .headerLabel:hover {
 	background-color: rgb({%= headerHoverColourPrimary %}) !important;
+}
+
+.plus::after {
+	content: '\002B';
+  color: rgb({%= headerFontColour %});
+  font-weight: bold;
+  float: {%= symbolPosition %};
+}
+
+.minus::after {
+	content: "\2212";
+	color: rgb({%= headerFontColour %});
+  font-weight: bold;
+	float: {%= symbolPosition %};
 }
 
 /* tooltips */
