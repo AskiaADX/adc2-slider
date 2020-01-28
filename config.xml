@@ -7,7 +7,7 @@
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>4.0.0</version>
+    <version>4.0.1</version>
     <date>2014-05-21</date>
     <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
@@ -79,6 +79,7 @@
     v3.0.4 - fixed height label same size
     v3.0.5 - fixed height label same size
     v4.0.0 - Non-selectable headers
+    v4.0.1 - Header collapsed symbol
     ]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>   Prabath Gamage <prabath@askia.com>]]></author>
