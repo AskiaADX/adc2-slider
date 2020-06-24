@@ -11,6 +11,7 @@ Dim leftLabelArray
 Dim rightLabelArray
 Dim isHeader
 Dim showHeader = CurrentADC.PropValue("showHeaders") ="1"
+Dim captionPlacement = CurrentADC.PropValue("captionPlacement")
 
 IF CurrentADC.PropValue("rightLabelText") <> "" Then
 	labelCount = labelCount + 1
@@ -65,7 +66,9 @@ For j = 1 To ar.Count
     {% IF CurrentADC.PropValue("sliderOrientation") = "horizontal" Then %}
 		<input type="hidden" id="{%= inputName %}" name="{%= inputName %}" value="{%= CurrentQuestion.Iteration(chr[m].Index).inputValue() %}" />
 
-        <div class="sliderContainer" data-iteration="{%= dataIteration %}">
+		<div class="sliderContainer" data-iteration="{%= dataIteration %}">
+
+					{% IF (captionPlacement = "top") Then %}
             <label class="caption">
                 {% IF CurrentADC.PropValue("imageAlign") = "left" Then %}
                 {% IF image <> "" Then %} <img src="{%= image %}" alt="{%:= caption %}"/> {% EndIF %}
@@ -75,6 +78,35 @@ For j = 1 To ar.Count
                     {% IF image <> "" Then %} <img src="{%= image %}" alt="{%:= caption %}"/> {% EndIF %}
                 {% EndIF %}
             </label>
+					{% EndIF %}
+
+					{% IF (captionPlacement = "right") Then %}
+						<div class="captionRight">
+							<label class="caption">
+									{% IF CurrentADC.PropValue("imageAlign") = "left" Then %}
+									{% IF image <> "" Then %} <img src="{%= image %}" alt="{%:= caption %}"/> {% EndIF %}
+									{% EndIF %}
+									{%:= caption %}
+									{% IF CurrentADC.PropValue("imageAlign") = "right" Then %}
+											{% IF image <> "" Then %} <img src="{%= image %}" alt="{%:= caption %}"/> {% EndIF %}
+									{% EndIF %}
+							</label>
+						</div>
+						<div class="sliderLeft">
+					{% ElseIF (captionPlacement = "left") Then %}
+						<div class="captionLeft">
+							<label class="caption">
+									{% IF CurrentADC.PropValue("imageAlign") = "left" Then %}
+									{% IF image <> "" Then %} <img src="{%= image %}" alt="{%:= caption %}"/> {% EndIF %}
+									{% EndIF %}
+									{%:= caption %}
+									{% IF CurrentADC.PropValue("imageAlign") = "right" Then %}
+											{% IF image <> "" Then %} <img src="{%= image %}" alt="{%:= caption %}"/> {% EndIF %}
+									{% EndIF %}
+							</label>
+						</div>
+						<div class="sliderRight">
+					{% EndIF %}
 
             <table class="slider" border="0" cellpadding="0" cellspacing="0" width="100%">
 
@@ -212,9 +244,26 @@ For j = 1 To ar.Count
         {% EndIF %}
 
         </table>
+				{% IF ((captionPlacement = "right") OR (captionPlacement = "left"))  Then %}
+				</div>
+				{% EndIF %}
+
+				{% IF (captionPlacement = "bottom") Then %}
+					<label class="caption">
+							{% IF CurrentADC.PropValue("imageAlign") = "left" Then %}
+							{% IF image <> "" Then %} <img src="{%= image %}" alt="{%:= caption %}"/> {% EndIF %}
+							{% EndIF %}
+							{%:= caption %}
+							{% IF CurrentADC.PropValue("imageAlign") = "right" Then %}
+									{% IF image <> "" Then %} <img src="{%= image %}" alt="{%:= caption %}"/> {% EndIF %}
+							{% EndIF %}
+					</label>
+				{% EndIF %}
+
     </div>
 
 {% Else %}
+<!-- VERTICAL VIEW  -->
 
     <div class="sliderContainer">
         <table class="slider" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -274,6 +323,8 @@ For j = 1 To ar.Count
     {% IF CurrentADC.PropValue("sliderOrientation") = "horizontal" Then %}
 
         <div class="sliderContainer" data-iteration="{%= dataIteration2 %}">
+
+					{% IF captionPlacement = "top" Then %}
             <label class="caption">
                 {% IF CurrentADC.PropValue("imageAlign") = "left" Then %}
                 {% IF image <> "" Then %} <img src="{%= image %}" alt="{%:= caption %}"/> {% EndIF %}
@@ -283,6 +334,7 @@ For j = 1 To ar.Count
                     {% IF image <> "" Then %} <img src="{%= image %}" alt="{%:= caption %}"/> {% EndIF %}
                 {% EndIF %}
             </label>
+					{% EndIF %}
 
             <table class="slider" border="0" cellpadding="0" cellspacing="0" width="100%">
 
@@ -416,9 +468,23 @@ For j = 1 To ar.Count
         {% EndIF %}
 
         </table>
+
+				{% IF captionPlacement = "bottom" Then %}
+					<label class="caption">
+							{% IF CurrentADC.PropValue("imageAlign") = "left" Then %}
+							{% IF image <> "" Then %} <img src="{%= image %}" alt="{%:= caption %}"/> {% EndIF %}
+							{% EndIF %}
+							{%:= caption %}
+							{% IF CurrentADC.PropValue("imageAlign") = "right" Then %}
+									{% IF image <> "" Then %} <img src="{%= image %}" alt="{%:= caption %}"/> {% EndIF %}
+							{% EndIF %}
+					</label>
+				{% EndIF %}
+
     </div>
 
 {% Else %}
+<!-- VERTICAL VIEW  -->
 
     <div class="sliderContainer">
         <table class="slider" border="0" cellpadding="0" cellspacing="0" width="100%">
