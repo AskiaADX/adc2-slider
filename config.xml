@@ -7,7 +7,7 @@
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>4.1.1</version>
+    <version>4.1.2</version>
     <date>2020-10-27</date>
     <description><![CDATA[]]></description>
     <company>Askia</company>
@@ -178,6 +178,7 @@
         <options>
           <option value="ltr" text="Left to Right" />
           <option value="ttb" text="Top to Bottom" />
+          <option value="rtl" text="Right to Left" />
         </options>
       </property>
       <property xsi:type="standardProperty" id="sliderBaseBorderRadius" name="Slider Base Border Radius" type="string" mode="dynamic" require="true" visible="false">
