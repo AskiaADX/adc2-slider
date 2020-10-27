@@ -74,3 +74,4 @@ v3.0.5 - fixed height label same size
 v4.0.0 - Non-selectable headers
 v4.0.1 - Header collapsed symbol
 v4.1.0 - Caption Placement for Loop response items
+v4.1.1 - properties mode set to dynamic

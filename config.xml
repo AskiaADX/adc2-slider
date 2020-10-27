@@ -7,8 +7,8 @@
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>4.1.0</version>
-    <date>2020-06-24</date>
+    <version>4.1.1</version>
+    <date>2020-10-27</date>
     <description><![CDATA[]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>   Prabath Gamage <prabath@askia.com>]]></author>
@@ -97,7 +97,7 @@
           <option value="vertical" text="Vertical" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="sliderDirection" name="Slider Direction" type="string" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="sliderDirection" name="Slider Direction" type="string" mode="dynamic" require="false" visible="true">
         <description><![CDATA[The direction of the slider]]></description>
         <value><![CDATA[ltr]]></value>
         <options>
@@ -172,7 +172,7 @@
         <description><![CDATA[Secondary colour of the slider]]></description>
         <value><![CDATA[0,255,0]]></value>
       </property>
-      <property xsi:type="standardProperty" id="sliderBaseGradientDirection" name="Slider Base Gradient Direction" type="string" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="sliderBaseGradientDirection" name="Slider Base Gradient Direction" type="string" mode="dynamic" require="false" visible="true">
         <description><![CDATA[The direction of the gradient on the base]]></description>
         <value><![CDATA[ltr]]></value>
         <options>
@@ -309,7 +309,7 @@
         <description><![CDATA[Text to add on handle]]></description>
         <value></value>
       </property>
-      <property xsi:type="standardProperty" id="handleTextPosition" name="Handle text position" type="string" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="handleTextPosition" name="Handle text position" type="string" mode="dynamic" require="false" visible="true">
         <description><![CDATA[The position of the text added on handle]]></description>
         <value><![CDATA[right]]></value>
         <options>
@@ -429,7 +429,7 @@
         <description><![CDATA[The maximum width of the control]]></description>
         <value><![CDATA[600px]]></value>
       </property>
-      <property xsi:type="standardProperty" id="controlAlign" name="Control Alignment" type="string" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="controlAlign" name="Control Alignment" type="string" mode="dynamic" require="false" visible="true">
         <description><![CDATA[The alignment of the control]]></description>
         <value><![CDATA[center]]></value>
         <options>
@@ -438,7 +438,7 @@
           <option value="right" text="Right" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="textAlign" name="Text Alignment" type="string" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="textAlign" name="Text Alignment" type="string" mode="dynamic" require="false" visible="true">
         <description><![CDATA[The alignment of the text in the responses]]></description>
         <value><![CDATA[center]]></value>
         <options>
