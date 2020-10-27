@@ -7,7 +7,7 @@
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>3.0.6</version>
+    <version>3.0.7</version>
     <date>2020-10-27</date>
     <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
@@ -78,7 +78,8 @@
     v3.0.1 - new property for marker and marker-pips color / "sliderMarkerColor"
     v3.0.4 - fixed height label same size
     v3.0.5 - fixed height label same size
-    v3.0.6 - properties mode set to dynamic]]></description>
+    v3.0.6 - properties mode set to dynamic
+    v3.0.7 - sliderBaseGradientDirection: Right to Left]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>   Prabath Gamage <prabath@askia.com>]]></author>
     <site>http://www.askia.com</site>
@@ -247,6 +248,7 @@
         <options>
           <option value="ltr" text="Left to Right" />
           <option value="ttb" text="Top to Bottom" />
+          <option value="rtl" text="Right to Left" />          
         </options>
       </property>
       <property xsi:type="standardProperty" id="sliderBaseBorderRadius" name="Slider Base Border Radius" type="string" mode="dynamic" require="true" visible="false">

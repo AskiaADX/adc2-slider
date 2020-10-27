@@ -293,14 +293,18 @@ Dim markerColor = CurrentADC.PropValue("sliderMarkerColor")
 	cursor:pointer;
 
 	/* background */
-	{% IF CurrentADC.PropValue("sliderBaseGradientDirection") = "ltr" Then %}
+	{% IF CurrentADC.PropValue("sliderBaseGradientDirection") <> "ttb" Then %}
 		background: rgb({%= sliderBasePrimaryColour%});
 		background: -moz-linear-gradient(left,  rgb({%= sliderBasePrimaryColour%}) 0%, rgb({%= sliderBaseSecondaryColour%}) 100%);
 		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb({%= sliderBasePrimaryColour%})), color-stop(100%,rgb({%= sliderBaseSecondaryColour%})));
 		background: -webkit-linear-gradient(left,  rgb({%= sliderBasePrimaryColour%}) 0%,rgb({%= sliderBaseSecondaryColour%}) 100%);
 		background: -o-linear-gradient(left,  rgb({%= sliderBasePrimaryColour%}) 0%,rgb({%= sliderBaseSecondaryColour%}) 100%);
 		background: -ms-linear-gradient(left,  rgb({%= sliderBasePrimaryColour%}) 0%,rgb({%= sliderBaseSecondaryColour%}) 100%);
-		background: linear-gradient(to right,  rgb({%= sliderBasePrimaryColour%}) 0%,rgb({%= sliderBaseSecondaryColour%}) 100%);
+		{% IF CurrentADC.PropValue("sliderBaseGradientDirection") = "ltr" Then %}
+				background: linear-gradient(to right,  rgb({%= sliderBasePrimaryColour%}) 0%,rgb({%= sliderBaseSecondaryColour%}) 100%);
+		{% Else %}
+				background: linear-gradient(to left,  rgb({%= sliderBasePrimaryColour%}) 0%,rgb({%= sliderBaseSecondaryColour%}) 100%);
+		{% EndIF %}
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{%= sliderBasePrimaryColour.ToHexa()%}', endColorstr='{%= sliderBaseSecondaryColour.ToHexa()%}',GradientType=1 );
 
 	{% Else %}
