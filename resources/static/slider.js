@@ -9,12 +9,12 @@
 		(options.autoForward = Boolean(options.autoForward));
 		(options.minValue = options.minValue || 0);
 		(options.maxValue = options.maxValue || 10);
-        (options.intermediateValue = options.intermediateValue || ((options.minValue + options.maxValue) / 2));
+    (options.intermediateValue = options.intermediateValue || ((options.minValue + options.maxValue) / 2));
 		(options.unitStep = options.unitStep || 1);
 		(options.stepMarkerText = options.stepMarkerText || 1);
 		(options.sliderDirection = options.sliderDirection || "ltr");
-        (options.connect = options.connect || false);
-        (options.currentQuestion = options.currentQuestion || '');
+    (options.connect = options.connect || false);
+    (options.currentQuestion = options.currentQuestion || '');
 
 		// Delegate .transition() calls to .animate() if the browser can't do CSS transitions.
 		if (!$.support.transition) { $.fn.transition = $.fn.animate; }
@@ -376,7 +376,7 @@
                 if ( $(this).outerHeight() < maxLabelHeight ) $(this).outerHeight(maxLabelHeight);
             });
         }
-        
+
         function adjustLabelWidth(target) {
 			var $target = $container.find(target);
 
@@ -514,7 +514,7 @@
 		}
 		// hide handle
         if ( hideHandle && !(roundToStep($input.val()) >= 0) ) $('.noUi-handle').hide();
-        
+
         adjustLabelWidth('.sliderLabel');
         adjustLabelHeight('.sliderLabel');
 

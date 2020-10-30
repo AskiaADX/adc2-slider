@@ -7,8 +7,8 @@
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>3.0.7</version>
-    <date>2020-10-27</date>
+    <version>3.0.8</version>
+    <date>2020-10-29</date>
     <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
 			   - fixed storing data problem for single questions in loops
@@ -79,7 +79,8 @@
     v3.0.4 - fixed height label same size
     v3.0.5 - fixed height label same size
     v3.0.6 - properties mode set to dynamic
-    v3.0.7 - sliderBaseGradientDirection: Right to Left]]></description>
+    v3.0.7 - sliderBaseGradientDirection: Right to Left
+    v3.0.8 - rtl languages support with sliderDirection]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>   Prabath Gamage <prabath@askia.com>]]></author>
     <site>http://www.askia.com</site>
@@ -175,6 +176,14 @@
           <option value="rtl" text="Right to left" />
         </options>
       </property>
+      <property xsi:type="standardProperty" id="followLanguageDirection" name="Follow language direction" type="string" mode="static" require="true" visible="true">
+        <description><![CDATA[Follow the language type to decide the slider direction.]]></description>
+        <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
+      </property>
       <property xsi:type="standardProperty" id="minValue" name="Minimum value" type="number" mode="static" require="false" visible="true">
         <description><![CDATA[Set min slider value]]></description>
         <value><![CDATA[0]]></value>
@@ -248,7 +257,7 @@
         <options>
           <option value="ltr" text="Left to Right" />
           <option value="ttb" text="Top to Bottom" />
-          <option value="rtl" text="Right to Left" />          
+          <option value="rtl" text="Right to Left" />
         </options>
       </property>
       <property xsi:type="standardProperty" id="sliderBaseBorderRadius" name="Slider Base Border Radius" type="string" mode="dynamic" require="true" visible="false">

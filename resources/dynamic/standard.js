@@ -16,7 +16,15 @@ $(window).load(function() {
 		maxValue : {%= CurrentADC.PropValue("maxValue") %},
 		isInLoop: {%= (CurrentADC.PropValue("isInLoop") = "1") %},
 		sliderOrientation : '{%= CurrentADC.PropValue("sliderOrientation") %}',
-		sliderDirection : '{%= CurrentADC.PropValue("sliderDirection") %}',
+		{%
+			Dim rtlLangArr = {"ARA";"ARG";"ARH";"ARE";"ARI";"ARJ";"ARK";"ARB";"ARL";"ARM";"ARO";"ARQ";"ARS";"ART";"ARU";"ARY";"DIV";"HEB";"URD"}
+			IF ((CurrentADC.PropValue("followLanguageDirection") = "1") AND (rtlLangArr.IndexOf(Interview.Language.Abbr) <> DK)) THEN
+		%}
+			sliderDirection : 'rtl',
+		{% Else %}
+			sliderDirection : '{%= CurrentADC.PropValue("sliderDirection") %}',
+		{% EndIF %}
+		followLanguageDirection : {%= (CurrentADC.PropValue("followLanguageDirection") = "1") %},
 		sliderHandleStartPosition : '{%= CurrentADC.PropValue("sliderHandleStartPosition") %}',
 		hideHandle : {%= (CurrentADC.PropValue("hideHandle") = "1") %},
 		showValue : {%= (CurrentADC.PropValue("showValue") = "1") %},
