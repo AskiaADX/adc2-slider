@@ -36,6 +36,7 @@ $(window).load(function() {
         showTooltips : {%= (CurrentADC.PropValue("showTooltips") = "1") %},
 		showMarkers : {%= (CurrentADC.PropValue("showMarkers") = "1") %},
         showMarkerText : {%= (CurrentADC.PropValue("showMarkerText") = "1") %},
+				showResponseCaptions : {%= (CurrentADC.PropValue("showResponseCaptions") = "1") %},
 		interconnection : {%= (CurrentADC.PropValue("interconnection") = "1") %},
         decimalPlaces : {%= CurrentADC.PropValue("decimalPlaces") %},
       	currentQuestion: '{%:= CurrentQuestion.Shortcut %}',

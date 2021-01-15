@@ -605,7 +605,18 @@ Dim markerColor = CurrentADC.PropValue("sliderMarkerColor")
     {% IF CurrentADC.PropValue("showMarkerText") <> "1" Then %}
     	display:none;
   	{% EndIF %}
+		{% IF CurrentADC.PropValue("showResponseCaptions") = "1" Then %}
+		/* transform: rotate(-90deg); */
+  	{% EndIF %}
 }
+
+#adc_{%= CurrentADC.InstanceId%} .noUi-value-horizontal{
+	{% IF CurrentADC.PropValue("showResponseCaptions") = "1" Then %}
+		/* padding-top: 25px; */
+		/* margin-left: -30px; */
+	{% EndIF %}
+}
+
 #adc_{%= CurrentADC.InstanceId%} .noUi-marker-normal {
     {% IF CurrentADC.PropValue("showSubMarkers") <> "1" Then %}
     	display:none;

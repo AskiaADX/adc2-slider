@@ -25,6 +25,7 @@
 			isSingle = Boolean(options.isSingle),
 			isInLoop = Boolean(options.isInLoop),
 			dkSingle = Boolean(options.dkSingle),
+			showResponseCaptions = Boolean(options.showResponseCaptions),
 			useHandleImage = Boolean(options.useHandleImage),
 			handleImagePath = options.handleImagePath,
 			handleImageWidth = options.handleImageWidth,
@@ -40,6 +41,7 @@
 			interconnection = Boolean(options.interconnection),
 			sliderOrientation = options.sliderOrientation,
 			valuesArray = new Array(),
+			captionsArray = new Array(),
 			iteration = 0,
 			total_images = $container.find("img").length,
 			unitStep = options.unitStep,
@@ -80,7 +82,7 @@
 						num = id.substring(id.length - 2);
 					}
 					$("#headerGroup"+num).slideToggle('slow');
-					$("i", this).toggleClass("plus minus");					
+					$("i", this).toggleClass("plus minus");
 				};
 			}
 
@@ -100,6 +102,7 @@
 			if ( isSingle && !isInLoop ) {
 				for ( var i=0; i<items.length; i++ ) {
 					valuesArray.push(items[i].value);
+					captionsArray.push(items[i].caption);
 				}
 			} else {
 				var allValuesArray = items[0].allValues.split(",");
@@ -222,21 +225,24 @@
 						var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 						element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 					}
-                    if (showTooltips) {
+          if (showTooltips) {
 						var element = $(this).parents('.controlContainer'),
-							handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) );
-                     	// element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
-											element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
-
-                    }
+						handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) );
+           	// element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
+						if (showResponseCaptions & isSingle & !isInLoop) {
+							element.find('.noUi-handle').eq(iteration).attr('title', captionsArray[$.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue)]);
+						} else {
+							element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
+						}
+          }
 
 					$(this).parents('.sliderContainer').find('.dk').removeClass('selected');
-                    if (window.askia
-                        && window.arrLiveRoutingShortcut
-                        && window.arrLiveRoutingShortcut.length > 0
-                        && window.arrLiveRoutingShortcut.indexOf(options.currentQuestion) >= 0) {
-                        askia.triggerAnswer();
-                    }
+          if (window.askia
+              && window.arrLiveRoutingShortcut
+              && window.arrLiveRoutingShortcut.length > 0
+              && window.arrLiveRoutingShortcut.indexOf(options.currentQuestion) >= 0) {
+              askia.triggerAnswer();
+          }
 				},
 				slide : function() {
 					if ( isInLoop ) { iteration = $(this).parents('.sliderContainer').data('iteration'); }
@@ -252,15 +258,15 @@
 						var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 						element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 					}
-                   if (showTooltips) {
-                        var element = $(this).parents('.controlContainer'),
-                            handleValue = isSingle ?
-                                ( isInLoop ? ( decimalPlaces > 0 ? parseFloat(roundToStep($(this).val())).toFixed(decimalPlaces) : roundToStep($(this).val()) ) : $.inArray(roundToStep(items[ roundToStep( $(this).val() - roundToStep(options.minValue) ) ].value), valuesArray) + roundToStep(options.minValue) ) :
-                                ( decimalPlaces > 0 ? parseFloat(roundToStep(roundToStep( $(this).val() ))).toFixed(decimalPlaces) : roundToStep(roundToStep( $(this).val() )) ) ;
-                        // element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
-												element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
+         if (showTooltips) {
+              var element = $(this).parents('.controlContainer'),
+                  handleValue = isSingle ?
+                      ( isInLoop ? ( decimalPlaces > 0 ? parseFloat(roundToStep($(this).val())).toFixed(decimalPlaces) : roundToStep($(this).val()) ) : $.inArray(roundToStep(items[ roundToStep( $(this).val() - roundToStep(options.minValue) ) ].value), valuesArray) + roundToStep(options.minValue) ) :
+                      ( decimalPlaces > 0 ? parseFloat(roundToStep(roundToStep( $(this).val() ))).toFixed(decimalPlaces) : roundToStep(roundToStep( $(this).val() )) ) ;
+              // element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
+							element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
 
-                    }
+          }
 
 					$(this).parents('.sliderContainer').eq(iteration).find('.dk').removeClass('selected');
 
@@ -284,6 +290,24 @@
 						})
 					});
 				} else {
+					if (showResponseCaptions & isSingle & !isInLoop) {
+						var pipFormats = captionsArray;
+						$(this).find('.noUiSlider').eq(i).noUiSlider_pips({
+								mode: 'count',
+								values: (options.maxValue - options.minValue)+1,
+								density: (options.maxValue - options.minValue)/2,
+								format: {
+									to: function(a){
+										return pipFormats[a];
+									}
+								}
+								// format: wNumb({
+								// 	decimals: decimalPlaces,
+								// 	prefix: leftHandleText,
+								// 	postfix: rightHandleText
+								// })
+						});
+					} else {
 						$(this).find('.noUiSlider').eq(i).noUiSlider_pips({
 								mode: 'count',
 								values: (options.maxValue - options.minValue)+1,
@@ -294,6 +318,7 @@
 									postfix: rightHandleText
 								})
 						});
+					}
 				}
 
 				/*if ( sliderOrientation == 'horizontal' ) {
