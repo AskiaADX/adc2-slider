@@ -77,3 +77,4 @@ v4.1.0 - Caption Placement for Loop response items
 v4.1.1 - properties mode set to dynamic
 v4.1.2 - sliderBaseGradientDirection = Right to Left
 v4.1.3 - Show response captions for single-coded questions
+v4.1.4 - Multiple exclusive/DK options

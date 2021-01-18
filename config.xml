@@ -7,8 +7,8 @@
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>4.1.3</version>
-    <date>2021-01-15</date>
+    <version>4.1.4</version>
+    <date>2021-01-18</date>
     <description><![CDATA[]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>   Prabath Gamage <prabath@askia.com>]]></author>
@@ -576,13 +576,17 @@
       </property>
     </category>
     <category id="dk" name="DK">
-      <property xsi:type="standardProperty" id="dkSingle" name="Turn on DK for single choice question" type="string" mode="dynamic" require="true" visible="true">
-        <description><![CDATA[Whether or not to use the last single choice option as a DK]]></description>
+      <property xsi:type="standardProperty" id="dkSingle" name="Turn on DK for single coded questions" type="string" mode="dynamic" require="true" visible="true">
+        <description><![CDATA[Whether or not to use last responses of the single coded question, as DK]]></description>
         <value><![CDATA[0]]></value>
         <options>
           <option value="1" text="Yes" />
           <option value="0" text="No" />
         </options>
+      </property>
+      <property xsi:type="standardProperty" id="dkOptions" name="DK responses entry codes" type="string" mode="static" require="false" visible="true">
+        <description><![CDATA[DK/Exclusive responses entry codes]]></description>
+        <value><![CDATA[]]></value>
       </property>
       <property xsi:type="standardProperty" id="dkPosition" name="DK Position" type="string" mode="static" require="false" visible="true">
         <description><![CDATA[Position of DK]]></description>

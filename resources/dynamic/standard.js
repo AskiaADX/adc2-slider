@@ -24,6 +24,7 @@ $(window).load(function() {
 		handleTextPosition : '{%:= CurrentADC.PropValue("handleTextPosition") %}',
 		isSingle : {%= (CurrentQuestion.Type = "single") %},
 		dkSingle: {%= (CurrentADC.PropValue("dkSingle") = "1") %},
+		dkOptions: '{%:= CurrentADC.PropValue("dkOptions") %}',
 		useHandleImage : {%= (CurrentADC.PropValue("useHandleImage") = "1") %},
 		handleImagePath : '{%= CurrentADC.PropValue("handleImagePath") %}',
 		handleImageWidth : '{%= CurrentADC.PropValue("handleImageWidth") %}',

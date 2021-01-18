@@ -25,6 +25,7 @@
 			isSingle = Boolean(options.isSingle),
 			isInLoop = Boolean(options.isInLoop),
 			dkSingle = Boolean(options.dkSingle),
+			dkOptions = options.dkOptions,
 			showResponseCaptions = Boolean(options.showResponseCaptions),
 			useHandleImage = Boolean(options.useHandleImage),
 			handleImagePath = options.handleImagePath,
@@ -54,6 +55,8 @@
 			startPosition = (parseFloat(options.intermediateValue));
 			if (sliderHandleStartPosition == "min") startPosition = parseFloat(options.minValue);
 			if (sliderHandleStartPosition == "max") startPosition = parseFloat(options.maxValue);
+
+			const dkArr = dkOptions.split(',');
 
 		function filter500( value, type ){
 			return value % 100 ? 2 : 1;
@@ -118,8 +121,10 @@
 		}
 
 		if ( isSingle && dkSingle ) {
-			options.maxValue = parseInt(options.maxValue) - 1;
-			$(this).find('.dk').attr('data-value',valuesArray[valuesArray.length-1]);
+			options.maxValue = parseInt(options.maxValue) - dkArr.length;
+			for (var i = 0; i < dkArr.length; i++) {
+				$($(this).find('.dk')[i]).attr('data-value',valuesArray[dkArr[i] - 1]);
+			}
 		}
 
 		// Check for images and resize
@@ -177,7 +182,6 @@
           rangeData['50%'] = [options.intermediateValue,unitStep];
       }
       rangeData['max'] = [options.maxValue];
-
 			$(this).find('.noUiSlider').eq(i).noUiSlider({
 				//range: {'min':[options.minValue], '50%':[options.intermediateValue,unitStep], 'max':[options.maxValue]},
         range: rangeData,
@@ -236,7 +240,15 @@
 						}
           }
 
-					$(this).parents('.sliderContainer').find('.dk').removeClass('selected');
+					// for (var i = 0; i < dkArr.length; i++) {
+					// 	.removeClass('selected'); // TODO : Fix JS Error
+					// }
+
+					let dkObjs = $(this).parents('.sliderContainer').find('.dk');
+					for (var i = 0; i < dkArr.length; i++) {
+							$(dkObjs[i]).removeClass('selected');
+					}
+
           if (window.askia
               && window.arrLiveRoutingShortcut
               && window.arrLiveRoutingShortcut.length > 0
@@ -268,7 +280,11 @@
 
           }
 
-					$(this).parents('.sliderContainer').eq(iteration).find('.dk').removeClass('selected');
+					let dkObjs = $(this).parents('.sliderContainer').eq(iteration).find('.dk');
+					for (var i = 0; i < dkArr.length; i++) {
+						$(dkObjs[i]).removeClass('selected');
+					}
+
 
 					if(interconnection){ // (show the handles on slide, not on set)
 						$(this).parents('.controlContainer').find('.slider').eq(iteration).addClass('focused').find('.noUi-handle').show();
@@ -346,7 +362,10 @@
 			if ( isSingle && dkSingle ) {
 				if ( ($.inArray(parseInt($input.val()), valuesArray) + parseInt(options.minValue)) > options.maxValue ) {
 					$(this).find('.sliderContainer').eq(i).find('.noUi-handle').hide();
-					$(this).find('.sliderContainer').eq(i).find('.dk').addClass('selected');
+					let dkObjs = $(this).find('.sliderContainer').eq(i).find('.dk');
+					for (var i = 0; i < dkObjs.length; i++) {
+						if($(dkObjs[i]).attr('data-value') == $input.val()) $(dkObjs[i]).addClass('selected');
+					}
 					$(this).find('.sliderContainer').eq(i).addClass('selected');
 				}
 			}
@@ -392,7 +411,11 @@
 				var DKID = items[0].element.attr('id').replace(/[^0-9]/g, '');
 				if ( $('input[name="M' + DKID + ' -1"]').prop('checked') ) {
 					$(this).find('.sliderContainer').eq(i).find('.noUi-handle').hide();
-					$(this).find('.sliderContainer').eq(i).find('.dk').addClass('selected');
+					// $(this).find('.sliderContainer').eq(i).find('.dk').addClass('selected');
+					let dkObjs = $(this).find('.sliderContainer').eq(i).find('.dk');
+					for (var i = 0; i < dkObjs.length; i++) {
+						if($(dkObjs[i]).attr('data-value') == $input.val()) $(dkObjs[i]).addClass('selected');
+					}
 				}
 			}
 		}
@@ -687,8 +710,10 @@
 
 			// Set value to input
 			//$input.val(value);
-
-			//$(this).parents('.sliderContainer').find('.noUiSlider').removeClass('selected');
+			let dkObjs = $(this).parents('.sliderContainer').find('.dk');
+			for (var i = 0; i < dkArr.length; i++) {
+				$(dkObjs[i]).removeClass('selected');
+			}
 			if ( $(this).hasClass('selected') ) {
 				$(this).removeClass('selected');
 				$input.val('');
