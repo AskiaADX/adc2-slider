@@ -679,10 +679,10 @@ Dim markerColor = CurrentADC.PropValue("sliderMarkerColor")
 }
 
 /* tooltips */
-.tippy-tooltip {
+#adc_{%= CurrentADC.InstanceId%} .tippy-tooltip {
 	background-color: {%= Theme.PrimaryDarkColor.ToString().ToHexa() %} !important;
     border: 2px solid {%= Theme.PrimaryLightColor.ToString().ToHexa() %} !important;
 }
-.tippy-tooltip .tippy-tooltip-content {
+#adc_{%= CurrentADC.InstanceId%} .tippy-tooltip .tippy-tooltip-content {
 	color: {%= Theme.WhiteColor.ToString().ToHexa() %} !important;
 }
