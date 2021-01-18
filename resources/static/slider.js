@@ -245,7 +245,7 @@
 					// }
 
 					let dkObjs = $(this).parents('.sliderContainer').find('.dk');
-					for (var i = 0; i < dkArr.length; i++) {
+					for (var i = 0; i < dkObjs.length; i++) {
 							$(dkObjs[i]).removeClass('selected');
 					}
 
@@ -281,7 +281,7 @@
           }
 
 					let dkObjs = $(this).parents('.sliderContainer').eq(iteration).find('.dk');
-					for (var i = 0; i < dkArr.length; i++) {
+					for (var i = 0; i < dkObjs.length; i++) {
 						$(dkObjs[i]).removeClass('selected');
 					}
 
@@ -711,7 +711,7 @@
 			// Set value to input
 			//$input.val(value);
 			let dkObjs = $(this).parents('.sliderContainer').find('.dk');
-			for (var i = 0; i < dkArr.length; i++) {
+			for (var i = 0; i < dkObjs.length; i++) {
 				$(dkObjs[i]).removeClass('selected');
 			}
 			if ( $(this).hasClass('selected') ) {

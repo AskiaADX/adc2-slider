@@ -101,15 +101,7 @@ Dim i
             {% Else %}
 
             		<tr valign="middle" class="sliderMiddle">
-                    <td colspan="{%= labelCount + 1 %}" align="left">
-											{% For i = 1 To optArr.Count %}
-												{% IF showResponseCaptions = "1" Then %}
-														<div class="dk" data-value="{%= ar[optArr[i].ToNumber()].inputValue()%}">{%:=ar[optArr[i].ToNumber()].Caption %}</div>
-												{% Else %}
-														<div class="dk" data-value="{%= ar[CurrentQuestion.AvailableResponses.Count].inputValue() %}">{%:= CurrentADC.PropValue("dkText")%}</div>
-												{% EndIF %}
-											{% Next i %}
-										</td>
+									 <td colspan="{%= labelCount + 1 %}" align="left"><div class="noUiSlider noUi-extended"></div></td>
                 </tr>
 
             {% EndIF %}
