@@ -91,6 +91,7 @@
 
 		// Check for DK
 		if (items[0].element.attr('id') != undefined) {
+			console.log(items[0].element.attr('id'));
 			var DKID = items[0].element.attr('id').replace(/[^0-9]/g, ''),
 				hasDK = ( $('input[name="M' + DKID + ' -1"]').size() > 0 ) ? true : false;
 			if ( hasDK ) {
@@ -109,15 +110,17 @@
 				}
 			} else {
 				var allValuesArray = items[0].allValues.split(",");
+				var allCaptionsArray = items[0].allCaptions.split(",,,,");
 				for ( var i=0; i<allValuesArray.length; i++ ) {
 					valuesArray.push( parseInt( allValuesArray[i] ) );
+					captionsArray.push(allCaptionsArray[i]);
 				}
 			}
 			//options.minValue = 1,
 			//options.maxValue = isInLoop ? parseInt(options.minValue) + (parseInt(options.maxValue) - parseInt(options.minValue)) : parseInt(options.minValue) + (items.length - 1),
 			options.maxValue = isInLoop ? parseInt(options.minValue) + (allValuesArray.length - 1) : parseInt(options.minValue) + (items.length - 1);
-            unitStep = 1;
-						stepMarkerText = 1;
+    	unitStep = 1;
+			stepMarkerText = 1;
 		}
 
 		if ( isSingle && dkSingle ) {
@@ -233,16 +236,12 @@
 						var element = $(this).parents('.controlContainer'),
 						handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) );
            	// element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
-						if (showResponseCaptions & isSingle & !isInLoop) {
+						if (showResponseCaptions & isSingle) {
 							element.find('.noUi-handle').eq(iteration).attr('title', captionsArray[$.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue)]);
 						} else {
 							element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
 						}
           }
-
-					// for (var i = 0; i < dkArr.length; i++) {
-					// 	.removeClass('selected'); // TODO : Fix JS Error
-					// }
 
 					let dkObjs = $(this).parents('.sliderContainer').find('.dk');
 					for (var i = 0; i < dkObjs.length; i++) {
@@ -306,7 +305,7 @@
 						})
 					});
 				} else {
-					if (showResponseCaptions & isSingle & !isInLoop) {
+					if (showResponseCaptions & isSingle) {
 						var pipFormats = captionsArray;
 						$(this).find('.noUiSlider').eq(i).noUiSlider_pips({
 								mode: 'count',

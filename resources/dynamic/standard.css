@@ -116,6 +116,10 @@ Dim markerColor = CurrentADC.PropValue("sliderMarkerColor")
 
 %}
 
+.colored {
+	background-color: red;
+}
+
 #adc_{%= CurrentADC.InstanceId%} .sliderContainer {
 	position:relative;
 	text-align:{%= controlAlign%};
