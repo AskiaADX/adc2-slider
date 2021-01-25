@@ -8,7 +8,7 @@
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
     <version>2.1.0</version>
-    <date>2021-01-18</date>
+    <date>2021-01-25</date>
     <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
 			   - fixed storing data problem for single questions in loops
@@ -234,7 +234,7 @@
           <option value="1" text="Yes" />
           <option value="0" text="No" />
         </options>
-      </property>      
+      </property>
     </category>
     <category id="sliderBaseStyling" name="Slider Base Styling">
       <property xsi:type="standardProperty" id="sliderBaseHeight" name="Slider Base Height" type="string" mode="static" require="false" visible="true">
