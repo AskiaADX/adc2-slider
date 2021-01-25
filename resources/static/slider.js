@@ -221,11 +221,11 @@
 					}
 
 					if (showValue) {
-						var element = $(this).parents('.controlContainer'),
+						var handleText,
+						element = $(this).parents('.controlContainer'),
 							handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) );
-
 						element.find('.handleValue').eq(iteration).css('padding-top', '');
-						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + handleValue + "" + rightHandleText + "</div>" );
+						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[handleValue] : handleValue) : handleValue) + "" + rightHandleText + "</div>" );
 						var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 						element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 					}
@@ -233,8 +233,8 @@
 						var element = $(this).parents('.controlContainer'),
 						handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) );
            	// element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
-						if (showResponseCaptions & isSingle & !isInLoop) {
-							element.find('.noUi-handle').eq(iteration).attr('title', captionsArray[$.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue)]);
+						if (showResponseCaptions & isSingle) {
+							element.find('.noUi-handle').eq(iteration).attr('title', captionsArray[handleValue]);
 						} else {
 							element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
 						}
@@ -259,14 +259,15 @@
 				slide : function() {
 					if ( isInLoop ) { iteration = $(this).parents('.sliderContainer').data('iteration'); }
 					if (showValue) {
-						var element = $(this).parents('.controlContainer'),
+						var handleText,
+						element = $(this).parents('.controlContainer'),
 							handleValue = isSingle ?
 								( isInLoop ? ( decimalPlaces > 0 ? parseFloat(roundToStep($(this).val())).toFixed(decimalPlaces) : roundToStep($(this).val()) ) : $.inArray(roundToStep(items[ roundToStep( $(this).val() - roundToStep(options.minValue) ) ].value), valuesArray) + roundToStep(options.minValue) )
 								: ( decimalPlaces > 0 ? parseFloat(roundToStep(roundToStep( $(this).val() ))).toFixed(decimalPlaces) : roundToStep(roundToStep( $(this).val() )) ) ;
 							//handleValue = isSingle ? $.inArray(parseInt($(this).val()), valuesArray) + parseInt(options.minValue) : parseInt($(this).val());
 
 						element.find('.handleValue').eq(iteration).css('padding-top', '');
-						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + handleValue + "" + rightHandleText + "</div>" );
+						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[handleValue] : handleValue) : handleValue) + "" + rightHandleText + "</div>" );
 						var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 						element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 					}
@@ -276,7 +277,7 @@
                       ( isInLoop ? ( decimalPlaces > 0 ? parseFloat(roundToStep($(this).val())).toFixed(decimalPlaces) : roundToStep($(this).val()) ) : $.inArray(roundToStep(items[ roundToStep( $(this).val() - roundToStep(options.minValue) ) ].value), valuesArray) + roundToStep(options.minValue) ) :
                       ( decimalPlaces > 0 ? parseFloat(roundToStep(roundToStep( $(this).val() ))).toFixed(decimalPlaces) : roundToStep(roundToStep( $(this).val() )) ) ;
               // element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
-							element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
+							 (showResponseCaptions & isSingle) ? element.find('.noUi-handle').eq(iteration).attr('title', captionsArray[handleValue]) : element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
 
           }
 
@@ -306,7 +307,7 @@
 						})
 					});
 				} else {
-					if (showResponseCaptions & isSingle & !isInLoop) {
+					if (isSingle & showResponseCaptions) {
 						var pipFormats = captionsArray;
 						$(this).find('.noUiSlider').eq(i).noUiSlider_pips({
 								mode: 'count',
@@ -315,13 +316,10 @@
 								format: {
 									to: function(a){
 										return pipFormats[a];
-									}
+									},
+									prefix: leftHandleText,
+									postfix: rightHandleText
 								}
-								// format: wNumb({
-								// 	decimals: decimalPlaces,
-								// 	prefix: leftHandleText,
-								// 	postfix: rightHandleText
-								// })
 						});
 					} else {
 						$(this).find('.noUiSlider').eq(i).noUiSlider_pips({
@@ -337,18 +335,6 @@
 					}
 				}
 
-				/*if ( sliderOrientation == 'horizontal' ) {
-					$(this).find('td.sliderDK').css('padding-top','40px');
-					var pipsWidth = $(this).find('.noUiSlider').width(),
-						pipsMargin = $(this).find('.noUi-handle').width()/2;
-					$(this).find('.noUi-pips').css({'width':pipsWidth+'px','left':pipsMargin+'px'});
-				} else {
-					var pipsWidth = $(this).find('.noUiSlider').height(),
-						pipsMargin = $(this).find('.noUi-handle').height()/2;
-					$(this).find('.noUi-pips').css({'height':pipsWidth+'px','top':pipsMargin+'px'});
-				}*/
-
-				//$('.noUi-pips-horizontal').width = $('.noUiSlider').width() - $('.noUi-handle').width();
 				$('.noUi-pips-horizontal').css({
 					'left': ($('.noUi-handle').width()/2)+'px',
 					'width': $('.noUiSlider').outerWidth() - $('.noUi-handle').outerWidth()
@@ -399,12 +385,15 @@
 
 			if (showValue) {
 
-				var element = $(this).parents('.controlContainer'),
-					handleValue = ($input.val()) !== "" ? (isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue)	: (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) 	: roundToStep($input.val()) ) ) : '';
+				var handleText,
+					element = $(this).parents('.controlContainer'),
+					handleValue = ($input.val() !== "") ?	(isSingle ? ($.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue))	: (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces)	: roundToStep($input.val()) ) ) : '';
+
 				element.find('.handleValue').eq(i).css('padding-top', '');
-				element.find('.noUi-handle').eq(i).html( "<div class='handleValue'>" + ( $input.val() !== "" ? (leftHandleText + "" + handleValue + "" + rightHandleText) : '' ) + "</div>" );
+				element.find('.noUi-handle').eq(i).html( "<div class='handleValue'>" + ( $input.val() !== "" ? (leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[handleValue] : handleValue) : handleValue) + "" + rightHandleText) : '' ) + "</div>" );
 				var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(i).height() - element.find('.handleValue').eq(i).outerHeight() ) * 0.5 );
 				element.find('.handleValue').eq(i).css('padding-top', topAdj + 'px');
+
 			}
 
 			if ( $input.val() == -1 ) {
@@ -666,11 +655,12 @@
 				}
 
 				//var handleValue = parseInt(value);
-				var handleValue = (decimalPlaces > 0 ? parseFloat(value).toFixed(decimalPlaces) : value );
+				var handleText,
+				handleValue = (decimalPlaces > 0 ? parseFloat(value).toFixed(decimalPlaces) : value );
 
 				if (showValue) {
 					element.find('.handleValue').eq(iteration).css('padding-top', '');
-					element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + handleValue + "" + rightHandleText + "</div>" );
+					element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[i] : handleValue) : handleValue) + "" + rightHandleText + "</div>" );
 					var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 					element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 				}
