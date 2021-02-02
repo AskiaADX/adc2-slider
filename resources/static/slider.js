@@ -94,8 +94,10 @@
 				}
 			} else {
 				var allValuesArray = items[0].allValues.split(",");
+				var allCaptionsArray = items[0].allCaptions.split(",,,,");
 				for ( var i=0; i<allValuesArray.length; i++ ) {
 					valuesArray.push( parseInt( allValuesArray[i] ) );
+					captionsArray.push(allCaptionsArray[i]);
 				}
 			}
 			//options.minValue = 1,
@@ -232,8 +234,8 @@
           }
 
 					let dkObjs = $(this).parents('.sliderContainer').find('.dk');
-					for (var i = 0; i < dkObjs.length; i++) {
-							$(dkObjs[i]).removeClass('selected');
+					for (var a = 0; a < dkObjs.length; a++) {
+							$(dkObjs[a]).removeClass('selected');
 					}
           if (window.askia
               && window.arrLiveRoutingShortcut
@@ -267,8 +269,8 @@
           }
 
 					let dkObjs = $(this).parents('.sliderContainer').eq(iteration).find('.dk');
-					for (var i = 0; i < dkObjs.length; i++) {
-						$(dkObjs[i]).removeClass('selected');
+					for (var a = 0; a < dkObjs.length; a++) {
+						$(dkObjs[a]).removeClass('selected');
 					}
 
 					if(interconnection){ // (show the handles on slide, not on set)
@@ -345,8 +347,8 @@
 				if ( ($.inArray(parseInt($input.val()), valuesArray) + parseInt(options.minValue)) > options.maxValue ) {
 					$(this).find('.sliderContainer').eq(i).find('.noUi-handle').hide();
 					let dkObjs = $(this).find('.sliderContainer').eq(i).find('.dk');
-					for (var i = 0; i < dkObjs.length; i++) {
-						if($(dkObjs[i]).attr('data-value') == $input.val()) $(dkObjs[i]).addClass('selected');
+					for (var a = 0; a < dkObjs.length; a++) {
+						if($(dkObjs[a]).attr('data-value') == $input.val()) $(dkObjs[a]).addClass('selected');
 					}
 					$(this).find('.sliderContainer').eq(i).addClass('selected');
 				}
@@ -396,8 +398,8 @@
 					$(this).find('.sliderContainer').eq(i).find('.noUi-handle').hide();
 					$(this).find('.sliderContainer').eq(i).find('.dk').addClass('selected');
 					let dkObjs = $(this).find('.sliderContainer').eq(i).find('.dk');
-					for (var i = 0; i < dkObjs.length; i++) {
-						if($(dkObjs[i]).attr('data-value') == $input.val()) $(dkObjs[i]).addClass('selected');
+					for (var a = 0; a < dkObjs.length; a++) {
+						if($(dkObjs[a]).attr('data-value') == $input.val()) $(dkObjs[a]).addClass('selected');
 					}
 				}
 			}
@@ -639,7 +641,7 @@
 
 				if (showValue) {
 					element.find('.handleValue').eq(iteration).css('padding-top', '');
-					element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[i] : handleValue) : handleValue) + "" + rightHandleText + "</div>" );					
+					element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[i] : handleValue) : handleValue) + "" + rightHandleText + "</div>" );
 					var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 					element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 				}
@@ -681,8 +683,8 @@
 			//$input.val(value);
 
 			let dkObjs = $(this).parents('.sliderContainer').find('.dk');
-			for (var i = 0; i < dkObjs.length; i++) {
-				$(dkObjs[i]).removeClass('selected');
+			for (var a = 0; a < dkObjs.length; a++) {
+				$(dkObjs[a]).removeClass('selected');
 			}
 
 			if ( $(this).hasClass('selected') ) {
