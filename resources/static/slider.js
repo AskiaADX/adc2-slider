@@ -109,8 +109,10 @@
 				}
 			} else {
 				var allValuesArray = items[0].allValues.split(",");
+				var allCaptionsArray = items[0].allCaptions.split(",,,,");
 				for ( var i=0; i<allValuesArray.length; i++ ) {
 					valuesArray.push( parseInt( allValuesArray[i] ) );
+					captionsArray.push(allCaptionsArray[i]);
 				}
 			}
 			//options.minValue = 1,
@@ -118,6 +120,7 @@
 			options.maxValue = isInLoop ? parseInt(options.minValue) + (allValuesArray.length - 1) : parseInt(options.minValue) + (items.length - 1);
             unitStep = 1;
 						stepMarkerText = 1;
+
 		}
 
 		if ( isSingle && dkSingle ) {
@@ -182,6 +185,7 @@
           rangeData['50%'] = [options.intermediateValue,unitStep];
       }
       rangeData['max'] = [options.maxValue];
+
 			$(this).find('.noUiSlider').eq(i).noUiSlider({
 				//range: {'min':[options.minValue], '50%':[options.intermediateValue,unitStep], 'max':[options.maxValue]},
         range: rangeData,
@@ -240,13 +244,9 @@
 						}
           }
 
-					// for (var i = 0; i < dkArr.length; i++) {
-					// 	.removeClass('selected'); // TODO : Fix JS Error
-					// }
-
 					let dkObjs = $(this).parents('.sliderContainer').find('.dk');
-					for (var i = 0; i < dkObjs.length; i++) {
-							$(dkObjs[i]).removeClass('selected');
+					for (var a = 0; a < dkObjs.length; a++) {
+							$(dkObjs[a]).removeClass('selected');
 					}
 
           if (window.askia
@@ -257,6 +257,7 @@
           }
 				},
 				slide : function() {
+
 					if ( isInLoop ) { iteration = $(this).parents('.sliderContainer').data('iteration'); }
 					if (showValue) {
 						var handleText,
@@ -282,8 +283,8 @@
           }
 
 					let dkObjs = $(this).parents('.sliderContainer').eq(iteration).find('.dk');
-					for (var i = 0; i < dkObjs.length; i++) {
-						$(dkObjs[i]).removeClass('selected');
+					for (var a = 0; a < dkObjs.length; a++) {
+						$(dkObjs[a]).removeClass('selected');
 					}
 
 
@@ -316,9 +317,7 @@
 								format: {
 									to: function(a){
 										return pipFormats[a];
-									},
-									prefix: leftHandleText,
-									postfix: rightHandleText
+									}
 								}
 						});
 					} else {
@@ -339,7 +338,7 @@
 					'left': ($('.noUi-handle').width()/2)+'px',
 					'width': $('.noUiSlider').outerWidth() - $('.noUi-handle').outerWidth()
 				});
-                $('.noUi-pips-vertical').css({
+      	$('.noUi-pips-vertical').css({
 					'top': ($('.noUi-handle').height()/2)+'px',
 					'height': $('.noUiSlider').outerHeight() - $('.noUi-handle').outerHeight()
 				});
@@ -349,8 +348,8 @@
 				if ( ($.inArray(parseInt($input.val()), valuesArray) + parseInt(options.minValue)) > options.maxValue ) {
 					$(this).find('.sliderContainer').eq(i).find('.noUi-handle').hide();
 					let dkObjs = $(this).find('.sliderContainer').eq(i).find('.dk');
-					for (var i = 0; i < dkObjs.length; i++) {
-						if($(dkObjs[i]).attr('data-value') == $input.val()) $(dkObjs[i]).addClass('selected');
+					for (var a = 0; a < dkObjs.length; a++) {
+						if($(dkObjs[a]).attr('data-value') == $input.val()) $(dkObjs[a]).addClass('selected');
 					}
 					$(this).find('.sliderContainer').eq(i).addClass('selected');
 				}
@@ -402,8 +401,8 @@
 					$(this).find('.sliderContainer').eq(i).find('.noUi-handle').hide();
 					// $(this).find('.sliderContainer').eq(i).find('.dk').addClass('selected');
 					let dkObjs = $(this).find('.sliderContainer').eq(i).find('.dk');
-					for (var i = 0; i < dkObjs.length; i++) {
-						if($(dkObjs[i]).attr('data-value') == $input.val()) $(dkObjs[i]).addClass('selected');
+					for (var a = 0; a < dkObjs.length; a++) {
+						if($(dkObjs[a]).attr('data-value') == $input.val()) $(dkObjs[a]).addClass('selected');
 					}
 				}
 			}
@@ -449,9 +448,9 @@
 				// too small
 				// hide labels and markers
 				$('.leftLabel, .rightLabel').hide();
-                if ( labelPlacement == "side" ) {
-                	$('.noUi-pips-horizontal').hide();
-                }
+        if ( labelPlacement == "side" ) {
+        	$('.noUi-pips-horizontal').hide();
+        }
 				// get control container width
 				var widthDiff = $('.leftLabel').outerWidth(true) - $('.leftLabel').innerWidth(),
 					availableWidth = ($container.outerWidth() - (widthDiff * 2))/2;
@@ -690,19 +689,18 @@
 
 			// Hide handle
 			slider.find('.noUi-handle').hide();
-            if (options.sliderOrientation === 'vertical' && options.connect === 'lower') {
-            	slider.find('.noUi-origin').css("top","120%");
-            }
-            if (options.sliderOrientation !== 'vertical' && options.connect === 'lower') {
-            	slider.find('.noUi-background').css("left","0%");
-            }
-
+      if (options.sliderOrientation === 'vertical' && options.connect === 'lower') {
+      	slider.find('.noUi-origin').css("top","120%");
+      }
+      if (options.sliderOrientation !== 'vertical' && options.connect === 'lower') {
+      	slider.find('.noUi-background').css("left","0%");
+      }
 
 			// Set value to input
 			//$input.val(value);
 			let dkObjs = $(this).parents('.sliderContainer').find('.dk');
-			for (var i = 0; i < dkObjs.length; i++) {
-				$(dkObjs[i]).removeClass('selected');
+			for (var a = 0; a < dkObjs.length; a++) {
+				$(dkObjs[a]).removeClass('selected');
 			}
 			if ( $(this).hasClass('selected') ) {
 				$(this).removeClass('selected');
@@ -715,14 +713,14 @@
 				$('input[name="M' + DKID + ' -1"]').prop('checked', true);
 				$(this).parents('.sliderContainer').addClass('selected');
 			}
-            if (window.askia
-                && window.arrLiveRoutingShortcut
-                && window.arrLiveRoutingShortcut.length > 0
-                && window.arrLiveRoutingShortcut.indexOf(options.currentQuestion) >= 0) {
-                askia.triggerAnswer();
-            }
+      if (window.askia
+          && window.arrLiveRoutingShortcut
+          && window.arrLiveRoutingShortcut.length > 0
+          && window.arrLiveRoutingShortcut.indexOf(options.currentQuestion) >= 0) {
+          askia.triggerAnswer();
+      }
 		}
-        $container.on('click', '.dk', selectDK);
+    $container.on('click', '.dk', selectDK);
 
 		if ( total_images > 0 ) {
 			$container.find('img').each(function() {
