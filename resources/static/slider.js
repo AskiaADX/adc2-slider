@@ -100,11 +100,13 @@
 					captionsArray.push(allCaptionsArray[i]);
 				}
 			}
+
 			//options.minValue = 1,
 			//options.maxValue = isInLoop ? parseInt(options.minValue) + (parseInt(options.maxValue) - parseInt(options.minValue)) : parseInt(options.minValue) + (items.length - 1),
 			options.maxValue = isInLoop ? parseInt(options.minValue) + (allValuesArray.length - 1) : parseInt(options.minValue) + (items.length - 1);
             unitStep = 1;
 						stepMarkerText = 1;
+
 		}
 
 		if ( isSingle && dkSingle ) {
@@ -215,18 +217,17 @@
 						handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) );
 
 						element.find('.handleValue').eq(iteration).css('padding-top', '');
-						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[handleValue] : handleValue) : handleValue) + "" + rightHandleText + "</div>" );
+						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[handleValue - roundToStep(options.minValue)] : handleValue) : handleValue) + "" + rightHandleText + "</div>" );
 						var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 						element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 					}
           if (showTooltips) {
 						var element = $(this).parents('.controlContainer'),
 							handleValue = isSingle ? $.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue) : (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces) : roundToStep($input.val()) );
-							// console.log(items);
 							// if (items[handleValue]) {
 							// element.find('.noUi-handle').eq(iteration).attr('title', isSingle ? items[handleValue].caption : handleValue);
 							if (showResponseCaptions & isSingle) {
-								element.find('.noUi-handle').eq(iteration).attr('title', captionsArray[handleValue]);
+								element.find('.noUi-handle').eq(iteration).attr('title', captionsArray[handleValue - roundToStep(options.minValue)]);
 							} else {
 								element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
 							}
@@ -255,7 +256,7 @@
 							//handleValue = isSingle ? $.inArray(parseInt($(this).val()), valuesArray) + parseInt(options.minValue) : parseInt($(this).val());
 
 						element.find('.handleValue').eq(iteration).css('padding-top', '');
-						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[handleValue] : handleValue) : handleValue) + "" + rightHandleText + "</div>" );
+						element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[handleValue - roundToStep(options.minValue)] : handleValue) : handleValue) + "" + rightHandleText + "</div>" );
 						var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 						element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 					}
@@ -264,8 +265,7 @@
             handleValue = isSingle ?
                 ( isInLoop ? ( decimalPlaces > 0 ? parseFloat(roundToStep($(this).val())).toFixed(decimalPlaces) : roundToStep($(this).val()) ) : $.inArray(roundToStep(items[ roundToStep( $(this).val() - roundToStep(options.minValue) ) ].value), valuesArray) + roundToStep(options.minValue) ) :
                 ( decimalPlaces > 0 ? parseFloat(roundToStep(roundToStep( $(this).val() ))).toFixed(decimalPlaces) : roundToStep(roundToStep( $(this).val() )) ) ;
-								// if (items[handleValue]) {
-								(showResponseCaptions & isSingle) ? element.find('.noUi-handle').eq(iteration).attr('title', captionsArray[handleValue]) : element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
+								(showResponseCaptions & isSingle) ? element.find('.noUi-handle').eq(iteration).attr('title', captionsArray[handleValue - roundToStep(options.minValue)]) : element.find('.noUi-handle').eq(iteration).attr('title', handleValue);
           }
 
 					let dkObjs = $(this).parents('.sliderContainer').eq(iteration).find('.dk');
@@ -295,14 +295,16 @@
 				} else {
 					if (showResponseCaptions & isSingle) {
 						var pipFormats = captionsArray;
+
 						$(this).find('.noUiSlider').eq(i).noUiSlider_pips({
 								mode: 'count',
 								values: (options.maxValue - options.minValue)+1,
 								density: (options.maxValue - options.minValue)/2,
 								format: {
 									to: function(a){
-										return pipFormats[a];
+										return pipFormats[a - roundToStep(options.minValue)];
 									},
+									decimals: decimalPlaces,
 									prefix: leftHandleText,
 									postfix: rightHandleText
 								}
@@ -321,18 +323,6 @@
 					}
 				}
 
-				/*if ( sliderOrientation == 'horizontal' ) {
-					$(this).find('td.sliderDK').css('padding-top','40px');
-					var pipsWidth = $(this).find('.noUiSlider').width(),
-						pipsMargin = $(this).find('.noUi-handle').width()/2;
-					$(this).find('.noUi-pips').css({'width':pipsWidth+'px','left':pipsMargin+'px'});
-				} else {
-					var pipsWidth = $(this).find('.noUiSlider').height(),
-						pipsMargin = $(this).find('.noUi-handle').height()/2;
-					$(this).find('.noUi-pips').css({'height':pipsWidth+'px','top':pipsMargin+'px'});
-				}*/
-
-				//$('.noUi-pips-horizontal').width = $('.noUiSlider').width() - $('.noUi-handle').width();
 				$('.noUi-pips-horizontal').css({
 					'left': ($('.noUi-handle').width()/2)+'px',
 					'width': $('.noUiSlider').outerWidth() - $('.noUi-handle').outerWidth()
@@ -387,7 +377,7 @@
 					handleValue = ($input.val() !== "") ?	(isSingle ? ($.inArray(roundToStep($input.val()), valuesArray) + roundToStep(options.minValue))	: (decimalPlaces > 0 ? parseFloat(roundToStep($input.val())).toFixed(decimalPlaces)	: roundToStep($input.val()) ) ) : '';
 
 				element.find('.handleValue').eq(i).css('padding-top', '');
-				element.find('.noUi-handle').eq(i).html( "<div class='handleValue'>" + ( $input.val() !== "" ? (leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[handleValue] : handleValue) : handleValue) + "" + rightHandleText) : '' ) + "</div>" );
+				element.find('.noUi-handle').eq(i).html( "<div class='handleValue'>" + ( $input.val() !== "" ? (leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[handleValue - roundToStep(options.minValue)] : handleValue) : handleValue) + "" + rightHandleText) : '' ) + "</div>" );
 				var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(i).height() - element.find('.handleValue').eq(i).outerHeight() ) * 0.5 );
 				element.find('.handleValue').eq(i).css('padding-top', topAdj + 'px');
 			}
@@ -641,7 +631,7 @@
 
 				if (showValue) {
 					element.find('.handleValue').eq(iteration).css('padding-top', '');
-					element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[i] : handleValue) : handleValue) + "" + rightHandleText + "</div>" );
+					element.find('.noUi-handle').eq(iteration).html( "<div class='handleValue'>" + leftHandleText + "" + (handleText = isSingle ? (showResponseCaptions ? captionsArray[handleValue - roundToStep(options.minValue)] : handleValue) : handleValue) + "" + rightHandleText + "</div>" );
 					var topAdj = Math.ceil( ( element.find('.noUi-handle').eq(iteration).height() - element.find('.handleValue').eq(iteration).outerHeight() ) * 0.5 );
 					element.find('.handleValue').eq(iteration).css('padding-top', topAdj + 'px');
 				}
