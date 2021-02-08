@@ -538,7 +538,14 @@
             });
 		}
 		// hide handle
-		if ( hideHandle && !(roundToStep($input.val()) >= 0) ) $('.noUi-handle').hide();
+		if (isInLoop) {
+			for ( var i=0; i<items.length; i++ ) {
+				var $input = items[i].element;
+				if ( hideHandle && !(roundToStep($input.val()) >= 0) ) $(document.getElementsByClassName('noUi-handle')[i]).hide();
+			}
+		} else {
+			if ( hideHandle && !(roundToStep($input.val()) >= 0) ) $('.noUi-handle').hide();
+		}
 
 		// Remove focus when not clicking on slider
 		$(document).click(function(e) {

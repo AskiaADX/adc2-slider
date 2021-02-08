@@ -7,8 +7,8 @@
   <info>
     <name>Slider</name>
     <guid>75419bde-c158-45fe-a9b7-68cd4c6bb9b0</guid>
-    <version>2.1.2</version>
-    <date>2021-02-03</date>
+    <version>2.1.3</version>
+    <date>2021-02-08</date>
     <description><![CDATA[v1.0.2 - removed CSS3 Pie
 		v1.0.3 - fixed label width issue
 			   - fixed storing data problem for single questions in loops
@@ -80,6 +80,7 @@
            - Multiple exclusive/DK options
     v2.1.1 - isInLoop support for sliders with multiple exclusive options
     v2.1.2 - Slider improvements
+    v2.1.3 - 
     ]]></description>
     <company>Askia</company>
     <author><![CDATA[Paul Ferreira <paulf@askia.com>,	  Thibault Piriou <thibault@askia.com>	  Jérôme Duparc <jeromed@askia.com>	  Stephen Bronnec <stephen@askia.com>   Prabath Gamage <prabath@askia.com>]]></author>
